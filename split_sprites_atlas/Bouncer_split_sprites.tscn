@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6cxxsw4i2vo3"]
+
+[ext_resource type="Script" path="res://addons/sprite_cutter/AtlasScene.gd" id="1_o18t4"]
+[ext_resource type="Texture2D" uid="uid://cv4py0v28ysh0" path="res://sprites/Bouncers_2.png" id="2_hsa6s"]
+
+[node name="AtlasScene" type="Node"]
+script = ExtResource("1_o18t4")
+destination_path = "res://prefabs"
+
+[node name="Bouncers2" type="Sprite2D" parent="."]
+position = Vector2(157, 132)
+texture = ExtResource("2_hsa6s")
+region_enabled = true
+region_rect = Rect2(16, 80, 120, 40)
+region_filter_clip_enabled = true
+
+[node name="Bouncers3" type="Sprite2D" parent="."]
+position = Vector2(159, 196)
+texture = ExtResource("2_hsa6s")
+region_enabled = true
+region_rect = Rect2(16, 240, 120, 40)
+region_filter_clip_enabled = true

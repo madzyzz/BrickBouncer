@@ -12,7 +12,7 @@
 
 [node name="Level_menu_scene" type="Node2D"]
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Background" type="TextureRect" parent="."]
 offset_top = -17.0
 offset_right = 1792.0
 offset_bottom = 1007.0
