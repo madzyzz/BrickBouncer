@@ -28,9 +28,11 @@ animations = [{
 [node name="Level_1_scene" type="Node2D"]
 
 [node name="Background" type="TextureRect" parent="."]
-offset_top = -17.0
-offset_right = 1792.0
-offset_bottom = 1007.0
+offset_left = 803.0
+offset_top = 1.0
+offset_right = 2595.0
+offset_bottom = 1101.0
+rotation = 1.5708
 scale = Vector2(0.715363, 0.744657)
 texture = ExtResource("1_vbgtp")
 
@@ -38,24 +40,28 @@ texture = ExtResource("1_vbgtp")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Invisible_walls"]
 
-[node name="Left_wall" type="CollisionShape2D" parent="Invisible_walls/StaticBody2D"]
-position = Vector2(-72, 367)
-shape = SubResource("RectangleShape2D_hr6h0")
-
-[node name="Right_wall" type="CollisionShape2D" parent="Invisible_walls/StaticBody2D"]
-position = Vector2(1353, 355)
-shape = SubResource("RectangleShape2D_hr6h0")
-
 [node name="Upper_wall" type="CollisionShape2D" parent="Invisible_walls/StaticBody2D"]
-position = Vector2(642.5, -78)
-shape = SubResource("RectangleShape2D_gl076")
+position = Vector2(401, -73)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_hr6h0")
 
 [node name="Lower_wall" type="CollisionShape2D" parent="Invisible_walls/StaticBody2D"]
-position = Vector2(632, 807)
+position = Vector2(399, 1352)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_hr6h0")
+
+[node name="Left_wall" type="CollisionShape2D" parent="Invisible_walls/StaticBody2D"]
+position = Vector2(-61, 640)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_gl076")
+
+[node name="Right_wall" type="CollisionShape2D" parent="Invisible_walls/StaticBody2D"]
+position = Vector2(861, 615)
+rotation = 1.5708
 shape = SubResource("RectangleShape2D_gl076")
 
 [node name="Bouncer" type="CharacterBody2D" parent="."]
-position = Vector2(648, 592)
+position = Vector2(390, 1128)
 script = ExtResource("4_1v60k")
 
 [node name="Bouncer_sprite_and_animations" type="AnimatedSprite2D" parent="Bouncer"]
@@ -64,4 +70,5 @@ animation = &"Ball_hits_bouncer"
 frame_progress = 0.370662
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Bouncer"]
+visible = false
 polygon = PackedVector2Array(-57, -5, -58, 15, -57, 20, 56, 20, 57, 15, 55, -5, 50, -13, 38, -20, 12, -23, -12, -23, -41, -20, -53, -13)

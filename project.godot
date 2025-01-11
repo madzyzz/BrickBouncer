@@ -11,16 +11,17 @@ config_version=5
 [application]
 
 config/name="Brick Bouncer"
-run/main_scene="res://Scenes/level_1_scene.tscn"
+run/main_scene="res://Scenes/Opening_scene.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 config/icon="res://icon.svg"
 
 [display]
 
-window/size/viewport_width=1280
-window/size/viewport_height=720
+window/size/viewport_width=800
+window/size/viewport_height=1280
 window/stretch/mode="canvas_items"
-window/stretch/aspect="keep_width"
+window/stretch/aspect="ignore"
+window/handheld/orientation=1
 
 [editor_plugins]
 

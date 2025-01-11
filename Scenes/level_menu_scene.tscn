@@ -11,19 +11,22 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_o5vfb"]
 
 [node name="Level_menu_scene" type="Node2D"]
+rotation = 1.5708
 
 [node name="Background" type="TextureRect" parent="."]
-offset_top = -17.0
+offset_left = -3.33786e-05
+offset_top = -754.0
 offset_right = 1792.0
-offset_bottom = 1007.0
+offset_bottom = 270.0
 scale = Vector2(0.715363, 0.744657)
 texture = ExtResource("1_uamik")
 
 [node name="Back_button" type="Button" parent="."]
-offset_left = 17.0
-offset_top = 28.0
-offset_right = 147.985
-offset_bottom = 106.28
+offset_left = 39.0
+offset_top = -19.0
+offset_right = 169.985
+offset_bottom = 59.28
+rotation = -1.5708
 theme_override_colors/icon_disabled_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
 theme_override_styles/focus = SubResource("StyleBoxEmpty_wtu7p")
@@ -62,7 +65,8 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Level_1" type="Sprite2D" parent="Level_buttons"]
-position = Vector2(223, 217)
+position = Vector2(253, -178)
+rotation = -1.5708
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_j6skk")
 script = ExtResource("3_lma2g")
@@ -70,6 +74,7 @@ script = ExtResource("3_lma2g")
 [node name="Area2D" type="Area2D" parent="Level_buttons/Level_1"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level_buttons/Level_1/Area2D"]
+visible = false
 position = Vector2(5, 19.9999)
 scale = Vector2(45, 45)
 shape = SubResource("CircleShape2D_o5vfb")

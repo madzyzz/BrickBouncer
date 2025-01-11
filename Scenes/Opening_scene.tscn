@@ -12,9 +12,20 @@ bg_color = Color(0.7, 0.6356, 0.056, 1)
 [node name="Opening_scene" type="Node2D"]
 
 [node name="Background" type="TextureRect" parent="."]
-offset_top = -17.0
-offset_right = 1792.0
-offset_bottom = 1007.0
+z_index = -1
+offset_left = -255.0
+offset_top = -151.0
+offset_right = 1537.0
+offset_bottom = 873.0
+scale = Vector2(0.715363, 0.744657)
+texture = ExtResource("1_exjxc")
+
+[node name="Background2" type="TextureRect" parent="."]
+z_index = -2
+offset_left = -254.0
+offset_top = 603.0
+offset_right = 1538.0
+offset_bottom = 1627.0
 scale = Vector2(0.715363, 0.744657)
 texture = ExtResource("1_exjxc")
 
@@ -24,10 +35,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 514.0
-offset_top = 356.0
-offset_right = 1014.0
-offset_bottom = 556.0
+offset_left = 263.0
+offset_top = 600.0
+offset_right = 763.0
+offset_bottom = 800.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.5, 0.5)
@@ -43,10 +54,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 538.0
-offset_top = 513.0
-offset_right = 931.085
-offset_bottom = 646.02
+offset_left = 291.0
+offset_top = 783.0
+offset_right = 684.085
+offset_bottom = 916.02
 grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(0.5, 0.5)
@@ -54,19 +65,18 @@ theme_override_font_sizes/font_size = 70
 theme_override_styles/normal = SubResource("StyleBoxFlat_7q1s4")
 text = "New Game"
 script = ExtResource("2_7tii6")
-metadata/_edit_use_anchors_ = true
 
 [node name="Game title" type="Label" parent="."]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 94.0
-offset_top = 47.0
-offset_right = 1238.0
-offset_bottom = 279.0
+offset_left = 38.0
+offset_top = 97.0
+offset_right = 1182.0
+offset_bottom = 329.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 170
+theme_override_font_sizes/font_size = 100
 text = "Brick Bouncer"
 
 [connection signal="pressed" from="Load_game_button" to="Load_game_button" method="_on_pressed"]
