@@ -1,0 +1,73 @@
+[gd_scene load_steps=5 format=3 uid="uid://0e4cevit6kld"]
+
+[ext_resource type="Texture2D" uid="uid://dityxxuc4rxv3" path="res://Images/Background Images/Wall background.png" id="1_exjxc"]
+[ext_resource type="Script" path="res://Scripts/load_game_button.gd" id="2_7tii6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2ok6e"]
+bg_color = Color(0.0648, 0.54, 0.0648, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7q1s4"]
+bg_color = Color(0.7, 0.6356, 0.056, 1)
+
+[node name="Opening_scene" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_top = -17.0
+offset_right = 1792.0
+offset_bottom = 1007.0
+scale = Vector2(0.715363, 0.744657)
+texture = ExtResource("1_exjxc")
+
+[node name="Load_game_button" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 514.0
+offset_top = 356.0
+offset_right = 1014.0
+offset_bottom = 556.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 90
+theme_override_styles/normal = SubResource("StyleBoxFlat_2ok6e")
+text = "Load game"
+script = ExtResource("2_7tii6")
+
+[node name="New_game_button" type="Button" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 538.0
+offset_top = 513.0
+offset_right = 931.085
+offset_bottom = 646.02
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.5, 0.5)
+theme_override_font_sizes/font_size = 70
+theme_override_styles/normal = SubResource("StyleBoxFlat_7q1s4")
+text = "New Game"
+script = ExtResource("2_7tii6")
+metadata/_edit_use_anchors_ = true
+
+[node name="Game title" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 94.0
+offset_top = 47.0
+offset_right = 1238.0
+offset_bottom = 279.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 170
+text = "Brick Bouncer"
+
+[connection signal="pressed" from="Load_game_button" to="Load_game_button" method="_on_pressed"]
+[connection signal="pressed" from="New_game_button" to="New_game_button" method="_on_pressed"]
