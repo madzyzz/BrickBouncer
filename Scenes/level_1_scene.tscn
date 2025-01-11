@@ -1,3 +1,12 @@
-[gd_scene format=3 uid="uid://c6i0anlhp2h1w"]
+[gd_scene load_steps=2 format=3 uid="uid://c6i0anlhp2h1w"]
+
+[ext_resource type="Texture2D" uid="uid://bdmtwlgfg5p4m" path="res://Images/Background Images/metal_background.png" id="1_vbgtp"]
 
 [node name="Level_1_scene" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_top = -17.0
+offset_right = 1792.0
+offset_bottom = 1007.0
+scale = Vector2(0.715363, 0.744657)
+texture = ExtResource("1_vbgtp")
