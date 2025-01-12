@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bdmtwlgfg5p4m" path="res://Images/Background Images/metal_background.png" id="1_vbgtp"]
 [ext_resource type="Texture2D" uid="uid://dhpwlgy2vji4r" path="res://prefabs/Bouncers2.atlastex" id="2_dbkro"]
 [ext_resource type="Texture2D" uid="uid://bhsedwblj1hpc" path="res://prefabs/Bouncers3.atlastex" id="3_r7y3j"]
-[ext_resource type="Script" path="res://Scenes/bouncer.gd" id="4_1v60k"]
+[ext_resource type="Script" path="res://Scripts/bouncer.gd" id="4_1v60k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hr6h0"]
 size = Vector2(145, 893)

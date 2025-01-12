@@ -13,21 +13,24 @@ bg_color = Color(0.7, 0.6356, 0.056, 1)
 
 [node name="Background" type="TextureRect" parent="."]
 z_index = -1
-offset_left = -255.0
-offset_top = -151.0
-offset_right = 1537.0
-offset_bottom = 873.0
+offset_left = -219.0
+offset_top = -132.0
+offset_right = 1573.0
+offset_bottom = 892.0
 scale = Vector2(0.715363, 0.744657)
 texture = ExtResource("1_exjxc")
+expand_mode = 2
 
 [node name="Background2" type="TextureRect" parent="."]
+visible = false
 z_index = -2
-offset_left = -254.0
-offset_top = 603.0
-offset_right = 1538.0
-offset_bottom = 1627.0
+offset_left = -222.0
+offset_top = 626.0
+offset_right = 1570.0
+offset_bottom = 1650.0
 scale = Vector2(0.715363, 0.744657)
 texture = ExtResource("1_exjxc")
+expand_mode = 3
 
 [node name="Load_game_button" type="Button" parent="."]
 anchors_preset = 8
@@ -35,10 +38,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 263.0
-offset_top = 600.0
-offset_right = 763.0
-offset_bottom = 800.0
+offset_left = 304.0
+offset_top = 835.0
+offset_right = 804.0
+offset_bottom = 1035.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.5, 0.5)
@@ -54,10 +57,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 291.0
-offset_top = 783.0
-offset_right = 684.085
-offset_bottom = 916.02
+offset_left = 321.0
+offset_top = 1033.0
+offset_right = 714.085
+offset_bottom = 1166.02
 grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(0.5, 0.5)
@@ -67,14 +70,15 @@ text = "New Game"
 script = ExtResource("2_7tii6")
 
 [node name="Game title" type="Label" parent="."]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = 38.0
-offset_top = 97.0
-offset_right = 1182.0
-offset_bottom = 329.0
-grow_horizontal = 2
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 79.0
+offset_top = 10.0
+offset_right = 753.0
+offset_bottom = 147.0
+grow_vertical = 2
+size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 100
 text = "Brick Bouncer"
