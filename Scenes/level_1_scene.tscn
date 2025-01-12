@@ -29,9 +29,9 @@ animations = [{
 
 [node name="Background" type="TextureRect" parent="."]
 offset_left = 803.0
-offset_top = 1.0
+offset_top = -1.0
 offset_right = 2595.0
-offset_bottom = 1101.0
+offset_bottom = 1099.0
 rotation = 1.5708
 scale = Vector2(0.715363, 0.744657)
 texture = ExtResource("1_vbgtp")
@@ -56,12 +56,12 @@ rotation = 1.5708
 shape = SubResource("RectangleShape2D_gl076")
 
 [node name="Right_wall" type="CollisionShape2D" parent="Invisible_walls/StaticBody2D"]
-position = Vector2(861, 615)
+position = Vector2(781, 616)
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_gl076")
 
 [node name="Bouncer" type="CharacterBody2D" parent="."]
-position = Vector2(387, 1254)
+position = Vector2(395, 1136)
 script = ExtResource("4_1v60k")
 
 [node name="Bouncer_sprite_and_animations" type="AnimatedSprite2D" parent="Bouncer"]

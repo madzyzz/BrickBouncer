@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bdmtwlgfg5p4m" path="res://Images/Background Images/metal_background.png" id="1_uamik"]
 [ext_resource type="Texture2D" uid="uid://02r41b00kw3w" path="res://Images/Level images/MetalLevel.png" id="2_j6skk"]
-[ext_resource type="Script" path="res://Scenes/back_button.gd" id="2_yncd1"]
+[ext_resource type="Script" path="res://Scripts/back_button.gd" id="2_yncd1"]
 [ext_resource type="Texture2D" uid="uid://6st3m31hxact" path="res://sprites/Blue_arrow.png" id="3_5il0x"]
 [ext_resource type="Script" path="res://Scripts/level_buttons.gd" id="3_lma2g"]
 

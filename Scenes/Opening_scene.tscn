@@ -12,17 +12,33 @@ bg_color = Color(0.7, 0.6356, 0.056, 1)
 [node name="Opening_scene" type="Node2D"]
 
 [node name="Background" type="TextureRect" parent="."]
-visible = false
 z_index = -1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -554.0
-offset_top = -46.0
-offset_right = 1238.0
-offset_bottom = 978.0
+offset_left = -385.0
+offset_top = -198.0
+offset_right = 1407.0
+offset_bottom = 826.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.87, 0.907)
+texture = ExtResource("1_exjxc")
+expand_mode = 2
+
+[node name="Background2" type="TextureRect" parent="."]
+z_index = -2
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -383.0
+offset_top = 711.0
+offset_right = 1409.0
+offset_bottom = 1735.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.87, 0.907)
@@ -35,10 +51,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 235.0
-offset_top = 357.0
-offset_right = 735.0
-offset_bottom = 557.0
+offset_left = 237.0
+offset_top = 685.0
+offset_right = 737.0
+offset_bottom = 885.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.5, 0.5)
@@ -54,10 +70,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 256.0
-offset_top = 537.0
-offset_right = 649.085
-offset_bottom = 670.02
+offset_left = 258.0
+offset_top = 865.0
+offset_right = 651.085
+offset_bottom = 998.02
 grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(0.5, 0.5)
@@ -67,21 +83,23 @@ text = "New Game"
 script = ExtResource("2_7tii6")
 
 [node name="Game title" type="Label" parent="."]
-anchors_preset = -1
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 335.0
-offset_top = 83.0
-offset_right = 1009.0
-offset_bottom = 220.0
+offset_left = 28.0
+offset_top = 112.0
+offset_right = 702.0
+offset_bottom = 249.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 60
-text = "Brick Bouncer"
+theme_override_font_sizes/font_size = 150
+text = "Brick 
+Bouncer"
+horizontal_alignment = 1
 
 [connection signal="pressed" from="Load_game_button" to="Load_game_button" method="_on_pressed"]
 [connection signal="pressed" from="New_game_button" to="New_game_button" method="_on_pressed"]
