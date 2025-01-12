@@ -12,25 +12,22 @@ bg_color = Color(0.7, 0.6356, 0.056, 1)
 [node name="Opening_scene" type="Node2D"]
 
 [node name="Background" type="TextureRect" parent="."]
+visible = false
 z_index = -1
-offset_left = -219.0
-offset_top = -132.0
-offset_right = 1573.0
-offset_bottom = 892.0
-scale = Vector2(0.715363, 0.744657)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -554.0
+offset_top = -46.0
+offset_right = 1238.0
+offset_bottom = 978.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.87, 0.907)
 texture = ExtResource("1_exjxc")
 expand_mode = 2
-
-[node name="Background2" type="TextureRect" parent="."]
-visible = false
-z_index = -2
-offset_left = -222.0
-offset_top = 626.0
-offset_right = 1570.0
-offset_bottom = 1650.0
-scale = Vector2(0.715363, 0.744657)
-texture = ExtResource("1_exjxc")
-expand_mode = 3
 
 [node name="Load_game_button" type="Button" parent="."]
 anchors_preset = 8
@@ -38,10 +35,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 304.0
-offset_top = 835.0
-offset_right = 804.0
-offset_bottom = 1035.0
+offset_left = 235.0
+offset_top = 357.0
+offset_right = 735.0
+offset_bottom = 557.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.5, 0.5)
@@ -57,10 +54,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 321.0
-offset_top = 1033.0
-offset_right = 714.085
-offset_bottom = 1166.02
+offset_left = 256.0
+offset_top = 537.0
+offset_right = 649.085
+offset_bottom = 670.02
 grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(0.5, 0.5)
@@ -70,17 +67,20 @@ text = "New Game"
 script = ExtResource("2_7tii6")
 
 [node name="Game title" type="Label" parent="."]
-anchors_preset = 4
+anchors_preset = -1
+anchor_left = 0.5
 anchor_top = 0.5
+anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 79.0
-offset_top = 10.0
-offset_right = 753.0
-offset_bottom = 147.0
+offset_left = 335.0
+offset_top = 83.0
+offset_right = 1009.0
+offset_bottom = 220.0
+grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 100
+theme_override_font_sizes/font_size = 60
 text = "Brick Bouncer"
 
 [connection signal="pressed" from="Load_game_button" to="Load_game_button" method="_on_pressed"]

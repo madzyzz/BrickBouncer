@@ -13,7 +13,7 @@ func _ready() -> void:
 	# Lock the bouncer's Y position to its starting position
 	bouncer_y_position = global_position.y
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	# Get the mouse's global X position
 	var mouse_x = get_global_mouse_position().x
 
