@@ -17,11 +17,14 @@ func _ready() -> void:
 	ball.global_position = global_position + Vector2(0, 10)
 
 func _physics_process(_delta: float) -> void:
-	# Lock the bouncer in place if the ball is not shot
+	# Lock the bouncer and ball in place if the ball is not shot
 	if not is_ball_shot:
 		velocity.x = 0
 		move_and_slide()
 		position.y = bouncer_y_position
+
+		# Lock the ball to the bouncer
+		ball.lock_to_bouncer(global_position)
 		return
 
 	# Move the bouncer after the ball is shot
