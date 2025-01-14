@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://c6i0anlhp2h1w"]
+[gd_scene load_steps=9 format=3 uid="uid://c6i0anlhp2h1w"]
 
 [ext_resource type="Texture2D" uid="uid://bdmtwlgfg5p4m" path="res://Images/Background Images/metal_background.png" id="1_vbgtp"]
 [ext_resource type="Texture2D" uid="uid://dhpwlgy2vji4r" path="res://prefabs/Bouncers2.atlastex" id="2_dbkro"]
 [ext_resource type="Texture2D" uid="uid://bhsedwblj1hpc" path="res://prefabs/Bouncers3.atlastex" id="3_r7y3j"]
 [ext_resource type="Script" path="res://Scripts/bouncer.gd" id="4_1v60k"]
+[ext_resource type="Texture2D" uid="uid://403vbatxe4e6" path="res://sprites/Dotted_Line.png" id="5_m5kfk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hr6h0"]
 size = Vector2(145, 893)
@@ -71,3 +72,7 @@ frame_progress = 0.370662
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Bouncer"]
 polygon = PackedVector2Array(-57, -5, -58, 15, -57, 20, 56, 20, 57, 15, 55, -5, 50, -13, 38, -20, 12, -23, -12, -23, -41, -20, -53, -13)
+
+[node name="DottedLine" type="Sprite2D" parent="Bouncer"]
+texture = ExtResource("5_m5kfk")
+offset = Vector2(0, -50)

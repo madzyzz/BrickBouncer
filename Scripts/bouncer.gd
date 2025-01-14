@@ -5,8 +5,13 @@ var bouncer_y_position: float
 var snap_threshold = 5.0
 
 @onready var ball_scene = preload("res://prefabs/ball.tscn")
+@onready var dotted_line = $DottedLine  # Reference to the dotted line node
 var ball
 var is_ball_shot = false
+
+# Define shooting angle limits (in radians)
+var min_angle = deg_to_rad(-150)  # Limit shooting to -150° left
+var max_angle = deg_to_rad(-30)   # Limit shooting to -30° right
 
 func _ready() -> void:
 	bouncer_y_position = global_position.y
@@ -15,6 +20,9 @@ func _ready() -> void:
 	ball = ball_scene.instantiate()
 	get_parent().call_deferred("add_child", ball)
 	ball.global_position = global_position + Vector2(0, 10)
+
+	# Ensure the dotted line is visible initially
+	dotted_line.visible = true
 
 func _physics_process(_delta: float) -> void:
 	# Lock the bouncer and ball in place if the ball is not shot
@@ -25,6 +33,9 @@ func _physics_process(_delta: float) -> void:
 
 		# Lock the ball to the bouncer
 		ball.lock_to_bouncer(global_position)
+
+		# Update the dotted line to point towards the mouse
+		update_dotted_line()
 		return
 
 	# Move the bouncer after the ball is shot
@@ -42,5 +53,39 @@ func _physics_process(_delta: float) -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed and not is_ball_shot:
 		# Shoot the ball and unlock the bouncer
-		ball.shoot_ball(event.position)
+		ball.shoot_ball(get_clamped_mouse_position())
 		is_ball_shot = true
+
+		# Hide the dotted line after the ball is shot
+		dotted_line.visible = false
+
+func update_dotted_line() -> void:
+	# Calculate clamped direction
+	var mouse_position = get_clamped_mouse_position()
+	var direction = mouse_position - ball.global_position
+
+	# Update the dotted line's position and rotation
+	dotted_line.global_position = ball.global_position + Vector2(1, -50)
+	dotted_line.rotation = direction.angle() + deg_to_rad(90)
+
+func get_clamped_mouse_position() -> Vector2:
+	# Get the mouse position and calculate the direction vector
+	var mouse_position = get_global_mouse_position()
+	var direction = mouse_position - ball.global_position
+	var angle = direction.angle()
+
+	# Check if the mouse is between the min and max angles
+	if min_angle <= angle and angle <= max_angle:
+		return mouse_position  # Mouse is within the valid range, no clamping needed
+
+	# Determine if the mouse is on the left or right side
+	if mouse_position.x < ball.global_position.x:
+		# Mouse is on the left side
+		return ball.global_position + Vector2(cos(min_angle), sin(min_angle)) * direction.length()
+	else:
+		# Mouse is on the right side
+		return ball.global_position + Vector2(cos(max_angle), sin(max_angle)) * direction.length()
+
+
+
+
