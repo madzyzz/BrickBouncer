@@ -1,10 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://c6i0anlhp2h1w"]
+[gd_scene load_steps=12 format=3 uid="uid://c6i0anlhp2h1w"]
 
+[ext_resource type="Script" path="res://Scripts/level_setup.gd" id="1_lthrn"]
 [ext_resource type="Texture2D" uid="uid://bdmtwlgfg5p4m" path="res://Images/Background Images/metal_background.png" id="1_vbgtp"]
 [ext_resource type="Texture2D" uid="uid://dhpwlgy2vji4r" path="res://prefabs/Bouncers2.atlastex" id="2_dbkro"]
 [ext_resource type="Texture2D" uid="uid://bhsedwblj1hpc" path="res://prefabs/Bouncers3.atlastex" id="3_r7y3j"]
 [ext_resource type="Script" path="res://Scripts/bouncer.gd" id="4_1v60k"]
 [ext_resource type="Texture2D" uid="uid://403vbatxe4e6" path="res://sprites/Dotted_Line.png" id="5_m5kfk"]
+[ext_resource type="Texture2D" uid="uid://bekqvjnliex70" path="res://prefabs/HeartsSystem_3lifes.atlastex" id="7_5bhq2"]
+[ext_resource type="PackedScene" uid="uid://bdd7y1uep7eae" path="res://prefabs/ball.tscn" id="7_65mlh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hr6h0"]
 size = Vector2(145, 893)
@@ -27,6 +30,7 @@ animations = [{
 }]
 
 [node name="Level_1_scene" type="Node2D"]
+script = ExtResource("1_lthrn")
 
 [node name="Background" type="TextureRect" parent="."]
 offset_left = 803.0
@@ -39,27 +43,29 @@ texture = ExtResource("1_vbgtp")
 
 [node name="Invisible_walls" type="Node2D" parent="."]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Invisible_walls"]
+[node name="Walls" type="StaticBody2D" parent="Invisible_walls"]
 
-[node name="Upper_wall" type="CollisionShape2D" parent="Invisible_walls/StaticBody2D"]
+[node name="Upper_wall" type="CollisionShape2D" parent="Invisible_walls/Walls"]
 position = Vector2(401, -73)
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_hr6h0")
 
-[node name="Lower_wall" type="CollisionShape2D" parent="Invisible_walls/StaticBody2D"]
-position = Vector2(399, 1352)
-rotation = 1.5708
-shape = SubResource("RectangleShape2D_hr6h0")
-
-[node name="Left_wall" type="CollisionShape2D" parent="Invisible_walls/StaticBody2D"]
+[node name="Left_wall" type="CollisionShape2D" parent="Invisible_walls/Walls"]
 position = Vector2(-61, 640)
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_gl076")
 
-[node name="Right_wall" type="CollisionShape2D" parent="Invisible_walls/StaticBody2D"]
+[node name="Right_wall" type="CollisionShape2D" parent="Invisible_walls/Walls"]
 position = Vector2(781, 616)
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_gl076")
+
+[node name="Death_border" type="StaticBody2D" parent="Invisible_walls"]
+
+[node name="Lower_wall" type="CollisionShape2D" parent="Invisible_walls/Death_border"]
+position = Vector2(399, 1352)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_hr6h0")
 
 [node name="Bouncer" type="CharacterBody2D" parent="."]
 position = Vector2(395, 1136)
@@ -76,3 +82,11 @@ polygon = PackedVector2Array(-57, -5, -58, 15, -57, 20, 56, 20, 57, 15, 55, -5, 
 [node name="DottedLine" type="Sprite2D" parent="Bouncer"]
 texture = ExtResource("5_m5kfk")
 offset = Vector2(0, -50)
+
+[node name="HeartsSystem3Lifes" type="Sprite2D" parent="."]
+position = Vector2(122, 62)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("7_5bhq2")
+
+[node name="Ball" parent="." instance=ExtResource("7_65mlh")]
+position = Vector2(393, 1132)

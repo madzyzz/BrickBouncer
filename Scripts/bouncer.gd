@@ -4,9 +4,8 @@ var max_speed = 500.0
 var bouncer_y_position: float
 var snap_threshold = 5.0
 
-@onready var ball_scene = preload("res://prefabs/ball.tscn")
+@onready var ball = $"../Ball"  # Reference the pre-existing ball in the scene
 @onready var dotted_line = $DottedLine  # Reference to the dotted line node
-var ball
 var is_ball_shot = false
 
 # Define shooting angle limits (in radians)
@@ -16,10 +15,10 @@ var max_angle = deg_to_rad(-30)   # Limit shooting to -30° right
 func _ready() -> void:
 	bouncer_y_position = global_position.y
 
-	# Add and position the ball
-	ball = ball_scene.instantiate()
-	get_parent().call_deferred("add_child", ball)
+	# Initialize the ball
 	ball.global_position = global_position + Vector2(0, 10)
+	ball.is_locked = true
+	ball.sleeping = true
 
 	# Ensure the dotted line is visible initially
 	dotted_line.visible = true
@@ -85,7 +84,3 @@ func get_clamped_mouse_position() -> Vector2:
 	else:
 		# Mouse is on the right side
 		return ball.global_position + Vector2(cos(max_angle), sin(max_angle)) * direction.length()
-
-
-
-

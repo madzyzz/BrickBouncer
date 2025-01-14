@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://dg2kx7mbha3ll"]
+
+[ext_resource type="Script" path="res://addons/sprite_cutter/AtlasScene.gd" id="1_stwor"]
+[ext_resource type="Texture2D" uid="uid://cle26ajvscm8n" path="res://sprites/Hearts system.png" id="2_eq0c0"]
+
+[node name="AtlasScene" type="Node"]
+script = ExtResource("1_stwor")
+destination_path = "res://prefabs"
+
+[node name="HeartsSystem_3lifes" type="Sprite2D" parent="."]
+position = Vector2(275, 368)
+texture = ExtResource("2_eq0c0")
+region_enabled = true
+region_rect = Rect2(8, 40, 304, 96)
+
+[node name="HeartsSystem_2lifes" type="Sprite2D" parent="."]
+position = Vector2(272, 504)
+texture = ExtResource("2_eq0c0")
+region_enabled = true
+region_rect = Rect2(8, 200, 304, 96)
+
+[node name="HeartsSystem_1lifes" type="Sprite2D" parent="."]
+position = Vector2(272, 615)
+texture = ExtResource("2_eq0c0")
+region_enabled = true
+region_rect = Rect2(8, 360, 304, 96)
+
+[node name="HeartsSystem_0lifes" type="Sprite2D" parent="."]
+position = Vector2(272, 731)
+texture = ExtResource("2_eq0c0")
+region_enabled = true
+region_rect = Rect2(8, 520, 304, 96)

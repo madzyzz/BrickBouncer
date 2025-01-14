@@ -46,18 +46,21 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 		# Get the collider object for this collision
 		var collider = state.get_contact_collider_object(i)
 
-		if collider and collider.name == "Bouncer":
-			# Get the collision point and the bouncer's position
-			var collision_point = state.get_contact_collider_position(i)
-			var collider_bouncer_position = collider.global_position  # Rename local variable
+		if collider:
+			if collider.name == "Bouncer":
+				# Handle collision with the bouncer
+				var collision_point = state.get_contact_collider_position(i)
+				var collider_bouncer_position = collider.global_position
 
-			# Calculate the bounce direction
-			var direction = (collision_point - collider_bouncer_position).normalized()
+				# Calculate the bounce direction
+				var direction = (collision_point - collider_bouncer_position).normalized()
+				direction.x *= 1.1  # Moderate horizontal direction
+				direction.y *= 2.0  # Prioritize upward movement
+				direction = direction.normalized()
+				linear_velocity = direction * speed
+			
+			elif collider.name == "Death_border":
+				var level_setup = $".."
+				if level_setup:
+					level_setup.lose_life()
 
-			# Balance horizontal and vertical components
-			direction.x *= 1.1 # Moderate horizontal direction
-			direction.y *= 2.0  # Prioritize upward movement
-			direction = direction.normalized()
-
-			# Update the ball's velocity
-			linear_velocity = direction * speed
