@@ -37,6 +37,7 @@ func _physics_process(delta: float) -> void:
 	if is_shot:
 		# Maintain a consistent speed
 		linear_velocity = linear_velocity.normalized() * speed
+		process_overlapping_bricks()
 
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	if is_locked or ignore_bouncer_force_timer > 0:
@@ -67,8 +68,13 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 				var level_setup = $".."
 				if level_setup:
 					level_setup.lose_life()
-			
-			elif collider.is_in_group("Bricks"):
-				collider.on_ball_collision()
+				
+
+func process_overlapping_bricks() -> void:
+	# Get all overlapping bodies from the Area2D
+	for body in $Area2D.get_overlapping_bodies():
+		if body.is_in_group("Bricks"):
+			body.on_ball_collision()
+
 
 

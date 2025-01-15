@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://c6i0anlhp2h1w"]
+[gd_scene load_steps=27 format=3 uid="uid://c6i0anlhp2h1w"]
 
 [ext_resource type="Script" path="res://Scripts/level_setup.gd" id="1_lthrn"]
 [ext_resource type="Texture2D" uid="uid://bdmtwlgfg5p4m" path="res://Images/Background Images/metal_background.png" id="1_vbgtp"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://Scenes/try_again_button.gd" id="9_qif5v"]
 [ext_resource type="Script" path="res://Scenes/level_menu_button.gd" id="10_nivso"]
 [ext_resource type="Texture2D" uid="uid://dhnx4flhomj4m" path="res://prefabs/Brick(4).atlastex" id="11_2r8p4"]
+[ext_resource type="Script" path="res://Scenes/bricks_in_level.gd" id="11_7lwu0"]
 [ext_resource type="Script" path="res://Scenes/brick.gd" id="11_ynlql"]
 [ext_resource type="Texture2D" uid="uid://dy3mwx5qxa3om" path="res://prefabs/Brick(3).atlastex" id="12_r0rvn"]
 [ext_resource type="Texture2D" uid="uid://jrodibporqka" path="res://prefabs/Brick(2).atlastex" id="13_7lcnw"]
@@ -51,6 +52,9 @@ bg_color = Color(0.171, 0.57, 0.171, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r1yhf"]
 bg_color = Color(0.66, 0.61248, 0.1848, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vyjbl"]
+bg_color = Color(0.352941, 0.6, 0.6, 1)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_q1s4i"]
 friction = 0.0
@@ -168,13 +172,70 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_r1yhf")
 text = "Level menu"
 script = ExtResource("10_nivso")
 
+[node name="Game_won_screen" type="TextureRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 140.0
+offset_top = 400.0
+offset_right = 606.09
+offset_bottom = 900.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_h3jj2")
+
+[node name="Label" type="Label" parent="Game_won_screen"]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 23.0
+offset_right = 426.0
+offset_bottom = 147.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 90
+text = "You won!"
+
+[node name="Next_level_button" type="Button" parent="Game_won_screen"]
+layout_mode = 0
+offset_left = 121.0
+offset_top = 233.0
+offset_right = 351.0
+offset_bottom = 310.0
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_6k6ug")
+text = "Next level"
+
+[node name="Level_menu_button" type="Button" parent="Game_won_screen"]
+layout_mode = 0
+offset_left = 149.0
+offset_top = 328.0
+offset_right = 322.175
+offset_bottom = 393.35
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_r1yhf")
+text = "Level menu"
+script = ExtResource("10_nivso")
+
+[node name="Play_again_button" type="Button" parent="Game_won_screen"]
+layout_mode = 0
+offset_left = 150.0
+offset_top = 406.0
+offset_right = 323.545
+offset_bottom = 473.12
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_vyjbl")
+text = "Play again"
+script = ExtResource("9_qif5v")
+
 [node name="Bricks_in_level" type="Node2D" parent="."]
+script = ExtResource("11_7lwu0")
 
 [node name="Brick1" type="StaticBody2D" parent="Bricks_in_level" groups=["Bricks"]]
-position = Vector2(322, 439)
+position = Vector2(353, 439)
 physics_material_override = SubResource("PhysicsMaterial_q1s4i")
 script = ExtResource("11_ynlql")
-start_brick = 3
+start_brick = 2
 brick_4_texture = ExtResource("11_2r8p4")
 brick_3_texture = ExtResource("12_r0rvn")
 brick_2_texture = ExtResource("13_7lcnw")
@@ -186,5 +247,24 @@ shape = SubResource("RectangleShape2D_8xt01")
 
 [node name="Sprite2D" type="Sprite2D" parent="Bricks_in_level/Brick1"]
 
+[node name="Brick2" type="StaticBody2D" parent="Bricks_in_level" groups=["Bricks"]]
+position = Vector2(429, 439)
+physics_material_override = SubResource("PhysicsMaterial_q1s4i")
+script = ExtResource("11_ynlql")
+start_brick = 2
+brick_4_texture = ExtResource("11_2r8p4")
+brick_3_texture = ExtResource("12_r0rvn")
+brick_2_texture = ExtResource("13_7lcnw")
+brick_1_texture = ExtResource("14_a2g71")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks_in_level/Brick2"]
+scale = Vector2(0.55, 0.55)
+shape = SubResource("RectangleShape2D_8xt01")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bricks_in_level/Brick2"]
+
 [connection signal="pressed" from="Game_lost_screen/Try_again_button" to="Game_lost_screen/Try_again_button" method="_on_pressed"]
 [connection signal="pressed" from="Game_lost_screen/Level_menu_button" to="Game_lost_screen/Level_menu_button" method="_on_pressed"]
+[connection signal="pressed" from="Game_won_screen/Level_menu_button" to="Game_won_screen/Level_menu_button" method="_on_pressed"]
+[connection signal="pressed" from="Game_won_screen/Play_again_button" to="Game_won_screen/Play_again_button" method="_on_pressed"]
+[connection signal="child_exiting_tree" from="Bricks_in_level" to="Bricks_in_level" method="_on_child_exiting_tree"]
