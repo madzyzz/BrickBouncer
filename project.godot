@@ -28,6 +28,10 @@ window/vsync/vsync_mode=0
 
 enabled=PackedStringArray("res://addons/sprite_cutter/plugin.cfg")
 
+[global_group]
+
+Bricks=""
+
 [input_devices]
 
 pointing/emulate_touch_from_mouse=true

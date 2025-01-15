@@ -49,6 +49,10 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 		if collider:
 			if collider.name == "Bouncer":
 				# Handle collision with the bouncer
+				var bouncer_animation = $"../Bouncer/Bouncer_sprite_and_animations"
+				bouncer_animation.frame = 1
+				bouncer_animation.play()
+				
 				var collision_point = state.get_contact_collider_position(i)
 				var collider_bouncer_position = collider.global_position
 
@@ -63,4 +67,8 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 				var level_setup = $".."
 				if level_setup:
 					level_setup.lose_life()
+			
+			elif collider.is_in_group("Bricks"):
+				collider.on_ball_collision()
+
 

@@ -26,7 +26,7 @@ func lose_life() -> void:
 
 func reset_ball() -> void:
 	# Reset bouncer position
-	bouncer.global_position = Vector2(400, 600)  # Example position, adjust as needed
+	bouncer.global_position = Vector2(360, 600)
 	bouncer.is_ball_shot = false
 
 	# Reset ball state
@@ -40,7 +40,7 @@ func reset_ball() -> void:
 
 
 func game_over() -> void:
-	print("pull up pop-up screen")
+	$Game_lost_screen.show()
 	ball.queue_free()
 	bouncer.queue_free()
 

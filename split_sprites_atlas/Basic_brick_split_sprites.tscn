@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://brv1yc6ob8cky"]
+
+[ext_resource type="Script" path="res://addons/sprite_cutter/AtlasScene.gd" id="1_mfhos"]
+[ext_resource type="Texture2D" uid="uid://oo6hgecw3464" path="res://sprites/Bricks (1).png" id="2_i1cpq"]
+
+[node name="AtlasScene" type="Node"]
+script = ExtResource("1_mfhos")
+destination_path = "res://prefabs"
+
+[node name="Brick(1)" type="Sprite2D" parent="."]
+position = Vector2(189, 204)
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("2_i1cpq")
+region_enabled = true
+region_rect = Rect2(176, 208, 128, 56)
+
+[node name="Brick(2)" type="Sprite2D" parent="."]
+position = Vector2(189, 267)
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("2_i1cpq")
+region_enabled = true
+region_rect = Rect2(16, 208, 128, 56)
+
+[node name="Brick(3)" type="Sprite2D" parent="."]
+position = Vector2(191, 327)
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("2_i1cpq")
+region_enabled = true
+region_rect = Rect2(176, 48, 128, 56)
+
+[node name="Brick(4)" type="Sprite2D" parent="."]
+position = Vector2(191, 394)
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("2_i1cpq")
+region_enabled = true
+region_rect = Rect2(16, 48, 128, 56)
