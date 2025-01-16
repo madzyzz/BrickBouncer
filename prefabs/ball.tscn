@@ -14,6 +14,7 @@ bounce = 1.0
 [node name="Ball" type="RigidBody2D"]
 physics_material_override = SubResource("PhysicsMaterial_vslsm")
 gravity_scale = 0.0
+continuous_cd = 1
 contact_monitor = true
 max_contacts_reported = 1
 script = ExtResource("1_g5jwy")
@@ -32,5 +33,5 @@ shape = SubResource("CircleShape2D_ddtp8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, -38)
-scale = Vector2(1.7, 1.7)
+scale = Vector2(2, 2)
 shape = SubResource("CircleShape2D_r7rju")

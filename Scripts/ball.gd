@@ -71,9 +71,9 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 				
 
 func process_overlapping_bricks() -> void:
-	# Get all overlapping bodies from the Area2D
 	for body in $Area2D.get_overlapping_bodies():
 		if body.is_in_group("Bricks"):
+			print("happened2")
 			body.on_ball_collision()
 
 
