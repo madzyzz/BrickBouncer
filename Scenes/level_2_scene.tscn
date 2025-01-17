@@ -1,22 +1,22 @@
-[gd_scene load_steps=28 format=3 uid="uid://c6i0anlhp2h1w"]
+[gd_scene load_steps=28 format=3 uid="uid://bpwna4cl45ism"]
 
-[ext_resource type="Script" path="res://Scripts/level_setup.gd" id="1_lthrn"]
-[ext_resource type="Texture2D" uid="uid://bdmtwlgfg5p4m" path="res://Images/Background Images/metal_background.png" id="1_vbgtp"]
-[ext_resource type="Texture2D" uid="uid://dhpwlgy2vji4r" path="res://prefabs/Bouncers2.atlastex" id="2_dbkro"]
-[ext_resource type="Texture2D" uid="uid://bhsedwblj1hpc" path="res://prefabs/Bouncers3.atlastex" id="3_r7y3j"]
-[ext_resource type="Script" path="res://Scripts/bouncer.gd" id="4_1v60k"]
-[ext_resource type="Texture2D" uid="uid://403vbatxe4e6" path="res://sprites/Dotted_Line.png" id="5_m5kfk"]
-[ext_resource type="Texture2D" uid="uid://bekqvjnliex70" path="res://prefabs/HeartsSystem_3lifes.atlastex" id="7_5bhq2"]
-[ext_resource type="PackedScene" uid="uid://bdd7y1uep7eae" path="res://prefabs/ball.tscn" id="7_65mlh"]
-[ext_resource type="Script" path="res://Scripts/try_again_button.gd" id="9_qif5v"]
-[ext_resource type="Script" path="res://Scripts/level_menu_button.gd" id="10_nivso"]
-[ext_resource type="Texture2D" uid="uid://dhnx4flhomj4m" path="res://prefabs/Brick(4).atlastex" id="11_2r8p4"]
-[ext_resource type="Script" path="res://Scripts/bricks_in_level.gd" id="11_7lwu0"]
-[ext_resource type="Script" path="res://Scripts/next_level_button.gd" id="11_mb8df"]
-[ext_resource type="Script" path="res://Scripts/brick.gd" id="11_ynlql"]
-[ext_resource type="Texture2D" uid="uid://dy3mwx5qxa3om" path="res://prefabs/Brick(3).atlastex" id="12_r0rvn"]
-[ext_resource type="Texture2D" uid="uid://jrodibporqka" path="res://prefabs/Brick(2).atlastex" id="13_7lcnw"]
-[ext_resource type="Texture2D" uid="uid://dli6pibkytdmv" path="res://prefabs/Brick(1).atlastex" id="14_a2g71"]
+[ext_resource type="Script" path="res://Scripts/level_setup.gd" id="1_c1bgj"]
+[ext_resource type="Texture2D" uid="uid://bdmtwlgfg5p4m" path="res://Images/Background Images/metal_background.png" id="2_28045"]
+[ext_resource type="Script" path="res://Scripts/bouncer.gd" id="3_7jop1"]
+[ext_resource type="Texture2D" uid="uid://dhpwlgy2vji4r" path="res://prefabs/Bouncers2.atlastex" id="4_drsdf"]
+[ext_resource type="Texture2D" uid="uid://bhsedwblj1hpc" path="res://prefabs/Bouncers3.atlastex" id="5_1rvfm"]
+[ext_resource type="Texture2D" uid="uid://403vbatxe4e6" path="res://sprites/Dotted_Line.png" id="6_tuwxf"]
+[ext_resource type="Texture2D" uid="uid://bekqvjnliex70" path="res://prefabs/HeartsSystem_3lifes.atlastex" id="7_8e15y"]
+[ext_resource type="PackedScene" uid="uid://bdd7y1uep7eae" path="res://prefabs/ball.tscn" id="8_f2blh"]
+[ext_resource type="Script" path="res://Scripts/try_again_button.gd" id="9_ny1a2"]
+[ext_resource type="Script" path="res://Scripts/level_menu_button.gd" id="10_rjsih"]
+[ext_resource type="Script" path="res://Scripts/bricks_in_level.gd" id="11_6ojef"]
+[ext_resource type="Script" path="res://Scripts/next_level_button.gd" id="11_210xa"]
+[ext_resource type="Script" path="res://Scripts/brick.gd" id="12_fnx20"]
+[ext_resource type="Texture2D" uid="uid://dhnx4flhomj4m" path="res://prefabs/Brick(4).atlastex" id="13_5vt2r"]
+[ext_resource type="Texture2D" uid="uid://dy3mwx5qxa3om" path="res://prefabs/Brick(3).atlastex" id="14_fa3vl"]
+[ext_resource type="Texture2D" uid="uid://jrodibporqka" path="res://prefabs/Brick(2).atlastex" id="15_31e2l"]
+[ext_resource type="Texture2D" uid="uid://dli6pibkytdmv" path="res://prefabs/Brick(1).atlastex" id="16_4p88b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hr6h0"]
 size = Vector2(145, 893)
@@ -28,13 +28,13 @@ size = Vector2(1433, 123)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_dbkro")
+"texture": ExtResource("4_drsdf")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_r7y3j")
+"texture": ExtResource("5_1rvfm")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_dbkro")
+"texture": ExtResource("4_drsdf")
 }],
 "loop": false,
 "name": &"Ball_hits_bouncer",
@@ -65,7 +65,7 @@ bounce = 1.0
 size = Vector2(127.273, 52.7274)
 
 [node name="Level_1_scene" type="Node2D"]
-script = ExtResource("1_lthrn")
+script = ExtResource("1_c1bgj")
 
 [node name="Background" type="TextureRect" parent="."]
 offset_left = 803.0
@@ -74,7 +74,7 @@ offset_right = 2595.0
 offset_bottom = 1099.0
 rotation = 1.5708
 scale = Vector2(0.715363, 0.744657)
-texture = ExtResource("1_vbgtp")
+texture = ExtResource("2_28045")
 
 [node name="Invisible_walls" type="Node2D" parent="."]
 
@@ -104,7 +104,7 @@ shape = SubResource("RectangleShape2D_hr6h0")
 
 [node name="Bouncer" type="CharacterBody2D" parent="."]
 position = Vector2(369, 1137)
-script = ExtResource("4_1v60k")
+script = ExtResource("3_7jop1")
 
 [node name="Bouncer_sprite_and_animations" type="AnimatedSprite2D" parent="Bouncer"]
 sprite_frames = SubResource("SpriteFrames_1q3n0")
@@ -115,15 +115,15 @@ speed_scale = 3.0
 polygon = PackedVector2Array(-57, -5, -58, 15, -57, 20, 56, 20, 57, 15, 55, -5, 50, -13, 38, -20, 12, -23, -12, -23, -41, -20, -53, -13)
 
 [node name="DottedLine" type="Sprite2D" parent="Bouncer"]
-texture = ExtResource("5_m5kfk")
+texture = ExtResource("6_tuwxf")
 offset = Vector2(0, -50)
 
 [node name="HeartsSystem3Lifes" type="Sprite2D" parent="."]
 position = Vector2(122, 62)
 scale = Vector2(0.7, 0.7)
-texture = ExtResource("7_5bhq2")
+texture = ExtResource("7_8e15y")
 
-[node name="Ball" parent="." instance=ExtResource("7_65mlh")]
+[node name="Ball" parent="." instance=ExtResource("8_f2blh")]
 position = Vector2(367, 1133)
 
 [node name="Game_lost_screen" type="TextureRect" parent="."]
@@ -160,7 +160,7 @@ offset_bottom = 310.0
 theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxFlat_6k6ug")
 text = "Try again"
-script = ExtResource("9_qif5v")
+script = ExtResource("9_ny1a2")
 
 [node name="Level_menu_button" type="Button" parent="Game_lost_screen"]
 layout_mode = 0
@@ -171,7 +171,7 @@ offset_bottom = 393.35
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_r1yhf")
 text = "Level menu"
-script = ExtResource("10_nivso")
+script = ExtResource("10_rjsih")
 
 [node name="Game_won_screen" type="TextureRect" parent="."]
 visible = false
@@ -207,8 +207,7 @@ offset_bottom = 310.0
 theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxFlat_6k6ug")
 text = "Next level"
-script = ExtResource("11_mb8df")
-next_level_scene = "res://Scenes/level_2_scene.tscn"
+script = ExtResource("11_210xa")
 
 [node name="Level_menu_button" type="Button" parent="Game_won_screen"]
 layout_mode = 0
@@ -219,7 +218,7 @@ offset_bottom = 393.35
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_r1yhf")
 text = "Level menu"
-script = ExtResource("10_nivso")
+script = ExtResource("10_rjsih")
 
 [node name="Play_again_button" type="Button" parent="Game_won_screen"]
 layout_mode = 0
@@ -230,21 +229,21 @@ offset_bottom = 473.12
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_vyjbl")
 text = "Play again"
-script = ExtResource("9_qif5v")
+script = ExtResource("9_ny1a2")
 
 [node name="Bricks_in_level" type="Node2D" parent="."]
-script = ExtResource("11_7lwu0")
-current_level = "Level 1"
+script = ExtResource("11_6ojef")
+current_level = "Level 2"
 
 [node name="Brick1" type="StaticBody2D" parent="Bricks_in_level" groups=["Bricks"]]
-position = Vector2(353, 439)
+position = Vector2(239, 439)
 physics_material_override = SubResource("PhysicsMaterial_q1s4i")
-script = ExtResource("11_ynlql")
-start_brick = 2
-brick_4_texture = ExtResource("11_2r8p4")
-brick_3_texture = ExtResource("12_r0rvn")
-brick_2_texture = ExtResource("13_7lcnw")
-brick_1_texture = ExtResource("14_a2g71")
+script = ExtResource("12_fnx20")
+start_brick = 1
+brick_4_texture = ExtResource("13_5vt2r")
+brick_3_texture = ExtResource("14_fa3vl")
+brick_2_texture = ExtResource("15_31e2l")
+brick_1_texture = ExtResource("16_4p88b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks_in_level/Brick1"]
 scale = Vector2(0.55, 0.55)
@@ -253,14 +252,14 @@ shape = SubResource("RectangleShape2D_8xt01")
 [node name="Sprite2D" type="Sprite2D" parent="Bricks_in_level/Brick1"]
 
 [node name="Brick2" type="StaticBody2D" parent="Bricks_in_level" groups=["Bricks"]]
-position = Vector2(429, 439)
+position = Vector2(493, 438)
 physics_material_override = SubResource("PhysicsMaterial_q1s4i")
-script = ExtResource("11_ynlql")
-start_brick = 2
-brick_4_texture = ExtResource("11_2r8p4")
-brick_3_texture = ExtResource("12_r0rvn")
-brick_2_texture = ExtResource("13_7lcnw")
-brick_1_texture = ExtResource("14_a2g71")
+script = ExtResource("12_fnx20")
+start_brick = 3
+brick_4_texture = ExtResource("13_5vt2r")
+brick_3_texture = ExtResource("14_fa3vl")
+brick_2_texture = ExtResource("15_31e2l")
+brick_1_texture = ExtResource("16_4p88b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks_in_level/Brick2"]
 scale = Vector2(0.55, 0.55)

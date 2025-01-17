@@ -10,7 +10,7 @@ func _ready() -> void:
 	# Start with no movement and physics disabled
 	linear_velocity = Vector2.ZERO
 	sleeping = true  # Disable physics interactions while locked
-
+	
 func lock_to_bouncer(bouncer_pos: Vector2) -> void:  # Renamed parameter to "bouncer_pos"
 	if is_locked:
 		# Keep the ball visually locked to the bouncer
@@ -73,7 +73,6 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 func process_overlapping_bricks() -> void:
 	for body in $Area2D.get_overlapping_bodies():
 		if body.is_in_group("Bricks"):
-			print("happened2")
 			body.on_ball_collision()
 
 

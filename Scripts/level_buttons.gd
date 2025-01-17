@@ -1,32 +1,47 @@
 extends Sprite2D
 
+@export var level_scene: String  # The scene to load when the button is clicked
+@export var required_level: String  # The level required to unlock this button
+
 var is_mouse_within = false
-var is_button_pressed = false
+var is_unlocked = false  # Whether this level is unlocked
+
+func _ready() -> void:
+	# Check if the required level is completed
+	if required_level == "" or SaveManager.completed_levels.has(required_level):
+		is_unlocked = true
+		modulate = Color(1, 1, 1, 1)  # Full opacity for unlocked levels
+	else:
+		is_unlocked = false
+		modulate = Color(0.5, 0.5, 0.5, 1)  # Dimmed appearance for locked levels
 
 func _on_area_2d_mouse_entered() -> void:
-	is_mouse_within = true
-	modulate = Color(1, 1, 1, 0.7)  # Make the button semi-transparent when hovered
+	if is_unlocked:
+		is_mouse_within = true
+		modulate = Color(1, 1, 1, 0.7)  # Make the button semi-transparent when hovered
 
 func _on_area_2d_mouse_exited() -> void:
-	is_mouse_within = false
-	modulate = Color(1, 1, 1, 1)  # Reset to full opacity when the mouse leaves
+	if is_unlocked:
+		is_mouse_within = false
+		modulate = Color(1, 1, 1, 1)  # Reset to full opacity when the mouse leaves
 
 func _process(_delta: float) -> void:
+	# Check if the mouse is actually over the button
 	var mouse_pos = get_global_mouse_position()
 	var is_mouse_actually_within = _is_mouse_over_button(mouse_pos)
 	
-	if is_mouse_within and not is_mouse_actually_within:
-		# Mouse has left the button but the exit signal did not fire
-		_on_area_2d_mouse_exited()
-	elif not is_mouse_within and is_mouse_actually_within:
-		# Mouse has entered the button but the entered signal did not fire
-		_on_area_2d_mouse_entered()
+	if is_unlocked:  # Only update hover behavior for unlocked buttons
+		if is_mouse_within and not is_mouse_actually_within:
+			_on_area_2d_mouse_exited()
+		elif not is_mouse_within and is_mouse_actually_within:
+			_on_area_2d_mouse_entered()
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and is_mouse_within:
-		if event.pressed:
-			get_tree().change_scene_to_file("res://Scenes/level_1_scene.tscn")
-
+	if event is InputEventMouseButton and event.pressed and is_mouse_within:
+		if is_unlocked:
+			get_tree().change_scene_to_file(level_scene)
+		else:
+			print("This level is locked!")
 
 func _is_mouse_over_button(mouse_pos: Vector2) -> bool:
 	if texture:
