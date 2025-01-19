@@ -15,7 +15,7 @@ func _ready() -> void:
 	brick_level = start_brick
 	update_texture()
 	
-	$Sprite2D.scale = Vector2(0.5, 0.5)
+	$Sprite2D.scale = Vector2(0.46, 0.49)
 
 func update_texture() -> void:
 	# Update the sprite's texture based on the current brick level
