@@ -16,7 +16,7 @@ func _ready() -> void:
 	update_texture()
 	
 	$Sprite2D.scale = Vector2(0.43, 0.457)
-	$CollisionShape2D.scale = Vector2(0.46, 0.49)
+	$CollisionShape2D.scale = Vector2(0.47, 0.49)
 
 func update_texture() -> void:
 	# Update the sprite's texture based on the current brick level

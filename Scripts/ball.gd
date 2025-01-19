@@ -68,6 +68,7 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 				var level_setup = $".."
 				if level_setup:
 					level_setup.lose_life()
+			
 				
 
 func process_overlapping_bricks() -> void:
