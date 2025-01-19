@@ -4,8 +4,8 @@ extends Node
 var amount_of_lives: int = 3
 
 # Paths to nodes and assets
-@onready var bouncer = $Bouncer  # Reference to the bouncer
-@onready var health_sprite = $HeartsSystem3Lifes  # Reference to the health sprite
+@onready var bouncer = $Bouncer
+@onready var health_sprite = $HeartsSystem3Lifes
 @onready var ball = $Ball
 
 
@@ -43,6 +43,7 @@ func game_over() -> void:
 	$Game_lost_screen.show()
 	ball.queue_free()
 	bouncer.queue_free()
+	$Bricks_in_level.hide()
 
 func update_health_sprite() -> void:
 	match amount_of_lives:

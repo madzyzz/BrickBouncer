@@ -65,6 +65,7 @@ bounce = 1.0
 size = Vector2(127.273, 52.7274)
 
 [node name="Level_1_scene" type="Node2D"]
+position = Vector2(6, 0)
 script = ExtResource("1_lthrn")
 
 [node name="Background" type="TextureRect" parent="."]
@@ -247,6 +248,7 @@ brick_2_texture = ExtResource("13_7lcnw")
 brick_1_texture = ExtResource("14_a2g71")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks_in_level/Brick1"]
+position = Vector2(24, 0)
 scale = Vector2(0.55, 0.55)
 shape = SubResource("RectangleShape2D_8xt01")
 

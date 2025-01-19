@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://0e4cevit6kld"]
+[gd_scene load_steps=6 format=3 uid="uid://0e4cevit6kld"]
 
 [ext_resource type="Texture2D" uid="uid://dityxxuc4rxv3" path="res://Images/Background Images/Wall background.png" id="1_exjxc"]
 [ext_resource type="Script" path="res://Scripts/load_game_button.gd" id="2_7tii6"]
+[ext_resource type="Script" path="res://Scripts/new_game_button.gd" id="3_dq7c4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2ok6e"]
 bg_color = Color(0.0648, 0.54, 0.0648, 1)
@@ -80,7 +81,8 @@ scale = Vector2(0.5, 0.5)
 theme_override_font_sizes/font_size = 70
 theme_override_styles/normal = SubResource("StyleBoxFlat_7q1s4")
 text = "New Game"
-script = ExtResource("2_7tii6")
+script = ExtResource("3_dq7c4")
+metadata/_edit_use_anchors_ = true
 
 [node name="Game title" type="Label" parent="."]
 anchors_preset = 8

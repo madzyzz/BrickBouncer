@@ -1,26 +1,42 @@
 extends Node
 
-var completed_levels: Array = []  # Array to store completed level names
+var save_path = "user://save_data.json"
+var completed_levels: Array = []  # List of completed levels
 
-# Save completed levels to a file
-func save_game():
+# Save game data
+func save_game_data(levels_to_save: Array):
 	var save_data = {
-		"completed_levels": completed_levels
+		"completed_levels": levels_to_save
 	}
-	var json_data = JSON.new().stringify(save_data)  # Convert the dictionary to a JSON string
-	var file = FileAccess.open("user://save_game.json", FileAccess.WRITE)
-	file.store_string(json_data)
+	var file = FileAccess.open(save_path, FileAccess.WRITE)
+	file.store_string(JSON.stringify(save_data))
 	file.close()
 
-# Load completed levels from a file
-func load_game():
-	if FileAccess.file_exists("user://save_game.json"):  # Check if the file exists
-		var file = FileAccess.open("user://save_game.json", FileAccess.READ)
-		var json_data = file.get_as_text()
+# Load game data
+func load_game_data() -> Dictionary:
+	var data = {
+		"completed_levels": completed_levels
+	}
+		
+	if FileAccess.file_exists(save_path):
+		var file = FileAccess.open(save_path, FileAccess.READ)
+		var json_string = file.get_as_text()
+		var json = JSON.new()
+		var parse_result = json.parse(json_string)  # Parse the JSON string back into a dictionary
 		file.close()
-
-		var json_instance = JSON.new()  # Create an instance of the JSON class
-		var parse_result = json_instance.parse(json_data)  # Parse the JSON string into a dictionary
-
+		
 		if parse_result == OK:
-			completed_levels = json_instance.result.get("completed_levels", [])
+			var loaded_data = json.get_data()
+			if loaded_data.has("completed_levels") and typeof(loaded_data.completed_levels) == TYPE_ARRAY:
+				data.completed_levels = loaded_data.completed_levels
+				completed_levels = data.completed_levels  # Assign the loaded levels to the class variable
+	
+	return data
+
+# Reset game data (optional, for a new game)
+func reset_game_data():
+	var file = FileAccess.open(save_path, FileAccess.WRITE)
+	file.store_string(JSON.stringify({
+		"completed_levels": []
+	}))
+	file.close()
