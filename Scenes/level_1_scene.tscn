@@ -62,7 +62,7 @@ friction = 0.0
 bounce = 1.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8xt01"]
-size = Vector2(118.182, 52.7274)
+size = Vector2(117.787, 50.8535)
 
 [node name="Level_1_scene" type="Node2D"]
 script = ExtResource("1_lthrn")
@@ -237,39 +237,7 @@ script = ExtResource("11_7lwu0")
 current_level = "Level 1"
 
 [node name="Brick1" type="StaticBody2D" parent="Bricks_in_level" groups=["Bricks"]]
-position = Vector2(358, 439)
-physics_material_override = SubResource("PhysicsMaterial_q1s4i")
-script = ExtResource("11_ynlql")
-start_brick = 2
-brick_4_texture = ExtResource("11_2r8p4")
-brick_3_texture = ExtResource("12_r0rvn")
-brick_2_texture = ExtResource("13_7lcnw")
-brick_1_texture = ExtResource("14_a2g71")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks_in_level/Brick1"]
-scale = Vector2(0.5, 0.5)
-shape = SubResource("RectangleShape2D_8xt01")
-
-[node name="Sprite2D" type="Sprite2D" parent="Bricks_in_level/Brick1"]
-
-[node name="Brick2" type="StaticBody2D" parent="Bricks_in_level" groups=["Bricks"]]
-position = Vector2(417, 439)
-physics_material_override = SubResource("PhysicsMaterial_q1s4i")
-script = ExtResource("11_ynlql")
-start_brick = 3
-brick_4_texture = ExtResource("11_2r8p4")
-brick_3_texture = ExtResource("12_r0rvn")
-brick_2_texture = ExtResource("13_7lcnw")
-brick_1_texture = ExtResource("14_a2g71")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks_in_level/Brick2"]
-scale = Vector2(0.5, 0.5)
-shape = SubResource("RectangleShape2D_8xt01")
-
-[node name="Sprite2D" type="Sprite2D" parent="Bricks_in_level/Brick2"]
-
-[node name="Brick3" type="StaticBody2D" parent="Bricks_in_level" groups=["Bricks"]]
-position = Vector2(299, 439)
+position = Vector2(218, 433)
 physics_material_override = SubResource("PhysicsMaterial_q1s4i")
 script = ExtResource("11_ynlql")
 start_brick = 1
@@ -278,26 +246,128 @@ brick_3_texture = ExtResource("12_r0rvn")
 brick_2_texture = ExtResource("13_7lcnw")
 brick_1_texture = ExtResource("14_a2g71")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks_in_level/Brick1"]
+position = Vector2(-0.0909424, 0.459106)
+scale = Vector2(0.46, 0.49)
+shape = SubResource("RectangleShape2D_8xt01")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bricks_in_level/Brick1"]
+scale = Vector2(0.43, 0.457)
+texture = ExtResource("14_a2g71")
+
+[node name="Brick2" type="StaticBody2D" parent="Bricks_in_level" groups=["Bricks"]]
+position = Vector2(273, 433)
+physics_material_override = SubResource("PhysicsMaterial_q1s4i")
+script = ExtResource("11_ynlql")
+start_brick = 2
+brick_4_texture = ExtResource("11_2r8p4")
+brick_3_texture = ExtResource("12_r0rvn")
+brick_2_texture = ExtResource("13_7lcnw")
+brick_1_texture = ExtResource("14_a2g71")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks_in_level/Brick2"]
+position = Vector2(-0.0909424, 0.459106)
+scale = Vector2(0.46, 0.49)
+shape = SubResource("RectangleShape2D_8xt01")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bricks_in_level/Brick2"]
+scale = Vector2(0.43, 0.457)
+texture = ExtResource("13_7lcnw")
+
+[node name="Brick3" type="StaticBody2D" parent="Bricks_in_level" groups=["Bricks"]]
+position = Vector2(328, 433)
+physics_material_override = SubResource("PhysicsMaterial_q1s4i")
+script = ExtResource("11_ynlql")
+start_brick = 3
+brick_4_texture = ExtResource("11_2r8p4")
+brick_3_texture = ExtResource("12_r0rvn")
+brick_2_texture = ExtResource("13_7lcnw")
+brick_1_texture = ExtResource("14_a2g71")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks_in_level/Brick3"]
-scale = Vector2(0.5, 0.5)
+position = Vector2(-0.0909424, 0.459106)
+scale = Vector2(0.46, 0.49)
 shape = SubResource("RectangleShape2D_8xt01")
 
 [node name="Sprite2D" type="Sprite2D" parent="Bricks_in_level/Brick3"]
+scale = Vector2(0.43, 0.457)
+texture = ExtResource("12_r0rvn")
 
 [node name="Brick4" type="StaticBody2D" parent="Bricks_in_level" groups=["Bricks"]]
-position = Vector2(476, 439)
+position = Vector2(383, 433)
 physics_material_override = SubResource("PhysicsMaterial_q1s4i")
 script = ExtResource("11_ynlql")
+start_brick = 3
 brick_4_texture = ExtResource("11_2r8p4")
 brick_3_texture = ExtResource("12_r0rvn")
 brick_2_texture = ExtResource("13_7lcnw")
 brick_1_texture = ExtResource("14_a2g71")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks_in_level/Brick4"]
-scale = Vector2(0.5, 0.5)
+position = Vector2(-0.0909424, 0.459106)
+scale = Vector2(0.46, 0.49)
 shape = SubResource("RectangleShape2D_8xt01")
 
 [node name="Sprite2D" type="Sprite2D" parent="Bricks_in_level/Brick4"]
+scale = Vector2(0.43, 0.457)
+texture = ExtResource("11_2r8p4")
+
+[node name="Brick5" type="StaticBody2D" parent="Bricks_in_level" groups=["Bricks"]]
+position = Vector2(438, 433)
+physics_material_override = SubResource("PhysicsMaterial_q1s4i")
+script = ExtResource("11_ynlql")
+start_brick = 3
+brick_4_texture = ExtResource("11_2r8p4")
+brick_3_texture = ExtResource("12_r0rvn")
+brick_2_texture = ExtResource("13_7lcnw")
+brick_1_texture = ExtResource("14_a2g71")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks_in_level/Brick5"]
+position = Vector2(-0.0909424, 0.459106)
+scale = Vector2(0.46, 0.49)
+shape = SubResource("RectangleShape2D_8xt01")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bricks_in_level/Brick5"]
+scale = Vector2(0.43, 0.457)
+texture = ExtResource("12_r0rvn")
+
+[node name="Brick6" type="StaticBody2D" parent="Bricks_in_level" groups=["Bricks"]]
+position = Vector2(493, 433)
+physics_material_override = SubResource("PhysicsMaterial_q1s4i")
+script = ExtResource("11_ynlql")
+start_brick = 2
+brick_4_texture = ExtResource("11_2r8p4")
+brick_3_texture = ExtResource("12_r0rvn")
+brick_2_texture = ExtResource("13_7lcnw")
+brick_1_texture = ExtResource("14_a2g71")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks_in_level/Brick6"]
+position = Vector2(-0.0909424, 0.459106)
+scale = Vector2(0.46, 0.49)
+shape = SubResource("RectangleShape2D_8xt01")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bricks_in_level/Brick6"]
+scale = Vector2(0.43, 0.457)
+texture = ExtResource("13_7lcnw")
+
+[node name="Brick7" type="StaticBody2D" parent="Bricks_in_level" groups=["Bricks"]]
+position = Vector2(548, 433)
+physics_material_override = SubResource("PhysicsMaterial_q1s4i")
+script = ExtResource("11_ynlql")
+start_brick = 1
+brick_4_texture = ExtResource("11_2r8p4")
+brick_3_texture = ExtResource("12_r0rvn")
+brick_2_texture = ExtResource("13_7lcnw")
+brick_1_texture = ExtResource("14_a2g71")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks_in_level/Brick7"]
+position = Vector2(-0.0909424, 0.459106)
+scale = Vector2(0.46, 0.49)
+shape = SubResource("RectangleShape2D_8xt01")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bricks_in_level/Brick7"]
+scale = Vector2(0.43, 0.457)
+texture = ExtResource("14_a2g71")
 
 [connection signal="pressed" from="Game_lost_screen/Try_again_button" to="Game_lost_screen/Try_again_button" method="_on_pressed"]
 [connection signal="pressed" from="Game_lost_screen/Level_menu_button" to="Game_lost_screen/Level_menu_button" method="_on_pressed"]
