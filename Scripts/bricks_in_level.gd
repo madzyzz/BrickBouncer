@@ -20,4 +20,5 @@ func _on_child_exiting_tree(_node: Node) -> void:
 		if bouncer:
 			bouncer.queue_free()
 		$".".hide()
+		$"../PowerupsHolder".hide()
 		$"../Game_won_screen".visible = true

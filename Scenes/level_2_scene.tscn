@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bpwna4cl45ism"]
+[gd_scene load_steps=30 format=3 uid="uid://cnp0rnypu14nu"]
 
 [ext_resource type="Script" path="res://Scripts/level_setup.gd" id="1_c1bgj"]
 [ext_resource type="Texture2D" uid="uid://bdmtwlgfg5p4m" path="res://Images/Background Images/metal_background.png" id="2_28045"]
@@ -15,7 +15,9 @@
 [ext_resource type="Script" path="res://Scripts/brick.gd" id="12_fnx20"]
 [ext_resource type="Texture2D" uid="uid://dhnx4flhomj4m" path="res://prefabs/Brick(4).atlastex" id="13_5vt2r"]
 [ext_resource type="Texture2D" uid="uid://dy3mwx5qxa3om" path="res://prefabs/Brick(3).atlastex" id="14_fa3vl"]
+[ext_resource type="PackedScene" uid="uid://di1mswk628ety" path="res://prefabs/magnet_power_up.tscn" id="14_l73wc"]
 [ext_resource type="Texture2D" uid="uid://jrodibporqka" path="res://prefabs/Brick(2).atlastex" id="15_31e2l"]
+[ext_resource type="PackedScene" uid="uid://d10i7o16l7c2q" path="res://prefabs/metal_beam_power_up.tscn" id="15_v7la8"]
 [ext_resource type="Texture2D" uid="uid://dli6pibkytdmv" path="res://prefabs/Brick(1).atlastex" id="16_4p88b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hr6h0"]
@@ -62,7 +64,7 @@ friction = 0.0
 bounce = 1.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8xt01"]
-size = Vector2(127.273, 52.7274)
+size = Vector2(117.787, 50.8535)
 
 [node name="Level_1_scene" type="Node2D"]
 script = ExtResource("1_c1bgj")
@@ -208,6 +210,7 @@ theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxFlat_6k6ug")
 text = "Next level"
 script = ExtResource("11_210xa")
+next_level_scene = "res://Scenes/level_2_scene.tscn"
 
 [node name="Level_menu_button" type="Button" parent="Game_won_screen"]
 layout_mode = 0
@@ -233,39 +236,30 @@ script = ExtResource("9_ny1a2")
 
 [node name="Bricks_in_level" type="Node2D" parent="."]
 script = ExtResource("11_6ojef")
-current_level = "Level 2"
+current_level = "Level 1"
 
 [node name="Brick1" type="StaticBody2D" parent="Bricks_in_level" groups=["Bricks"]]
-position = Vector2(239, 439)
+position = Vector2(218, 433)
 physics_material_override = SubResource("PhysicsMaterial_q1s4i")
 script = ExtResource("12_fnx20")
 start_brick = 1
+powerup_scenes = Array[PackedScene]([ExtResource("14_l73wc"), ExtResource("15_v7la8")])
+powerup_chances = Array[float]([0.5, 0.5])
 brick_4_texture = ExtResource("13_5vt2r")
 brick_3_texture = ExtResource("14_fa3vl")
 brick_2_texture = ExtResource("15_31e2l")
 brick_1_texture = ExtResource("16_4p88b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks_in_level/Brick1"]
-scale = Vector2(0.55, 0.55)
+position = Vector2(-0.0909424, 0.459106)
+scale = Vector2(0.47, 0.49)
 shape = SubResource("RectangleShape2D_8xt01")
 
 [node name="Sprite2D" type="Sprite2D" parent="Bricks_in_level/Brick1"]
+scale = Vector2(0.43, 0.457)
+texture = ExtResource("16_4p88b")
 
-[node name="Brick2" type="StaticBody2D" parent="Bricks_in_level" groups=["Bricks"]]
-position = Vector2(493, 438)
-physics_material_override = SubResource("PhysicsMaterial_q1s4i")
-script = ExtResource("12_fnx20")
-start_brick = 3
-brick_4_texture = ExtResource("13_5vt2r")
-brick_3_texture = ExtResource("14_fa3vl")
-brick_2_texture = ExtResource("15_31e2l")
-brick_1_texture = ExtResource("16_4p88b")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks_in_level/Brick2"]
-scale = Vector2(0.55, 0.55)
-shape = SubResource("RectangleShape2D_8xt01")
-
-[node name="Sprite2D" type="Sprite2D" parent="Bricks_in_level/Brick2"]
+[node name="PowerupsHolder" type="Node2D" parent="."]
 
 [connection signal="pressed" from="Game_lost_screen/Try_again_button" to="Game_lost_screen/Try_again_button" method="_on_pressed"]
 [connection signal="pressed" from="Game_lost_screen/Level_menu_button" to="Game_lost_screen/Level_menu_button" method="_on_pressed"]

@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://whefrptbus3j"]
+
+[ext_resource type="Texture2D" uid="uid://ckr8imfbc1atf" path="res://sprites/GoodPowerUpBase.png" id="1_rkm3e"]
+[ext_resource type="Script" path="res://Scripts/power_up.gd" id="1_xsver"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4ggii"]
+
+[node name="PowerUp" type="Area2D"]
+script = ExtResource("1_xsver")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.13, 0.13)
+texture = ExtResource("1_rkm3e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+scale = Vector2(1.8, 1.8)
+shape = SubResource("CircleShape2D_4ggii")
