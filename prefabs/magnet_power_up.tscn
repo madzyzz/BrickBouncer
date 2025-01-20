@@ -1,12 +1,12 @@
 [gd_scene load_steps=4 format=3 uid="uid://di1mswk628ety"]
 
-[ext_resource type="Script" path="res://Scripts/power_up.gd" id="1_l2wy0"]
+[ext_resource type="Script" path="res://Scripts/magnet_power_up.gd" id="1_v8oyw"]
 [ext_resource type="Texture2D" uid="uid://6g35f7rbkbuj" path="res://sprites/MagetPowerUp.png" id="2_o5v50"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4ggii"]
 
 [node name="MagnetPowerUp" type="Area2D"]
-script = ExtResource("1_l2wy0")
+script = ExtResource("1_v8oyw")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.13, 0.13)

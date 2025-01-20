@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://c6i0anlhp2h1w"]
+[gd_scene load_steps=32 format=3 uid="uid://c6i0anlhp2h1w"]
 
 [ext_resource type="Script" path="res://Scripts/level_setup.gd" id="1_lthrn"]
 [ext_resource type="Texture2D" uid="uid://bdmtwlgfg5p4m" path="res://Images/Background Images/metal_background.png" id="1_vbgtp"]
@@ -19,6 +19,8 @@
 [ext_resource type="Texture2D" uid="uid://dli6pibkytdmv" path="res://prefabs/Brick(1).atlastex" id="14_a2g71"]
 [ext_resource type="PackedScene" uid="uid://di1mswk628ety" path="res://prefabs/magnet_power_up.tscn" id="14_xyht3"]
 [ext_resource type="PackedScene" uid="uid://d10i7o16l7c2q" path="res://prefabs/metal_beam_power_up.tscn" id="15_wvy01"]
+[ext_resource type="Script" path="res://Scenes/glass_storage.gd" id="20_k54vv"]
+[ext_resource type="Texture2D" uid="uid://bpbgompsign7f" path="res://sprites/PowerUpGlassStorage.png" id="20_l5ws5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hr6h0"]
 size = Vector2(145, 893)
@@ -385,6 +387,14 @@ scale = Vector2(0.43, 0.457)
 texture = ExtResource("14_a2g71")
 
 [node name="PowerupsHolder" type="Node2D" parent="."]
+
+[node name="GlassStorage" type="Node2D" parent="."]
+script = ExtResource("20_k54vv")
+
+[node name="Sprite2D" type="Sprite2D" parent="GlassStorage"]
+position = Vector2(437, 51)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("20_l5ws5")
 
 [connection signal="pressed" from="Game_lost_screen/Try_again_button" to="Game_lost_screen/Try_again_button" method="_on_pressed"]
 [connection signal="pressed" from="Game_lost_screen/Level_menu_button" to="Game_lost_screen/Level_menu_button" method="_on_pressed"]
