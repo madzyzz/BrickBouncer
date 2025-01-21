@@ -391,11 +391,15 @@ texture = ExtResource("14_a2g71")
 [node name="GlassStorage" type="Node2D" parent="."]
 position = Vector2(-16, 59)
 script = ExtResource("20_k54vv")
-slot_count = 1
+slot_count = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="GlassStorage"]
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("20_l5ws5")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
 
 [connection signal="pressed" from="Game_lost_screen/Try_again_button" to="Game_lost_screen/Try_again_button" method="_on_pressed"]
 [connection signal="pressed" from="Game_lost_screen/Level_menu_button" to="Game_lost_screen/Level_menu_button" method="_on_pressed"]
