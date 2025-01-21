@@ -7,6 +7,8 @@
 
 [node name="MagnetPowerUp" type="Area2D"]
 script = ExtResource("1_v8oyw")
+powerup_texture = ExtResource("2_o5v50")
+powerup_type = "Magnet"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.13, 0.13)

@@ -12,6 +12,7 @@ var is_ball_shot = false
 var min_angle = deg_to_rad(-150)  # Limit shooting to -150° left
 var max_angle = deg_to_rad(-30)   # Limit shooting to -30° right
 
+@onready var glass_storage = $"../GlassStorage"
 
 func _ready() -> void:
 	bouncer_y_position = global_position.y
@@ -89,6 +90,4 @@ func get_clamped_mouse_position() -> Vector2:
 
 func _on_collision_polygon_2d_body_entered(body: Node2D) -> void:
 	if body.has_method("on_collected"):  # Check if the body is a powerup
-		body.on_collected()
-		emit_signal("powerup_collected", body.powerup_type)
-		print("Collected powerup:", body.powerup_type)
+		body._on_body_entered(self)

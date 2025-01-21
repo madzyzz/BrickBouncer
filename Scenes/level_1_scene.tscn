@@ -123,7 +123,7 @@ texture = ExtResource("5_m5kfk")
 offset = Vector2(0, -50)
 
 [node name="HeartsSystem3Lifes" type="Sprite2D" parent="."]
-position = Vector2(122, 62)
+position = Vector2(584, 69)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("7_5bhq2")
 
@@ -389,10 +389,11 @@ texture = ExtResource("14_a2g71")
 [node name="PowerupsHolder" type="Node2D" parent="."]
 
 [node name="GlassStorage" type="Node2D" parent="."]
+position = Vector2(-16, 59)
 script = ExtResource("20_k54vv")
+slot_count = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="GlassStorage"]
-position = Vector2(437, 51)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("20_l5ws5")
 
