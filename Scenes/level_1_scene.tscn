@@ -19,7 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://dli6pibkytdmv" path="res://prefabs/Brick(1).atlastex" id="14_a2g71"]
 [ext_resource type="PackedScene" uid="uid://di1mswk628ety" path="res://prefabs/magnet_power_up.tscn" id="14_xyht3"]
 [ext_resource type="PackedScene" uid="uid://d10i7o16l7c2q" path="res://prefabs/metal_beam_power_up.tscn" id="15_wvy01"]
-[ext_resource type="Script" path="res://Scenes/glass_storage.gd" id="20_k54vv"]
+[ext_resource type="Script" path="res://Scripts/glass_storage.gd" id="20_k54vv"]
 [ext_resource type="Texture2D" uid="uid://bpbgompsign7f" path="res://sprites/PowerUpGlassStorage.png" id="20_l5ws5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hr6h0"]
@@ -396,10 +396,6 @@ slot_count = 2
 [node name="Sprite2D" type="Sprite2D" parent="GlassStorage"]
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("20_l5ws5")
-
-[node name="Label" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
 
 [connection signal="pressed" from="Game_lost_screen/Try_again_button" to="Game_lost_screen/Try_again_button" method="_on_pressed"]
 [connection signal="pressed" from="Game_lost_screen/Level_menu_button" to="Game_lost_screen/Level_menu_button" method="_on_pressed"]

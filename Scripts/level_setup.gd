@@ -27,6 +27,7 @@ func lose_life() -> void:
 			child.queue_free()
 
 func reset_ball() -> void:
+	$GlassStorage.clear_powerups()
 	# Reset bouncer position
 	bouncer.global_position = Vector2(360, 600)
 	bouncer.is_ball_shot = false
@@ -42,11 +43,12 @@ func reset_ball() -> void:
 
 
 func game_over() -> void:
-	$Game_lost_screen.show()
+	$GlassStorage.clear_powerups()
 	ball.queue_free()
 	bouncer.queue_free()
 	$Bricks_in_level.hide()
 	$PowerupsHolder.hide()
+	$Game_lost_screen.show()
 
 func update_health_sprite() -> void:
 	match amount_of_lives:

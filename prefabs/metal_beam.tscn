@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://c5b6uup5xspwv"]
+
+[ext_resource type="Texture2D" uid="uid://cketu06sqedei" path="res://sprites/MetalBeam.png" id="1_7m87w"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_36ri2"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ru7w2"]
+size = Vector2(741, 39)
+
+[node name="MetalBeam" type="StaticBody2D"]
+position = Vector2(251, 1217)
+physics_material_override = SubResource("PhysicsMaterial_36ri2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-22, -19)
+scale = Vector2(0.287, 0.287)
+texture = ExtResource("1_7m87w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(112.5, -9.5)
+shape = SubResource("RectangleShape2D_ru7w2")

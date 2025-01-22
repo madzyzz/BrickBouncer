@@ -10,6 +10,7 @@ var filled_slots = []  # Array to track filled slots (stores powerup types and t
 var active_powerups = {}  # Tracks active powerups with their timers
 var empty_slot_texture: Texture2D  # Texture for an empty slot
 var blink_timers = {}  # Tracks blinking timers for each slot
+var remaining_times = {}
 
 func _ready() -> void:
 	# Store the texture of the base slot as the empty slot texture
@@ -81,29 +82,38 @@ func create_slots() -> void:
 func get_powerup_duration(powerup_type: String) -> float:
 	# Define durations for each powerup type (in seconds)
 	match powerup_type:
-		"MetalBeam":
+		"metal_beam":
 			return 10.0
-		"Magnet":
+		"magnet":
 			return 5.0
 		_:
 			return 3.0  # Default duration
 
 func add_powerup_to_slot(powerup_texture: Texture2D, powerup_type: String) -> bool:
-	# Check if the powerup is already active
 	if active_powerups.has(powerup_type):
 		print("Powerup already active, resetting timer:", powerup_type)
-		var timer = active_powerups[powerup_type]
-		timer.start()  # Restart the existing timer
 
-		# Reset the flickering speed to normal
+		# Reset remaining time
+		remaining_times[powerup_type] = get_powerup_duration(powerup_type)
+
+		# Restart the powerup's main timer
+		var timer = active_powerups[powerup_type]["timer"]
+		timer.start()
+
+		# Restart the update timer for countdown
+		var update_timer = active_powerups[powerup_type]["update_timer"]
+		update_timer.start()
+
+		# Ensure flickering resets to normal speed
 		for filled in filled_slots:
 			if filled["type"] == powerup_type:
 				var slot = filled["slot"]
 				if blink_timers.has(slot):
 					var blink_timer = blink_timers[slot]
 					blink_timer.wait_time = 0.5  # Reset to normal flickering speed
-					blink_timer.start()  # Restart the blink timer
+					blink_timer.start()
 		return true
+
 
 	# Check if the powerup type exists in a slot but is not active
 	for filled in filled_slots:
@@ -162,19 +172,22 @@ func activate_powerup(powerup_type: String, slot: Sprite2D) -> void:
 	timer.connect("timeout", Callable(self, "_on_powerup_timeout").bind([powerup_type, slot]))
 	add_child(timer)
 	timer.start()
-	active_powerups[powerup_type] = timer
 
-	# Display the timer on the slot's Label
-	var label = slot.get_node("Label") as Label
-	label.text = str(int(timer.wait_time))  # Initial duration as an integer
-
-	# Add a Timer to update the Label every second
+	# Start update timer for countdown display
 	var update_timer = Timer.new()
-	update_timer.wait_time = 1.0  # Update every second
+	update_timer.wait_time = 1.0
 	update_timer.one_shot = false
 	update_timer.connect("timeout", Callable(self, "_update_powerup_timer").bind([powerup_type, slot, update_timer]))
 	add_child(update_timer)
 	update_timer.start()
+
+	# Track the powerup's timers and slot
+	active_powerups[powerup_type] = { "timer": timer, "update_timer": update_timer, "slot": slot }
+	remaining_times[powerup_type] = get_powerup_duration(powerup_type)  # Initialize remaining time
+
+	# Display the initial timer value
+	var label = slot.get_node("Label") as Label
+	label.text = str(int(timer.wait_time))  # Initial duration as an integer
 
 	start_blink(slot)
 	refresh_slot_appearance()
@@ -289,10 +302,10 @@ func _update_powerup_timer(args: Array) -> void:
 	var slot = args[1]
 	var update_timer = args[2]
 
-	if active_powerups.has(powerup_type):
-		# Calculate remaining time manually
-		var timer = active_powerups[powerup_type]
-		var remaining_time = int(ceil(timer.time_left))  # Round up to avoid skipping
+	if active_powerups.has(powerup_type) and remaining_times.has(powerup_type):
+		# Safely reduce remaining time
+		remaining_times[powerup_type] -= 1
+		var remaining_time = remaining_times[powerup_type]
 
 		# Update the label with the remaining time
 		var label = slot.get_node("Label") as Label
@@ -305,22 +318,59 @@ func _update_powerup_timer(args: Array) -> void:
 				blink_timer.wait_time = 0.15  # Faster flickering
 				blink_timer.start()  # Restart to apply the new interval
 
-		# Special handling for the last second
-		if remaining_time == 1:
-			# Ensure the label displays "1" for a full second
-			label.text = "1"
-
 		# Stop the update timer when the powerup expires
 		if remaining_time <= 0:
 			update_timer.stop()
 			update_timer.queue_free()
-
-			# Trigger powerup expiration immediately after
 			_on_powerup_timeout([powerup_type, slot])
 	else:
 		# Cleanup if the timer no longer exists
 		update_timer.stop()
 		update_timer.queue_free()
+
+
+func clear_powerups() -> void:
+	# Stop all active powerups
+	for powerup_type in active_powerups.keys():
+		print("Deactivating powerup:", powerup_type)
+		var slot = active_powerups[powerup_type]["slot"]
+		stop_blink(slot)  # Stop blinking
+
+		# Reset the label text
+		var label = slot.get_node("Label") as Label
+		label.text = ""
+
+		# Remove and free the powerup's main timer
+		if active_powerups[powerup_type]["timer"]:
+			var timer = active_powerups[powerup_type]["timer"]
+			timer.stop()
+			timer.queue_free()
+
+		# Remove and free the update timer
+		if active_powerups[powerup_type]["update_timer"]:
+			var update_timer = active_powerups[powerup_type]["update_timer"]
+			update_timer.stop()
+			update_timer.queue_free()
+
+	# Clear active powerups and remaining times
+	active_powerups.clear()
+	remaining_times.clear()
+
+	# Reset all slots
+	for slot in slots:
+		slot.texture = empty_slot_texture  # Reset slot to empty texture
+		slot.set_meta("occupied", false)  # Mark the slot as empty
+		slot.modulate = Color(1, 1, 1, 1)  # Reset slot's appearance
+		var label = slot.get_node("Label") as Label
+		label.text = ""  # Ensure label is cleared
+
+	filled_slots.clear()  # Clear the filled slots list
+	refresh_slot_appearance()  # Update slot visuals
+
+
+
+
+
 
 
 
