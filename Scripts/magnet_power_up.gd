@@ -27,3 +27,9 @@ func on_collected(storage: Node2D):
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == "Bouncer":
 		on_collected(body.glass_storage)
+		
+func on_powerup_activated(duration: float, bouncer: Node) -> void:
+	print("Metal Beam activated for", duration, "seconds!")
+
+func on_powerup_deactivated() -> void:
+	print("Metal Beam deactivated!")

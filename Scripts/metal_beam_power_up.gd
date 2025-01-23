@@ -1,5 +1,8 @@
 extends "res://Scripts/power_up.gd"
 
+var metal_beam_instance: Node = null  # To track the MetalBeam instance
+var metal_beam_scene = load("res://prefabs/metal_beam.tscn")
+
 func on_collected(storage: Node2D):
 	print("Metal Beam Powerup collected!")
 
@@ -27,3 +30,22 @@ func on_collected(storage: Node2D):
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == "Bouncer":
 		on_collected(body.glass_storage)
+		
+
+func on_powerup_activated(duration: float, bouncer: Node) -> void:
+	print("Metal Beam activated for", duration, "seconds!")
+
+	# Instantiate and position the MetalBeam
+	if not metal_beam_instance:
+		metal_beam_instance = metal_beam_scene.instantiate()
+		if bouncer:
+			metal_beam_instance.global_position = global_position + Vector2(251, 1188)
+			bouncer.get_parent().add_child(metal_beam_instance)
+
+func on_powerup_deactivated(bouncer: Node) -> void:
+	print("Metal Beam deactivated!")
+	for child in bouncer.get_parent().get_children():
+		if child.name == "MetalBeam":
+			var metalBeam = child
+			metalBeam.queue_free()
+			metalBeam = null

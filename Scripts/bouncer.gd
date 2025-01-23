@@ -14,6 +14,8 @@ var max_angle = deg_to_rad(-30)   # Limit shooting to -30° right
 
 @onready var glass_storage = $"../GlassStorage"
 
+
+
 func _ready() -> void:
 	bouncer_y_position = global_position.y
 

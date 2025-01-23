@@ -5,7 +5,7 @@ var brick_level: int = 4
 
 @export var start_brick: int = 4
 
-@export var powerup_chance: float = 0.5  # Overall chance for any powerup to drop
+@export var powerup_chance: float = 1.0  # Overall chance for any powerup to drop
 @export var powerup_scenes: Array[PackedScene] = []  # Array of powerup scenes
 @export var powerup_chances: Array[float] = []  # Array of drop chances for each powerup
 

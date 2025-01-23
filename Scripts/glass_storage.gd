@@ -12,6 +12,9 @@ var empty_slot_texture: Texture2D  # Texture for an empty slot
 var blink_timers = {}  # Tracks blinking timers for each slot
 var remaining_times = {}
 
+#powerup related stuff
+var metal_beam_instance: Node = null
+
 func _ready() -> void:
 	# Store the texture of the base slot as the empty slot texture
 	empty_slot_texture = base_slot.texture
@@ -163,6 +166,7 @@ func _on_slot_clicked(_viewport, event: InputEvent, _shape_idx: int, slot_id: in
 func activate_powerup(powerup_type: String, slot: Sprite2D) -> void:
 	if active_powerups.size() >= max_active_powerups or active_powerups.has(powerup_type):
 		return
+
 	print("Activating powerup:", powerup_type)
 
 	# Start the powerup timer
@@ -183,14 +187,20 @@ func activate_powerup(powerup_type: String, slot: Sprite2D) -> void:
 
 	# Track the powerup's timers and slot
 	active_powerups[powerup_type] = { "timer": timer, "update_timer": update_timer, "slot": slot }
-	remaining_times[powerup_type] = get_powerup_duration(powerup_type)  # Initialize remaining time
+	remaining_times[powerup_type] = get_powerup_duration(powerup_type)
 
 	# Display the initial timer value
 	var label = slot.get_node("Label") as Label
-	label.text = str(int(timer.wait_time))  # Initial duration as an integer
+	label.text = str(int(timer.wait_time))
+
+	# Activate the powerup effect
+	var script_path = "res://Scripts/" + powerup_type + "_power_up.gd"
+	var powerup_script = load(script_path).new()
+	powerup_script.on_powerup_activated(get_powerup_duration(powerup_type), self)  # Pass the current node as context
 
 	start_blink(slot)
 	refresh_slot_appearance()
+
 
 
 func _on_powerup_timeout(args: Array) -> void:
@@ -209,7 +219,20 @@ func _on_powerup_timeout(args: Array) -> void:
 		if filled["type"] == powerup_type:
 			filled_slots.erase(filled)
 			break
+
+	# Call the specific powerup's deactivation method
+	var script_path = "res://Scripts/" + powerup_type + "_power_up.gd"
+	var powerup_script = load(script_path).new()
+	
+	if powerup_type == "metal_beam":
+		var bouncer = $"../Bouncer"
+		powerup_script.on_powerup_deactivated(bouncer)
+		
+	else:
+		powerup_script.on_powerup_deactivated()
+
 	refresh_slot_appearance()
+
 
 
 func refresh_slot_appearance() -> void:
@@ -366,12 +389,6 @@ func clear_powerups() -> void:
 
 	filled_slots.clear()  # Clear the filled slots list
 	refresh_slot_appearance()  # Update slot visuals
-
-
-
-
-
-
 
 
 
