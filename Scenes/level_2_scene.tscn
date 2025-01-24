@@ -1,13 +1,16 @@
-[gd_scene load_steps=30 format=3 uid="uid://cnp0rnypu14nu"]
+[gd_scene load_steps=35 format=3 uid="uid://b4ci0pxq7iloj"]
 
 [ext_resource type="Script" path="res://Scripts/level_setup.gd" id="1_c1bgj"]
 [ext_resource type="Texture2D" uid="uid://bdmtwlgfg5p4m" path="res://Images/Background Images/metal_background.png" id="2_28045"]
 [ext_resource type="Script" path="res://Scripts/bouncer.gd" id="3_7jop1"]
 [ext_resource type="Texture2D" uid="uid://dhpwlgy2vji4r" path="res://prefabs/Bouncers2.atlastex" id="4_drsdf"]
 [ext_resource type="Texture2D" uid="uid://bhsedwblj1hpc" path="res://prefabs/Bouncers3.atlastex" id="5_1rvfm"]
+[ext_resource type="Texture2D" uid="uid://doj2bi8hhyv7" path="res://prefabs/MagnetPowerForm.atlastex" id="6_3h6gf"]
 [ext_resource type="Texture2D" uid="uid://403vbatxe4e6" path="res://sprites/Dotted_Line.png" id="6_tuwxf"]
 [ext_resource type="Texture2D" uid="uid://bekqvjnliex70" path="res://prefabs/HeartsSystem_3lifes.atlastex" id="7_8e15y"]
+[ext_resource type="Texture2D" uid="uid://ci2b4gn8y3bg6" path="res://prefabs/MagnetActiveForm.atlastex" id="7_jm44w"]
 [ext_resource type="PackedScene" uid="uid://bdd7y1uep7eae" path="res://prefabs/ball.tscn" id="8_f2blh"]
+[ext_resource type="Texture2D" uid="uid://b0pcute1q8awa" path="res://prefabs/MagnetActiveForm2.atlastex" id="8_ueel0"]
 [ext_resource type="Script" path="res://Scripts/try_again_button.gd" id="9_ny1a2"]
 [ext_resource type="Script" path="res://Scripts/level_menu_button.gd" id="10_rjsih"]
 [ext_resource type="Script" path="res://Scripts/bricks_in_level.gd" id="11_6ojef"]
@@ -19,6 +22,8 @@
 [ext_resource type="Texture2D" uid="uid://jrodibporqka" path="res://prefabs/Brick(2).atlastex" id="15_31e2l"]
 [ext_resource type="PackedScene" uid="uid://d10i7o16l7c2q" path="res://prefabs/metal_beam_power_up.tscn" id="15_v7la8"]
 [ext_resource type="Texture2D" uid="uid://dli6pibkytdmv" path="res://prefabs/Brick(1).atlastex" id="16_4p88b"]
+[ext_resource type="Script" path="res://Scripts/glass_storage.gd" id="23_qh7xb"]
+[ext_resource type="Texture2D" uid="uid://bpbgompsign7f" path="res://sprites/PowerUpGlassStorage.png" id="24_vr2mh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hr6h0"]
 size = Vector2(145, 893)
@@ -41,6 +46,25 @@ animations = [{
 "loop": false,
 "name": &"Ball_hits_bouncer",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_3h6gf")
+}],
+"loop": false,
+"name": &"Static_magnet",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_jm44w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ueel0")
+}],
+"loop": true,
+"name": &"magnet_bouncer",
+"speed": 2.0
 }]
 
 [sub_resource type="Gradient" id="Gradient_bfptc"]
@@ -121,7 +145,7 @@ texture = ExtResource("6_tuwxf")
 offset = Vector2(0, -50)
 
 [node name="HeartsSystem3Lifes" type="Sprite2D" parent="."]
-position = Vector2(122, 62)
+position = Vector2(584, 69)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("7_8e15y")
 
@@ -236,7 +260,7 @@ script = ExtResource("9_ny1a2")
 
 [node name="Bricks_in_level" type="Node2D" parent="."]
 script = ExtResource("11_6ojef")
-current_level = "Level 1"
+current_level = "Level 2"
 
 [node name="Brick1" type="StaticBody2D" parent="Bricks_in_level" groups=["Bricks"]]
 position = Vector2(218, 433)
@@ -259,7 +283,141 @@ shape = SubResource("RectangleShape2D_8xt01")
 scale = Vector2(0.43, 0.457)
 texture = ExtResource("16_4p88b")
 
+[node name="Brick2" type="StaticBody2D" parent="Bricks_in_level" groups=["Bricks"]]
+position = Vector2(273, 433)
+physics_material_override = SubResource("PhysicsMaterial_q1s4i")
+script = ExtResource("12_fnx20")
+start_brick = 2
+powerup_scenes = Array[PackedScene]([ExtResource("14_l73wc"), ExtResource("15_v7la8")])
+powerup_chances = Array[float]([0.5, 0.5])
+brick_4_texture = ExtResource("13_5vt2r")
+brick_3_texture = ExtResource("14_fa3vl")
+brick_2_texture = ExtResource("15_31e2l")
+brick_1_texture = ExtResource("16_4p88b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks_in_level/Brick2"]
+position = Vector2(-0.0909424, 0.459106)
+scale = Vector2(0.47, 0.49)
+shape = SubResource("RectangleShape2D_8xt01")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bricks_in_level/Brick2"]
+scale = Vector2(0.43, 0.457)
+texture = ExtResource("15_31e2l")
+
+[node name="Brick3" type="StaticBody2D" parent="Bricks_in_level" groups=["Bricks"]]
+position = Vector2(328, 433)
+physics_material_override = SubResource("PhysicsMaterial_q1s4i")
+script = ExtResource("12_fnx20")
+start_brick = 3
+powerup_scenes = Array[PackedScene]([ExtResource("14_l73wc"), ExtResource("15_v7la8")])
+powerup_chances = Array[float]([0.5, 0.5])
+brick_4_texture = ExtResource("13_5vt2r")
+brick_3_texture = ExtResource("14_fa3vl")
+brick_2_texture = ExtResource("15_31e2l")
+brick_1_texture = ExtResource("16_4p88b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks_in_level/Brick3"]
+position = Vector2(-0.0909424, 0.459106)
+scale = Vector2(0.47, 0.49)
+shape = SubResource("RectangleShape2D_8xt01")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bricks_in_level/Brick3"]
+scale = Vector2(0.43, 0.457)
+texture = ExtResource("14_fa3vl")
+
+[node name="Brick4" type="StaticBody2D" parent="Bricks_in_level" groups=["Bricks"]]
+position = Vector2(383, 433)
+physics_material_override = SubResource("PhysicsMaterial_q1s4i")
+script = ExtResource("12_fnx20")
+powerup_scenes = Array[PackedScene]([ExtResource("14_l73wc"), ExtResource("15_v7la8")])
+powerup_chances = Array[float]([0.5, 0.5])
+brick_4_texture = ExtResource("13_5vt2r")
+brick_3_texture = ExtResource("14_fa3vl")
+brick_2_texture = ExtResource("15_31e2l")
+brick_1_texture = ExtResource("16_4p88b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks_in_level/Brick4"]
+position = Vector2(-0.0909424, 0.459106)
+scale = Vector2(0.47, 0.49)
+shape = SubResource("RectangleShape2D_8xt01")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bricks_in_level/Brick4"]
+scale = Vector2(0.43, 0.457)
+texture = ExtResource("13_5vt2r")
+
+[node name="Brick5" type="StaticBody2D" parent="Bricks_in_level" groups=["Bricks"]]
+position = Vector2(438, 433)
+physics_material_override = SubResource("PhysicsMaterial_q1s4i")
+script = ExtResource("12_fnx20")
+start_brick = 3
+powerup_scenes = Array[PackedScene]([ExtResource("14_l73wc"), ExtResource("15_v7la8")])
+powerup_chances = Array[float]([0.5, 0.5])
+brick_4_texture = ExtResource("13_5vt2r")
+brick_3_texture = ExtResource("14_fa3vl")
+brick_2_texture = ExtResource("15_31e2l")
+brick_1_texture = ExtResource("16_4p88b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks_in_level/Brick5"]
+position = Vector2(-0.0909424, 0.459106)
+scale = Vector2(0.47, 0.49)
+shape = SubResource("RectangleShape2D_8xt01")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bricks_in_level/Brick5"]
+scale = Vector2(0.43, 0.457)
+texture = ExtResource("14_fa3vl")
+
+[node name="Brick6" type="StaticBody2D" parent="Bricks_in_level" groups=["Bricks"]]
+position = Vector2(493, 433)
+physics_material_override = SubResource("PhysicsMaterial_q1s4i")
+script = ExtResource("12_fnx20")
+start_brick = 2
+powerup_scenes = Array[PackedScene]([ExtResource("14_l73wc"), ExtResource("15_v7la8")])
+powerup_chances = Array[float]([0.5, 0.5])
+brick_4_texture = ExtResource("13_5vt2r")
+brick_3_texture = ExtResource("14_fa3vl")
+brick_2_texture = ExtResource("15_31e2l")
+brick_1_texture = ExtResource("16_4p88b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks_in_level/Brick6"]
+position = Vector2(-0.0909424, 0.459106)
+scale = Vector2(0.47, 0.49)
+shape = SubResource("RectangleShape2D_8xt01")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bricks_in_level/Brick6"]
+scale = Vector2(0.43, 0.457)
+texture = ExtResource("15_31e2l")
+
+[node name="Brick7" type="StaticBody2D" parent="Bricks_in_level" groups=["Bricks"]]
+position = Vector2(548, 433)
+physics_material_override = SubResource("PhysicsMaterial_q1s4i")
+script = ExtResource("12_fnx20")
+start_brick = 1
+powerup_scenes = Array[PackedScene]([ExtResource("14_l73wc"), ExtResource("15_v7la8")])
+powerup_chances = Array[float]([0.5, 0.5])
+brick_4_texture = ExtResource("13_5vt2r")
+brick_3_texture = ExtResource("14_fa3vl")
+brick_2_texture = ExtResource("15_31e2l")
+brick_1_texture = ExtResource("16_4p88b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks_in_level/Brick7"]
+position = Vector2(-0.0909424, 0.459106)
+scale = Vector2(0.47, 0.49)
+shape = SubResource("RectangleShape2D_8xt01")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bricks_in_level/Brick7"]
+scale = Vector2(0.43, 0.457)
+texture = ExtResource("16_4p88b")
+
 [node name="PowerupsHolder" type="Node2D" parent="."]
+
+[node name="GlassStorage" type="Node2D" parent="."]
+position = Vector2(-16, 59)
+script = ExtResource("23_qh7xb")
+slot_count = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="GlassStorage"]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("24_vr2mh")
 
 [connection signal="pressed" from="Game_lost_screen/Try_again_button" to="Game_lost_screen/Try_again_button" method="_on_pressed"]
 [connection signal="pressed" from="Game_lost_screen/Level_menu_button" to="Game_lost_screen/Level_menu_button" method="_on_pressed"]
