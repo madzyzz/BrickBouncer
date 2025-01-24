@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://c6i0anlhp2h1w"]
+[gd_scene load_steps=35 format=3 uid="uid://c6i0anlhp2h1w"]
 
 [ext_resource type="Script" path="res://Scripts/level_setup.gd" id="1_lthrn"]
 [ext_resource type="Texture2D" uid="uid://bdmtwlgfg5p4m" path="res://Images/Background Images/metal_background.png" id="1_vbgtp"]
@@ -6,8 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://bhsedwblj1hpc" path="res://prefabs/Bouncers3.atlastex" id="3_r7y3j"]
 [ext_resource type="Script" path="res://Scripts/bouncer.gd" id="4_1v60k"]
 [ext_resource type="Texture2D" uid="uid://403vbatxe4e6" path="res://sprites/Dotted_Line.png" id="5_m5kfk"]
+[ext_resource type="Texture2D" uid="uid://doj2bi8hhyv7" path="res://prefabs/MagnetPowerForm.atlastex" id="6_wbn7w"]
 [ext_resource type="Texture2D" uid="uid://bekqvjnliex70" path="res://prefabs/HeartsSystem_3lifes.atlastex" id="7_5bhq2"]
 [ext_resource type="PackedScene" uid="uid://bdd7y1uep7eae" path="res://prefabs/ball.tscn" id="7_65mlh"]
+[ext_resource type="Texture2D" uid="uid://ci2b4gn8y3bg6" path="res://prefabs/MagnetActiveForm.atlastex" id="7_xf17w"]
+[ext_resource type="Texture2D" uid="uid://b0pcute1q8awa" path="res://prefabs/MagnetActiveForm2.atlastex" id="8_q2xvt"]
 [ext_resource type="Script" path="res://Scripts/try_again_button.gd" id="9_qif5v"]
 [ext_resource type="Script" path="res://Scripts/level_menu_button.gd" id="10_nivso"]
 [ext_resource type="Texture2D" uid="uid://dhnx4flhomj4m" path="res://prefabs/Brick(4).atlastex" id="11_2r8p4"]
@@ -43,6 +46,25 @@ animations = [{
 "loop": false,
 "name": &"Ball_hits_bouncer",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_wbn7w")
+}],
+"loop": false,
+"name": &"Static_magnet",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_xf17w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_q2xvt")
+}],
+"loop": true,
+"name": &"magnet_bouncer",
+"speed": 2.0
 }]
 
 [sub_resource type="Gradient" id="Gradient_bfptc"]

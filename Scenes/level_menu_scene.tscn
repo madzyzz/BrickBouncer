@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://de8ir4p0ne1gj"]
+[gd_scene load_steps=9 format=3 uid="uid://de8ir4p0ne1gj"]
 
 [ext_resource type="Texture2D" uid="uid://bdmtwlgfg5p4m" path="res://Images/Background Images/metal_background.png" id="1_uamik"]
 [ext_resource type="Texture2D" uid="uid://02r41b00kw3w" path="res://Images/Level images/MetalLevel.png" id="2_j6skk"]
 [ext_resource type="Script" path="res://Scripts/back_button.gd" id="2_yncd1"]
 [ext_resource type="Texture2D" uid="uid://6st3m31hxact" path="res://sprites/Blue_arrow.png" id="3_5il0x"]
 [ext_resource type="Script" path="res://Scripts/level_buttons.gd" id="3_lma2g"]
+[ext_resource type="Texture2D" uid="uid://bb2lltjy8olgm" path="res://sprites/Level_lock.png" id="6_lacs8"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wtu7p"]
 
@@ -89,6 +90,12 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 180
 text = "1"
 
+[node name="LevelLock" type="Sprite2D" parent="Level_buttons/Level_1"]
+visible = false
+position = Vector2(10.0042, -10.0036)
+scale = Vector2(1.6, 1.6)
+texture = ExtResource("6_lacs8")
+
 [node name="Level_2" type="Sprite2D" parent="Level_buttons"]
 position = Vector2(246.998, -484.001)
 rotation = -1.5708
@@ -106,7 +113,7 @@ position = Vector2(5, 19.9999)
 scale = Vector2(45, 45)
 shape = SubResource("CircleShape2D_o5vfb")
 
-[node name="level1" type="Label" parent="Level_buttons/Level_2"]
+[node name="level2" type="Label" parent="Level_buttons/Level_2"]
 offset_left = -50.0
 offset_top = -125.0
 offset_right = 76.0
@@ -114,6 +121,10 @@ offset_bottom = 176.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 180
 text = "2"
+
+[node name="LevelLock" type="Sprite2D" parent="Level_buttons/Level_2"]
+scale = Vector2(1.6, 1.6)
+texture = ExtResource("6_lacs8")
 
 [connection signal="button_down" from="Back_button" to="Back_button" method="_on_button_down"]
 [connection signal="button_up" from="Back_button" to="Back_button" method="_on_button_up"]

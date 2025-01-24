@@ -4,8 +4,11 @@ var max_speed = 500.0
 var bouncer_y_position: float
 var snap_threshold = 5.0
 
+var y_offset: float = 0.0
+
 @onready var ball = $"../Ball"  # Reference the pre-existing ball in the scene
 @onready var dotted_line = $DottedLine  # Reference to the dotted line node
+@onready var hitbox = $CollisionPolygon2D
 var is_ball_shot = false
 
 # Define shooting angle limits (in radians)
@@ -13,8 +16,6 @@ var min_angle = deg_to_rad(-150)  # Limit shooting to -150° left
 var max_angle = deg_to_rad(-30)   # Limit shooting to -30° right
 
 @onready var glass_storage = $"../GlassStorage"
-
-
 
 func _ready() -> void:
 	bouncer_y_position = global_position.y
@@ -32,7 +33,7 @@ func _physics_process(_delta: float) -> void:
 	if not is_ball_shot:
 		velocity.x = 0
 		move_and_slide()
-		position.y = bouncer_y_position
+		position.y = bouncer_y_position + y_offset  # Apply y_offset here
 
 		# Lock the ball to the bouncer
 		ball.lock_to_bouncer(global_position)
@@ -51,7 +52,8 @@ func _physics_process(_delta: float) -> void:
 		velocity.x = 0
 
 	move_and_slide()
-	position.y = bouncer_y_position
+	position.y = bouncer_y_position + y_offset  # Apply y_offset here
+
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed and not is_ball_shot:
@@ -93,3 +95,4 @@ func get_clamped_mouse_position() -> Vector2:
 func _on_collision_polygon_2d_body_entered(body: Node2D) -> void:
 	if body.has_method("on_collected"):  # Check if the body is a powerup
 		body._on_body_entered(self)
+		

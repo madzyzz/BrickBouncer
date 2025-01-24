@@ -6,14 +6,19 @@ extends Sprite2D
 var is_mouse_within = false
 var is_unlocked = false  # Whether this level is unlocked
 
+@onready var lock_sprite = $LevelLock  # Reference to the lock sprite child node
+
 func _ready() -> void:
 	# Check if the required level is completed
 	if required_level == "" or SaveManager.completed_levels.has(required_level):
 		is_unlocked = true
 		modulate = Color(1, 1, 1, 1)  # Full opacity for unlocked levels
+		lock_sprite.visible = false  # Hide the lock for unlocked levels
 	else:
 		is_unlocked = false
 		modulate = Color(0.5, 0.5, 0.5, 1)  # Dimmed appearance for locked levels
+		lock_sprite.visible = true  # Show the lock for locked levels
+		lock_sprite.modulate = Color(2.5, 2.5, 2.5, 1)
 
 func _on_area_2d_mouse_entered() -> void:
 	if is_unlocked:

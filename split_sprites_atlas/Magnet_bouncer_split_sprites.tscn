@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxb1gd57em4vq"]
+
+[ext_resource type="Script" path="res://addons/sprite_cutter/AtlasScene.gd" id="1_4cxik"]
+[ext_resource type="Texture2D" uid="uid://cw0d7hiqxkfsd" path="res://sprites/Magnet_Power.png" id="2_ov68d"]
+
+[node name="AtlasScene" type="Node"]
+script = ExtResource("1_4cxik")
+destination_path = "res://prefabs"
+
+[node name="MagnetPowerForm" type="Sprite2D" parent="."]
+position = Vector2(412, 170)
+texture = ExtResource("2_ov68d")
+region_enabled = true
+region_rect = Rect2(16, 240, 120, 56)
+
+[node name="MagnetActiveForm" type="Sprite2D" parent="."]
+position = Vector2(414, 280)
+texture = ExtResource("2_ov68d")
+region_enabled = true
+region_rect = Rect2(16, 40, 120, 104)
+
+[node name="MagnetActiveForm2" type="Sprite2D" parent="."]
+position = Vector2(415, 394)
+texture = ExtResource("2_ov68d")
+region_enabled = true
+region_rect = Rect2(176, 40, 120, 96)

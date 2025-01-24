@@ -88,7 +88,7 @@ func get_powerup_duration(powerup_type: String) -> float:
 		"metal_beam":
 			return 10.0
 		"magnet":
-			return 5.0
+			return 15.0
 		_:
 			return 3.0  # Default duration
 
@@ -194,9 +194,16 @@ func activate_powerup(powerup_type: String, slot: Sprite2D) -> void:
 	label.text = str(int(timer.wait_time))
 
 	# Activate the powerup effect
+	var bouncer = $"../Bouncer"
+	var ball = $"../Ball"
 	var script_path = "res://Scripts/" + powerup_type + "_power_up.gd"
 	var powerup_script = load(script_path).new()
-	powerup_script.on_powerup_activated(get_powerup_duration(powerup_type), self)  # Pass the current node as context
+	
+	if powerup_type == "metal_beam":
+		powerup_script.on_powerup_activated(get_powerup_duration(powerup_type), bouncer)  # Pass the current node as context
+	elif powerup_type == "magnet":
+		powerup_script.on_powerup_activated(get_powerup_duration(powerup_type), bouncer, ball)
+
 
 	start_blink(slot)
 	refresh_slot_appearance()
@@ -223,11 +230,12 @@ func _on_powerup_timeout(args: Array) -> void:
 	# Call the specific powerup's deactivation method
 	var script_path = "res://Scripts/" + powerup_type + "_power_up.gd"
 	var powerup_script = load(script_path).new()
-	
+	var bouncer = $"../Bouncer"
+	var ball = $"../Ball"
 	if powerup_type == "metal_beam":
-		var bouncer = $"../Bouncer"
 		powerup_script.on_powerup_deactivated(bouncer)
-		
+	elif  powerup_type == "magnet":
+		powerup_script.on_powerup_deactivated(bouncer, ball)
 	else:
 		powerup_script.on_powerup_deactivated()
 
@@ -355,7 +363,19 @@ func _update_powerup_timer(args: Array) -> void:
 func clear_powerups() -> void:
 	# Stop all active powerups
 	for powerup_type in active_powerups.keys():
+		
+		var script_path = "res://Scripts/" + powerup_type + "_power_up.gd"
+		var powerup_script = load(script_path).new()
+		var bouncer = $"../Bouncer"
+		var ball = $"../Ball"
+		if powerup_type == "metal_beam":
+			powerup_script.on_powerup_deactivated(bouncer)
+		elif powerup_type == "magnet":
+			powerup_script.on_powerup_deactivated(bouncer, ball)
+		else:
+			powerup_script.on_powerup_deactivated()
 		print("Deactivating powerup:", powerup_type)
+		
 		var slot = active_powerups[powerup_type]["slot"]
 		stop_blink(slot)  # Stop blinking
 

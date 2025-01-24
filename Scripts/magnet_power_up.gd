@@ -1,5 +1,8 @@
 extends "res://Scripts/power_up.gd"
 
+@export var magnet_force: float = 0.2  # Force applied by the magnet
+@export var active_magnet_distance: float = 300.0 # Maximum distance to apply the magnetic pull
+
 func on_collected(storage: Node2D):
 	print("Magnet Powerup collected!")
 
@@ -27,9 +30,28 @@ func on_collected(storage: Node2D):
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == "Bouncer":
 		on_collected(body.glass_storage)
-		
-func on_powerup_activated(duration: float, bouncer: Node) -> void:
-	print("Metal Beam activated for", duration, "seconds!")
 
-func on_powerup_deactivated() -> void:
-	print("Metal Beam deactivated!")
+func on_powerup_activated(duration: float, bouncer: Node, ball: Node) -> void:
+	print("Magnet Powerup activated for", duration, "seconds!")
+	
+	ball.magnet_active = true
+	var bouncer_anim = bouncer.get_child(0)
+	bouncer_anim.play("Static_magnet")
+	
+	bouncer.hitbox.global_position += Vector2(0, -10)
+	bouncer.y_offset = 10
+	
+	
+
+func on_powerup_deactivated(bouncer: Node, ball: Node) -> void:
+	print("Magnet Powerup deactivated!")
+	
+	ball.magnet_active = false
+	var bouncer_anim = bouncer.get_child(0)
+	bouncer_anim.play("Ball_hits_bouncer")
+	bouncer_anim.frame = 2
+	
+	bouncer.hitbox.global_position -= Vector2(0, -10)
+	bouncer.y_offset = 0
+
+	

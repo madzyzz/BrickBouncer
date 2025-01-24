@@ -6,6 +6,13 @@ var is_locked = true  # Start with the ball locked to the bouncer
 var bouncer_position: Vector2  # Track the bouncer's position
 var ignore_bouncer_force_timer = 0.0  # Timer to temporarily ignore bouncer force
 
+@onready var bouncer = $"../Bouncer"
+
+#Powerup related stuff
+var magnet_active = false
+var ignore_magnet_timer: float = 0.0  # Timer to ignore magnet force temporarily
+var ignore_duration: float = 0.1
+
 func _ready() -> void:
 	# Start with no movement and physics disabled
 	linear_velocity = Vector2.ZERO
@@ -33,10 +40,13 @@ func _physics_process(delta: float) -> void:
 
 	if ignore_bouncer_force_timer > 0:
 		ignore_bouncer_force_timer -= delta
-
+		
 	if is_shot:
-		# Maintain a consistent speed
-		linear_velocity = linear_velocity.normalized() * speed
+		if magnet_active == true:
+			apply_magnetic_force()
+		else: 
+			linear_velocity = linear_velocity.normalized() * speed
+		
 		process_overlapping_bricks()
 
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
@@ -50,6 +60,8 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 		if collider:
 			if collider.name == "Bouncer":
 				# Handle collision with the bouncer
+				ignore_magnet_timer = ignore_duration
+				
 				var bouncer_animation = $"../Bouncer/Bouncer_sprite_and_animations"
 				bouncer_animation.frame = 1
 				bouncer_animation.play()
@@ -77,4 +89,41 @@ func process_overlapping_bricks() -> void:
 			body.on_ball_collision()
 
 
+func apply_magnetic_force() -> void:
+	var bouncer_anim = $"../Bouncer/Bouncer_sprite_and_animations"
+	# Reduce the ignore timer
+	if ignore_magnet_timer > 0:
+		ignore_magnet_timer -= get_physics_process_delta_time()
+		bouncer_anim.play("Static_magnet")
+		bouncer_anim.frame = 0
+		return  # Skip magnetic pull while ignoring
 
+	# Check vertical distance to limit magnetic effect
+	if global_position.y - bouncer.global_position.y < -600:
+		# Ball is too far above; maintain normal behavior
+		linear_velocity = linear_velocity.normalized() * speed
+		bouncer_anim.play("Static_magnet")
+		bouncer_anim.frame = 0
+	else:
+		bouncer_anim.play("magnet_bouncer")
+		
+		# Calculate horizontal distance to the bouncer
+		var distance_x = bouncer.global_position.x - global_position.x
+		
+		# Define magnet strength and damping
+		var magnet_strength = 3.5  # Higher strength, but clamped
+		var max_horizontal_speed = 350.0  # Prevent excessive horizontal speed
+		
+		# Adjust horizontal velocity based on magnetic pull
+		var adjusted_velocity_x = clamp(distance_x * magnet_strength, -max_horizontal_speed, max_horizontal_speed)
+		
+		# Preserve the total speed by adjusting vertical velocity
+		var total_speed = speed
+		var adjusted_velocity_y = sqrt(max(total_speed**2 - adjusted_velocity_x**2, 0.01)) * sign(linear_velocity.y)
+
+		# Apply the adjusted velocity
+		linear_velocity.x = lerp(linear_velocity.x, adjusted_velocity_x, 0.2)
+		linear_velocity.y = lerp(linear_velocity.y, adjusted_velocity_y, 0.2)
+
+		
+	
