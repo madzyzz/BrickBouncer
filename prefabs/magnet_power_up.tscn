@@ -9,6 +9,7 @@
 script = ExtResource("1_v8oyw")
 powerup_texture = ExtResource("2_o5v50")
 powerup_type = "magnet"
+is_bad_powerup = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.13, 0.13)

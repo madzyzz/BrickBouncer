@@ -12,6 +12,7 @@ var empty_slot_texture: Texture2D  # Texture for an empty slot
 var blink_timers = {}  # Tracks blinking timers for each slot
 var remaining_times = {}
 
+
 #powerup related stuff
 var metal_beam_instance: Node = null
 
@@ -89,10 +90,63 @@ func get_powerup_duration(powerup_type: String) -> float:
 			return 10.0
 		"magnet":
 			return 15.0
+		"speedup":
+			return 7
 		_:
 			return 3.0  # Default duration
 
-func add_powerup_to_slot(powerup_texture: Texture2D, powerup_type: String) -> bool:
+func add_powerup_to_slot(powerup_texture: Texture2D, powerup_type: String, is_bad: bool = false) -> bool:
+	if is_bad:
+		print("Bad powerup detected. Activating immediately:", powerup_type)
+
+		# Check if the bad powerup is already active
+		if active_powerups.has(powerup_type):
+			print("Bad powerup already active. Resetting timer:", powerup_type)
+
+			# Reset remaining time
+			remaining_times[powerup_type] = get_powerup_duration(powerup_type)
+
+			# Restart the powerup's main timer
+			var timer = active_powerups[powerup_type]["timer"]
+			timer.start()
+
+			# Restart the update timer for countdown
+			var update_timer = active_powerups[powerup_type]["update_timer"]
+			update_timer.start()
+
+			return true  # No need to replace anything; exit early
+
+		# Check for any active powerups (bad or good) to replace
+		for active_type in active_powerups.keys():
+			print("Replacing active powerup:", active_type)
+			deactivate_and_remove_powerup(active_type)
+			break  # Replace only the first active powerup
+
+		# Check for inactive powerups to replace
+		for filled in filled_slots:
+			if not active_powerups.has(filled["type"]):  # Ensure it's not active
+				print("Replacing inactive powerup:", filled["type"])
+				deactivate_and_remove_powerup(filled["type"])
+				break
+
+		# Add the bad powerup to a slot (find an empty slot or replace the first one)
+		for slot in slots:
+			if not slot.get_meta("occupied", false):
+				print("Empty slot found. Adding bad powerup:", powerup_type)
+				slot.texture = powerup_texture
+				slot.set_meta("occupied", true)
+				filled_slots.append({ "type": powerup_type, "slot": slot })
+				activate_powerup(powerup_type, slot, true)  # Activate immediately
+				refresh_slot_appearance()
+				return true
+
+		# If no empty slots are available, replace the first slot
+		print("All slots are full. Replacing first slot for bad powerup:", powerup_type)
+		var first_filled = filled_slots[0]
+		deactivate_and_remove_powerup(first_filled["type"])  # Replace the first powerup
+		return add_powerup_to_slot(powerup_texture, powerup_type, true)
+
+	# Handle good powerups
 	if active_powerups.has(powerup_type):
 		print("Powerup already active, resetting timer:", powerup_type)
 
@@ -117,7 +171,6 @@ func add_powerup_to_slot(powerup_texture: Texture2D, powerup_type: String) -> bo
 					blink_timer.start()
 		return true
 
-
 	# Check if the powerup type exists in a slot but is not active
 	for filled in filled_slots:
 		if filled["type"] == powerup_type:
@@ -135,7 +188,9 @@ func add_powerup_to_slot(powerup_texture: Texture2D, powerup_type: String) -> bo
 			return true
 
 	# No available slots
+	print("No available slots for powerup:", powerup_type)
 	return false
+
 
 
 
@@ -163,8 +218,8 @@ func _on_slot_clicked(_viewport, event: InputEvent, _shape_idx: int, slot_id: in
 				print("Cannot activate powerup: either max active reached or already active.")
 
 
-func activate_powerup(powerup_type: String, slot: Sprite2D) -> void:
-	if active_powerups.size() >= max_active_powerups or active_powerups.has(powerup_type):
+func activate_powerup(powerup_type: String, slot: Sprite2D, is_bad: bool = false) -> void:
+	if not is_bad and (active_powerups.size() >= max_active_powerups or active_powerups.has(powerup_type)):
 		return
 
 	print("Activating powerup:", powerup_type)
@@ -198,12 +253,16 @@ func activate_powerup(powerup_type: String, slot: Sprite2D) -> void:
 	var ball = $"../Ball"
 	var script_path = "res://Scripts/" + powerup_type + "_power_up.gd"
 	var powerup_script = load(script_path).new()
-	
-	if powerup_type == "metal_beam":
-		powerup_script.on_powerup_activated(get_powerup_duration(powerup_type), bouncer)  # Pass the current node as context
-	elif powerup_type == "magnet":
+
+	if powerup_type == "speedup":
+		powerup_script.on_powerup_activated(get_powerup_duration(powerup_type), ball)
+	elif powerup_type == "metal_beam":
+		powerup_script.on_powerup_activated(get_powerup_duration(powerup_type), bouncer)
+	else:
 		powerup_script.on_powerup_activated(get_powerup_duration(powerup_type), bouncer, ball)
 
+	if is_bad:
+		print("Bad powerup effect applied:", powerup_type)
 
 	start_blink(slot)
 	refresh_slot_appearance()
@@ -237,7 +296,7 @@ func _on_powerup_timeout(args: Array) -> void:
 	elif  powerup_type == "magnet":
 		powerup_script.on_powerup_deactivated(bouncer, ball)
 	else:
-		powerup_script.on_powerup_deactivated()
+		powerup_script.on_powerup_deactivated(ball)
 
 	refresh_slot_appearance()
 
@@ -373,7 +432,7 @@ func clear_powerups() -> void:
 		elif powerup_type == "magnet":
 			powerup_script.on_powerup_deactivated(bouncer, ball)
 		else:
-			powerup_script.on_powerup_deactivated()
+			powerup_script.on_powerup_deactivated(ball)
 		print("Deactivating powerup:", powerup_type)
 		
 		var slot = active_powerups[powerup_type]["slot"]
@@ -410,6 +469,55 @@ func clear_powerups() -> void:
 	filled_slots.clear()  # Clear the filled slots list
 	refresh_slot_appearance()  # Update slot visuals
 
+
+func deactivate_and_remove_powerup(powerup_type: String) -> void:
+	print("Deactivating and removing powerup:", powerup_type)
+
+	if not active_powerups.has(powerup_type):
+		return  # No active powerup of this type
+
+	# Deactivate the powerup
+	var script_path = "res://Scripts/" + powerup_type + "_power_up.gd"
+	var powerup_script = load(script_path).new()
+	var bouncer = $"../Bouncer"
+	var ball = $"../Ball"
+
+	if powerup_type == "speedup":
+		powerup_script.on_powerup_deactivated(ball)
+	elif powerup_type == "metal_beam":
+		powerup_script.on_powerup_deactivated(bouncer)
+	else:
+		powerup_script.on_powerup_deactivated(bouncer, ball)
+
+	# Remove timers
+	var slot = active_powerups[powerup_type]["slot"]
+	stop_blink(slot)
+	if active_powerups[powerup_type]["timer"]:
+		var timer = active_powerups[powerup_type]["timer"]
+		timer.stop()
+		timer.queue_free()
+
+	if active_powerups[powerup_type]["update_timer"]:
+		var update_timer = active_powerups[powerup_type]["update_timer"]
+		update_timer.stop()
+		update_timer.queue_free()
+
+	active_powerups.erase(powerup_type)
+	remaining_times.erase(powerup_type)
+
+	# Reset the slot
+	var label = slot.get_node("Label") as Label
+	label.text = ""
+	slot.texture = empty_slot_texture
+	slot.set_meta("occupied", false)
+
+	# Remove from filled slots
+	for filled in filled_slots:
+		if filled["type"] == powerup_type:
+			filled_slots.erase(filled)
+			break
+
+	refresh_slot_appearance()
 
 
 

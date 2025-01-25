@@ -9,7 +9,7 @@ func on_collected(storage: Node2D):
 	# Check if the powerup is already active
 	if storage.active_powerups.has(powerup_type):
 		print("Magnet Powerup is already active, resetting timer.")
-		storage.add_powerup_to_slot(powerup_texture, powerup_type)  # Reset timer
+		storage.add_powerup_to_slot(powerup_texture, powerup_type)  # Reset timer, not a bad powerup
 		queue_free()
 		return
 
@@ -20,12 +20,13 @@ func on_collected(storage: Node2D):
 			return  # Do nothing; it's already in a slot
 
 	# Attempt to add the powerup to a slot
-	if storage.add_powerup_to_slot(powerup_texture, powerup_type):
+	if storage.add_powerup_to_slot(powerup_texture, powerup_type):  # Not a bad powerup
 		print("Magnet Powerup added to storage!")
 		queue_free()
 	else:
 		print("No available slots for Magnet Powerup, ignoring.")
 		# Do nothing; let it continue falling
+
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == "Bouncer":
