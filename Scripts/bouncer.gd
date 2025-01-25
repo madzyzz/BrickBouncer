@@ -6,6 +6,8 @@ var snap_threshold = 5.0
 
 var y_offset: float = 0.0
 
+signal ball_shot
+
 @onready var ball = $"../Ball"  # Reference the pre-existing ball in the scene
 @onready var dotted_line = $DottedLine  # Reference to the dotted line node
 @onready var hitbox = $CollisionPolygon2D
@@ -63,6 +65,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 		# Hide the dotted line after the ball is shot
 		dotted_line.visible = false
+		emit_signal("ball_shot")
 
 func update_dotted_line() -> void:
 	# Calculate clamped direction

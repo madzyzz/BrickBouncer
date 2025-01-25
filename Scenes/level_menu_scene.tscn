@@ -66,7 +66,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Level_1" type="Sprite2D" parent="Level_buttons"]
-position = Vector2(253, -178)
+position = Vector2(255.4, -107.401)
 rotation = -1.5708
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_j6skk")
@@ -97,7 +97,7 @@ scale = Vector2(1.6, 1.6)
 texture = ExtResource("6_lacs8")
 
 [node name="Level_2" type="Sprite2D" parent="Level_buttons"]
-position = Vector2(246.998, -484.001)
+position = Vector2(255.4, -342.401)
 rotation = -1.5708
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_j6skk")
@@ -126,6 +126,37 @@ text = "2"
 scale = Vector2(1.6, 1.6)
 texture = ExtResource("6_lacs8")
 
+[node name="Level_3" type="Sprite2D" parent="Level_buttons"]
+position = Vector2(255.4, -577.401)
+rotation = -1.5708
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_j6skk")
+script = ExtResource("3_lma2g")
+level_scene = "res://Scenes/level_3_scene.tscn"
+required_level = "Level 2"
+
+[node name="Area2D" type="Area2D" parent="Level_buttons/Level_3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level_buttons/Level_3/Area2D"]
+visible = false
+position = Vector2(5, 19.9999)
+scale = Vector2(45, 45)
+shape = SubResource("CircleShape2D_o5vfb")
+
+[node name="level3" type="Label" parent="Level_buttons/Level_3"]
+offset_left = -50.0
+offset_top = -125.0
+offset_right = 76.0
+offset_bottom = 176.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 180
+text = "3
+"
+
+[node name="LevelLock" type="Sprite2D" parent="Level_buttons/Level_3"]
+scale = Vector2(1.6, 1.6)
+texture = ExtResource("6_lacs8")
+
 [connection signal="button_down" from="Back_button" to="Back_button" method="_on_button_down"]
 [connection signal="button_up" from="Back_button" to="Back_button" method="_on_button_up"]
 [connection signal="mouse_entered" from="Back_button" to="Back_button" method="_on_mouse_entered"]
@@ -135,3 +166,5 @@ texture = ExtResource("6_lacs8")
 [connection signal="mouse_exited" from="Level_buttons/Level_1/Area2D" to="Level_buttons/Level_1" method="_on_area_2d_mouse_exited"]
 [connection signal="mouse_entered" from="Level_buttons/Level_2/Area2D" to="Level_buttons/Level_2" method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Level_buttons/Level_2/Area2D" to="Level_buttons/Level_2" method="_on_area_2d_mouse_exited"]
+[connection signal="mouse_entered" from="Level_buttons/Level_3/Area2D" to="Level_buttons/Level_3" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Level_buttons/Level_3/Area2D" to="Level_buttons/Level_3" method="_on_area_2d_mouse_exited"]
