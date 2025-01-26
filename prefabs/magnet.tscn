@@ -1,0 +1,64 @@
+[gd_scene load_steps=9 format=3 uid="uid://c2oukxhoyrcke"]
+
+[ext_resource type="Script" path="res://prefabs/magnet.gd" id="1_c187i"]
+[ext_resource type="Texture2D" uid="uid://c08dtmpxhr6v5" path="res://sprites/Magnet.atlastex" id="1_xhn50"]
+[ext_resource type="Texture2D" uid="uid://dag1wb7c85srn" path="res://sprites/Animated_magnet.atlastex" id="2_44cmv"]
+[ext_resource type="Texture2D" uid="uid://c4p63o8qa8ye4" path="res://sprites/AnimatedMagnet2.atlastex" id="3_uvvfx"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_xvi40"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6ib1r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_44cmv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_uvvfx")
+}],
+"loop": true,
+"name": &"Pull_anim",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_xhn50")
+}],
+"loop": true,
+"name": &"Static_magnet",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0at5t"]
+size = Vector2(122, 96)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_odxtb"]
+radius = 140.0
+
+[node name="Magnet" type="StaticBody2D"]
+position = Vector2(59, 190)
+physics_material_override = SubResource("PhysicsMaterial_xvi40")
+script = ExtResource("1_c187i")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.6, 0.6)
+sprite_frames = SubResource("SpriteFrames_6ib1r")
+animation = &"Static_magnet"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_0at5t")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(169, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(1, 0.5)
+shape = SubResource("CircleShape2D_odxtb")
+
+[node name="Pull point" type="Node2D" parent="."]
+position = Vector2(61, -2)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

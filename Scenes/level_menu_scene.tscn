@@ -15,10 +15,10 @@
 rotation = 1.5708
 
 [node name="Background" type="TextureRect" parent="."]
-offset_left = 7.99995
-offset_top = -1157.0
-offset_right = 1800.0
-offset_bottom = 443.0
+offset_left = -13.0042
+offset_top = -1155.0
+offset_right = 1779.0
+offset_bottom = 445.0
 scale = Vector2(0.715363, 0.744657)
 texture = ExtResource("1_uamik")
 

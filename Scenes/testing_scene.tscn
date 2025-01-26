@@ -95,6 +95,7 @@ size = Vector2(117.787, 50.8535)
 script = ExtResource("1_6o806")
 
 [node name="Background" type="TextureRect" parent="."]
+z_index = -2
 offset_left = 803.0
 offset_top = -1.0
 offset_right = 2595.0
@@ -146,8 +147,8 @@ texture = ExtResource("9_3avva")
 offset = Vector2(0, -50)
 
 [node name="HeartsSystem3Lifes" type="Sprite2D" parent="."]
-position = Vector2(584, 69)
-scale = Vector2(0.7, 0.7)
+position = Vector2(643, 39)
+scale = Vector2(0.4, 0.4)
 texture = ExtResource("10_64yux")
 
 [node name="Ball" parent="." instance=ExtResource("11_1jbsr")]
@@ -412,6 +413,7 @@ texture = ExtResource("23_xsa1p")
 [node name="PowerupsHolder" type="Node2D" parent="."]
 
 [node name="GlassStorage" type="Node2D" parent="."]
+z_index = -1
 position = Vector2(-16, 59)
 script = ExtResource("24_yo07h")
 slot_count = 2

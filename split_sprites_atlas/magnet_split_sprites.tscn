@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://cdvf35hxgobch"]
+
+[ext_resource type="Script" path="res://addons/sprite_cutter/AtlasScene.gd" id="1_h6fpk"]
+[ext_resource type="Texture2D" uid="uid://c7ksbgby3vd8e" path="res://sprites/Magnet.png" id="2_6eq2m"]
+
+[node name="AtlasScene" type="Node"]
+script = ExtResource("1_h6fpk")
+destination_path = "res://sprites"
+
+[node name="Magnet" type="Sprite2D" parent="."]
+position = Vector2(372, 148)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_6eq2m")
+region_enabled = true
+region_rect = Rect2(56, 72, 208, 176)
+
+[node name="Animated_magnet" type="Sprite2D" parent="."]
+position = Vector2(387, 313)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_6eq2m")
+region_enabled = true
+region_rect = Rect2(376, 72, 264, 176)
+
+[node name="AnimatedMagnet2" type="Sprite2D" parent="."]
+position = Vector2(387, 500)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_6eq2m")
+region_enabled = true
+region_rect = Rect2(56, 392, 264, 176)

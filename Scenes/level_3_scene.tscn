@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://dtyi1plircs0w"]
+[gd_scene load_steps=34 format=3 uid="uid://dtyi1plircs0w"]
 
 [ext_resource type="Script" path="res://Scripts/level_setup.gd" id="1_3fx3n"]
 [ext_resource type="Texture2D" uid="uid://bdmtwlgfg5p4m" path="res://Images/Background Images/metal_background.png" id="2_722y8"]
@@ -17,7 +17,6 @@
 [ext_resource type="Script" path="res://Scripts/bricks_in_level.gd" id="15_vrc4l"]
 [ext_resource type="Script" path="res://Scripts/brick.gd" id="16_akp3t"]
 [ext_resource type="PackedScene" uid="uid://di1mswk628ety" path="res://prefabs/magnet_power_up.tscn" id="17_rntwx"]
-[ext_resource type="PackedScene" uid="uid://d10i7o16l7c2q" path="res://prefabs/metal_beam_power_up.tscn" id="18_hjdsw"]
 [ext_resource type="Texture2D" uid="uid://dhnx4flhomj4m" path="res://prefabs/Brick(4).atlastex" id="19_y0bui"]
 [ext_resource type="Texture2D" uid="uid://dy3mwx5qxa3om" path="res://prefabs/Brick(3).atlastex" id="20_cuxjm"]
 [ext_resource type="Texture2D" uid="uid://jrodibporqka" path="res://prefabs/Brick(2).atlastex" id="21_kjekj"]
@@ -93,9 +92,10 @@ size = Vector2(117.787, 50.8535)
 [node name="Level_3_scene" type="Node2D"]
 script = ExtResource("1_3fx3n")
 is_timer_level = true
-timer_duration = 70.0
+timer_duration = 40.0
 
 [node name="Background" type="TextureRect" parent="."]
+z_index = -2
 offset_left = 803.0
 offset_top = -1.0
 offset_right = 2595.0
@@ -147,8 +147,8 @@ texture = ExtResource("9_636vl")
 offset = Vector2(0, -50)
 
 [node name="HeartsSystem3Lifes" type="Sprite2D" parent="."]
-position = Vector2(584, 69)
-scale = Vector2(0.7, 0.7)
+position = Vector2(643, 39)
+scale = Vector2(0.4, 0.4)
 texture = ExtResource("10_d0hgs")
 
 [node name="Ball" parent="." instance=ExtResource("11_80gs2")]
@@ -265,12 +265,13 @@ script = ExtResource("15_vrc4l")
 current_level = "Level 3"
 
 [node name="Brick1" type="StaticBody2D" parent="Bricks_in_level" groups=["Bricks"]]
-position = Vector2(218, 433)
+position = Vector2(194, 373)
 physics_material_override = SubResource("PhysicsMaterial_q1s4i")
 script = ExtResource("16_akp3t")
 start_brick = 1
-powerup_scenes = Array[PackedScene]([ExtResource("17_rntwx"), ExtResource("18_hjdsw")])
-powerup_chances = Array[float]([0.5, 0.5])
+powerup_chance = 0.4
+powerup_scenes = Array[PackedScene]([ExtResource("17_rntwx")])
+powerup_chances = Array[float]([1.0])
 brick_4_texture = ExtResource("19_y0bui")
 brick_3_texture = ExtResource("20_cuxjm")
 brick_2_texture = ExtResource("21_kjekj")
@@ -286,12 +287,13 @@ scale = Vector2(0.43, 0.457)
 texture = ExtResource("22_3v5rb")
 
 [node name="Brick2" type="StaticBody2D" parent="Bricks_in_level" groups=["Bricks"]]
-position = Vector2(273, 433)
+position = Vector2(194, 323)
 physics_material_override = SubResource("PhysicsMaterial_q1s4i")
 script = ExtResource("16_akp3t")
-start_brick = 2
-powerup_scenes = Array[PackedScene]([ExtResource("17_rntwx"), ExtResource("18_hjdsw")])
-powerup_chances = Array[float]([0.5, 0.5])
+start_brick = 1
+powerup_chance = 0.4
+powerup_scenes = Array[PackedScene]([ExtResource("17_rntwx")])
+powerup_chances = Array[float]([1.0])
 brick_4_texture = ExtResource("19_y0bui")
 brick_3_texture = ExtResource("20_cuxjm")
 brick_2_texture = ExtResource("21_kjekj")
@@ -304,15 +306,16 @@ shape = SubResource("RectangleShape2D_8xt01")
 
 [node name="Sprite2D" type="Sprite2D" parent="Bricks_in_level/Brick2"]
 scale = Vector2(0.43, 0.457)
-texture = ExtResource("21_kjekj")
+texture = ExtResource("22_3v5rb")
 
 [node name="Brick3" type="StaticBody2D" parent="Bricks_in_level" groups=["Bricks"]]
-position = Vector2(328, 433)
+position = Vector2(194, 273)
 physics_material_override = SubResource("PhysicsMaterial_q1s4i")
 script = ExtResource("16_akp3t")
-start_brick = 3
-powerup_scenes = Array[PackedScene]([ExtResource("17_rntwx"), ExtResource("18_hjdsw")])
-powerup_chances = Array[float]([0.5, 0.5])
+start_brick = 1
+powerup_chance = 0.4
+powerup_scenes = Array[PackedScene]([ExtResource("17_rntwx")])
+powerup_chances = Array[float]([1.0])
 brick_4_texture = ExtResource("19_y0bui")
 brick_3_texture = ExtResource("20_cuxjm")
 brick_2_texture = ExtResource("21_kjekj")
@@ -325,14 +328,16 @@ shape = SubResource("RectangleShape2D_8xt01")
 
 [node name="Sprite2D" type="Sprite2D" parent="Bricks_in_level/Brick3"]
 scale = Vector2(0.43, 0.457)
-texture = ExtResource("20_cuxjm")
+texture = ExtResource("22_3v5rb")
 
 [node name="Brick4" type="StaticBody2D" parent="Bricks_in_level" groups=["Bricks"]]
-position = Vector2(383, 433)
+position = Vector2(194, 223)
 physics_material_override = SubResource("PhysicsMaterial_q1s4i")
 script = ExtResource("16_akp3t")
-powerup_scenes = Array[PackedScene]([ExtResource("17_rntwx"), ExtResource("18_hjdsw")])
-powerup_chances = Array[float]([0.5, 0.5])
+start_brick = 1
+powerup_chance = 0.4
+powerup_scenes = Array[PackedScene]([ExtResource("17_rntwx")])
+powerup_chances = Array[float]([1.0])
 brick_4_texture = ExtResource("19_y0bui")
 brick_3_texture = ExtResource("20_cuxjm")
 brick_2_texture = ExtResource("21_kjekj")
@@ -345,15 +350,16 @@ shape = SubResource("RectangleShape2D_8xt01")
 
 [node name="Sprite2D" type="Sprite2D" parent="Bricks_in_level/Brick4"]
 scale = Vector2(0.43, 0.457)
-texture = ExtResource("19_y0bui")
+texture = ExtResource("22_3v5rb")
 
 [node name="Brick5" type="StaticBody2D" parent="Bricks_in_level" groups=["Bricks"]]
-position = Vector2(438, 433)
+position = Vector2(194, 173)
 physics_material_override = SubResource("PhysicsMaterial_q1s4i")
 script = ExtResource("16_akp3t")
-start_brick = 3
-powerup_scenes = Array[PackedScene]([ExtResource("17_rntwx"), ExtResource("18_hjdsw")])
-powerup_chances = Array[float]([0.5, 0.5])
+start_brick = 1
+powerup_chance = 0.4
+powerup_scenes = Array[PackedScene]([ExtResource("17_rntwx")])
+powerup_chances = Array[float]([1.0])
 brick_4_texture = ExtResource("19_y0bui")
 brick_3_texture = ExtResource("20_cuxjm")
 brick_2_texture = ExtResource("21_kjekj")
@@ -366,15 +372,16 @@ shape = SubResource("RectangleShape2D_8xt01")
 
 [node name="Sprite2D" type="Sprite2D" parent="Bricks_in_level/Brick5"]
 scale = Vector2(0.43, 0.457)
-texture = ExtResource("20_cuxjm")
+texture = ExtResource("22_3v5rb")
 
 [node name="Brick6" type="StaticBody2D" parent="Bricks_in_level" groups=["Bricks"]]
-position = Vector2(493, 433)
+position = Vector2(194, 123)
 physics_material_override = SubResource("PhysicsMaterial_q1s4i")
 script = ExtResource("16_akp3t")
-start_brick = 2
-powerup_scenes = Array[PackedScene]([ExtResource("17_rntwx"), ExtResource("18_hjdsw")])
-powerup_chances = Array[float]([0.5, 0.5])
+start_brick = 1
+powerup_chance = 0.4
+powerup_scenes = Array[PackedScene]([ExtResource("17_rntwx")])
+powerup_chances = Array[float]([1.0])
 brick_4_texture = ExtResource("19_y0bui")
 brick_3_texture = ExtResource("20_cuxjm")
 brick_2_texture = ExtResource("21_kjekj")
@@ -387,15 +394,16 @@ shape = SubResource("RectangleShape2D_8xt01")
 
 [node name="Sprite2D" type="Sprite2D" parent="Bricks_in_level/Brick6"]
 scale = Vector2(0.43, 0.457)
-texture = ExtResource("21_kjekj")
+texture = ExtResource("22_3v5rb")
 
 [node name="Brick7" type="StaticBody2D" parent="Bricks_in_level" groups=["Bricks"]]
-position = Vector2(548, 433)
+position = Vector2(194, 73)
 physics_material_override = SubResource("PhysicsMaterial_q1s4i")
 script = ExtResource("16_akp3t")
 start_brick = 1
-powerup_scenes = Array[PackedScene]([ExtResource("17_rntwx"), ExtResource("18_hjdsw")])
-powerup_chances = Array[float]([0.5, 0.5])
+powerup_chance = 0.4
+powerup_scenes = Array[PackedScene]([ExtResource("17_rntwx")])
+powerup_chances = Array[float]([1.0])
 brick_4_texture = ExtResource("19_y0bui")
 brick_3_texture = ExtResource("20_cuxjm")
 brick_2_texture = ExtResource("21_kjekj")
@@ -410,12 +418,783 @@ shape = SubResource("RectangleShape2D_8xt01")
 scale = Vector2(0.43, 0.457)
 texture = ExtResource("22_3v5rb")
 
+[node name="Brick8" type="StaticBody2D" parent="Bricks_in_level" groups=["Bricks"]]
+position = Vector2(371, 373)
+physics_material_override = SubResource("PhysicsMaterial_q1s4i")
+script = ExtResource("16_akp3t")
+start_brick = 1
+powerup_chance = 0.4
+powerup_scenes = Array[PackedScene]([ExtResource("17_rntwx")])
+powerup_chances = Array[float]([1.0])
+brick_4_texture = ExtResource("19_y0bui")
+brick_3_texture = ExtResource("20_cuxjm")
+brick_2_texture = ExtResource("21_kjekj")
+brick_1_texture = ExtResource("22_3v5rb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks_in_level/Brick8"]
+position = Vector2(-0.0909424, 0.459106)
+scale = Vector2(0.47, 0.49)
+shape = SubResource("RectangleShape2D_8xt01")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bricks_in_level/Brick8"]
+scale = Vector2(0.43, 0.457)
+texture = ExtResource("22_3v5rb")
+
+[node name="Brick9" type="StaticBody2D" parent="Bricks_in_level" groups=["Bricks"]]
+position = Vector2(371, 323)
+physics_material_override = SubResource("PhysicsMaterial_q1s4i")
+script = ExtResource("16_akp3t")
+start_brick = 1
+powerup_chance = 0.4
+powerup_scenes = Array[PackedScene]([ExtResource("17_rntwx")])
+powerup_chances = Array[float]([1.0])
+brick_4_texture = ExtResource("19_y0bui")
+brick_3_texture = ExtResource("20_cuxjm")
+brick_2_texture = ExtResource("21_kjekj")
+brick_1_texture = ExtResource("22_3v5rb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks_in_level/Brick9"]
+position = Vector2(-0.0909424, 0.459106)
+scale = Vector2(0.47, 0.49)
+shape = SubResource("RectangleShape2D_8xt01")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bricks_in_level/Brick9"]
+scale = Vector2(0.43, 0.457)
+texture = ExtResource("22_3v5rb")
+
+[node name="Brick10" type="StaticBody2D" parent="Bricks_in_level" groups=["Bricks"]]
+position = Vector2(371, 273)
+physics_material_override = SubResource("PhysicsMaterial_q1s4i")
+script = ExtResource("16_akp3t")
+start_brick = 1
+powerup_chance = 0.4
+powerup_scenes = Array[PackedScene]([ExtResource("17_rntwx")])
+powerup_chances = Array[float]([1.0])
+brick_4_texture = ExtResource("19_y0bui")
+brick_3_texture = ExtResource("20_cuxjm")
+brick_2_texture = ExtResource("21_kjekj")
+brick_1_texture = ExtResource("22_3v5rb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks_in_level/Brick10"]
+position = Vector2(-0.0909424, 0.459106)
+scale = Vector2(0.47, 0.49)
+shape = SubResource("RectangleShape2D_8xt01")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bricks_in_level/Brick10"]
+scale = Vector2(0.43, 0.457)
+texture = ExtResource("22_3v5rb")
+
+[node name="Brick11" type="StaticBody2D" parent="Bricks_in_level" groups=["Bricks"]]
+position = Vector2(371, 223)
+physics_material_override = SubResource("PhysicsMaterial_q1s4i")
+script = ExtResource("16_akp3t")
+start_brick = 1
+powerup_chance = 0.4
+powerup_scenes = Array[PackedScene]([ExtResource("17_rntwx")])
+powerup_chances = Array[float]([1.0])
+brick_4_texture = ExtResource("19_y0bui")
+brick_3_texture = ExtResource("20_cuxjm")
+brick_2_texture = ExtResource("21_kjekj")
+brick_1_texture = ExtResource("22_3v5rb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks_in_level/Brick11"]
+position = Vector2(-0.0909424, 0.459106)
+scale = Vector2(0.47, 0.49)
+shape = SubResource("RectangleShape2D_8xt01")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bricks_in_level/Brick11"]
+scale = Vector2(0.43, 0.457)
+texture = ExtResource("22_3v5rb")
+
+[node name="Brick12" type="StaticBody2D" parent="Bricks_in_level" groups=["Bricks"]]
+position = Vector2(371, 173)
+physics_material_override = SubResource("PhysicsMaterial_q1s4i")
+script = ExtResource("16_akp3t")
+start_brick = 1
+powerup_chance = 0.4
+powerup_scenes = Array[PackedScene]([ExtResource("17_rntwx")])
+powerup_chances = Array[float]([1.0])
+brick_4_texture = ExtResource("19_y0bui")
+brick_3_texture = ExtResource("20_cuxjm")
+brick_2_texture = ExtResource("21_kjekj")
+brick_1_texture = ExtResource("22_3v5rb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks_in_level/Brick12"]
+position = Vector2(-0.0909424, 0.459106)
+scale = Vector2(0.47, 0.49)
+shape = SubResource("RectangleShape2D_8xt01")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bricks_in_level/Brick12"]
+scale = Vector2(0.43, 0.457)
+texture = ExtResource("22_3v5rb")
+
+[node name="Brick13" type="StaticBody2D" parent="Bricks_in_level" groups=["Bricks"]]
+position = Vector2(371, 123)
+physics_material_override = SubResource("PhysicsMaterial_q1s4i")
+script = ExtResource("16_akp3t")
+start_brick = 1
+powerup_chance = 0.4
+powerup_scenes = Array[PackedScene]([ExtResource("17_rntwx")])
+powerup_chances = Array[float]([1.0])
+brick_4_texture = ExtResource("19_y0bui")
+brick_3_texture = ExtResource("20_cuxjm")
+brick_2_texture = ExtResource("21_kjekj")
+brick_1_texture = ExtResource("22_3v5rb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks_in_level/Brick13"]
+position = Vector2(-0.0909424, 0.459106)
+scale = Vector2(0.47, 0.49)
+shape = SubResource("RectangleShape2D_8xt01")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bricks_in_level/Brick13"]
+scale = Vector2(0.43, 0.457)
+texture = ExtResource("22_3v5rb")
+
+[node name="Brick14" type="StaticBody2D" parent="Bricks_in_level" groups=["Bricks"]]
+position = Vector2(371, 73)
+physics_material_override = SubResource("PhysicsMaterial_q1s4i")
+script = ExtResource("16_akp3t")
+start_brick = 1
+powerup_chance = 0.4
+powerup_scenes = Array[PackedScene]([ExtResource("17_rntwx")])
+powerup_chances = Array[float]([1.0])
+brick_4_texture = ExtResource("19_y0bui")
+brick_3_texture = ExtResource("20_cuxjm")
+brick_2_texture = ExtResource("21_kjekj")
+brick_1_texture = ExtResource("22_3v5rb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks_in_level/Brick14"]
+position = Vector2(-0.0909424, 0.459106)
+scale = Vector2(0.47, 0.49)
+shape = SubResource("RectangleShape2D_8xt01")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bricks_in_level/Brick14"]
+scale = Vector2(0.43, 0.457)
+texture = ExtResource("22_3v5rb")
+
+[node name="Brick15" type="StaticBody2D" parent="Bricks_in_level" groups=["Bricks"]]
+position = Vector2(541, 373)
+physics_material_override = SubResource("PhysicsMaterial_q1s4i")
+script = ExtResource("16_akp3t")
+start_brick = 1
+powerup_chance = 0.4
+powerup_scenes = Array[PackedScene]([ExtResource("17_rntwx")])
+powerup_chances = Array[float]([1.0])
+brick_4_texture = ExtResource("19_y0bui")
+brick_3_texture = ExtResource("20_cuxjm")
+brick_2_texture = ExtResource("21_kjekj")
+brick_1_texture = ExtResource("22_3v5rb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks_in_level/Brick15"]
+position = Vector2(-0.0909424, 0.459106)
+scale = Vector2(0.47, 0.49)
+shape = SubResource("RectangleShape2D_8xt01")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bricks_in_level/Brick15"]
+scale = Vector2(0.43, 0.457)
+texture = ExtResource("22_3v5rb")
+
+[node name="Brick16" type="StaticBody2D" parent="Bricks_in_level" groups=["Bricks"]]
+position = Vector2(541, 323)
+physics_material_override = SubResource("PhysicsMaterial_q1s4i")
+script = ExtResource("16_akp3t")
+start_brick = 1
+powerup_chance = 0.4
+powerup_scenes = Array[PackedScene]([ExtResource("17_rntwx")])
+powerup_chances = Array[float]([1.0])
+brick_4_texture = ExtResource("19_y0bui")
+brick_3_texture = ExtResource("20_cuxjm")
+brick_2_texture = ExtResource("21_kjekj")
+brick_1_texture = ExtResource("22_3v5rb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks_in_level/Brick16"]
+position = Vector2(-0.0909424, 0.459106)
+scale = Vector2(0.47, 0.49)
+shape = SubResource("RectangleShape2D_8xt01")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bricks_in_level/Brick16"]
+scale = Vector2(0.43, 0.457)
+texture = ExtResource("22_3v5rb")
+
+[node name="Brick17" type="StaticBody2D" parent="Bricks_in_level" groups=["Bricks"]]
+position = Vector2(541, 273)
+physics_material_override = SubResource("PhysicsMaterial_q1s4i")
+script = ExtResource("16_akp3t")
+start_brick = 1
+powerup_chance = 0.4
+powerup_scenes = Array[PackedScene]([ExtResource("17_rntwx")])
+powerup_chances = Array[float]([1.0])
+brick_4_texture = ExtResource("19_y0bui")
+brick_3_texture = ExtResource("20_cuxjm")
+brick_2_texture = ExtResource("21_kjekj")
+brick_1_texture = ExtResource("22_3v5rb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks_in_level/Brick17"]
+position = Vector2(-0.0909424, 0.459106)
+scale = Vector2(0.47, 0.49)
+shape = SubResource("RectangleShape2D_8xt01")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bricks_in_level/Brick17"]
+scale = Vector2(0.43, 0.457)
+texture = ExtResource("22_3v5rb")
+
+[node name="Brick18" type="StaticBody2D" parent="Bricks_in_level" groups=["Bricks"]]
+position = Vector2(541, 223)
+physics_material_override = SubResource("PhysicsMaterial_q1s4i")
+script = ExtResource("16_akp3t")
+start_brick = 1
+powerup_chance = 0.4
+powerup_scenes = Array[PackedScene]([ExtResource("17_rntwx")])
+powerup_chances = Array[float]([1.0])
+brick_4_texture = ExtResource("19_y0bui")
+brick_3_texture = ExtResource("20_cuxjm")
+brick_2_texture = ExtResource("21_kjekj")
+brick_1_texture = ExtResource("22_3v5rb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks_in_level/Brick18"]
+position = Vector2(-0.0909424, 0.459106)
+scale = Vector2(0.47, 0.49)
+shape = SubResource("RectangleShape2D_8xt01")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bricks_in_level/Brick18"]
+scale = Vector2(0.43, 0.457)
+texture = ExtResource("22_3v5rb")
+
+[node name="Brick19" type="StaticBody2D" parent="Bricks_in_level" groups=["Bricks"]]
+position = Vector2(541, 173)
+physics_material_override = SubResource("PhysicsMaterial_q1s4i")
+script = ExtResource("16_akp3t")
+start_brick = 1
+powerup_chance = 0.4
+powerup_scenes = Array[PackedScene]([ExtResource("17_rntwx")])
+powerup_chances = Array[float]([1.0])
+brick_4_texture = ExtResource("19_y0bui")
+brick_3_texture = ExtResource("20_cuxjm")
+brick_2_texture = ExtResource("21_kjekj")
+brick_1_texture = ExtResource("22_3v5rb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks_in_level/Brick19"]
+position = Vector2(-0.0909424, 0.459106)
+scale = Vector2(0.47, 0.49)
+shape = SubResource("RectangleShape2D_8xt01")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bricks_in_level/Brick19"]
+scale = Vector2(0.43, 0.457)
+texture = ExtResource("22_3v5rb")
+
+[node name="Brick20" type="StaticBody2D" parent="Bricks_in_level" groups=["Bricks"]]
+position = Vector2(541, 123)
+physics_material_override = SubResource("PhysicsMaterial_q1s4i")
+script = ExtResource("16_akp3t")
+start_brick = 1
+powerup_chance = 0.4
+powerup_scenes = Array[PackedScene]([ExtResource("17_rntwx")])
+powerup_chances = Array[float]([1.0])
+brick_4_texture = ExtResource("19_y0bui")
+brick_3_texture = ExtResource("20_cuxjm")
+brick_2_texture = ExtResource("21_kjekj")
+brick_1_texture = ExtResource("22_3v5rb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks_in_level/Brick20"]
+position = Vector2(-0.0909424, 0.459106)
+scale = Vector2(0.47, 0.49)
+shape = SubResource("RectangleShape2D_8xt01")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bricks_in_level/Brick20"]
+scale = Vector2(0.43, 0.457)
+texture = ExtResource("22_3v5rb")
+
+[node name="Brick21" type="StaticBody2D" parent="Bricks_in_level" groups=["Bricks"]]
+position = Vector2(541, 73)
+physics_material_override = SubResource("PhysicsMaterial_q1s4i")
+script = ExtResource("16_akp3t")
+start_brick = 1
+powerup_chance = 0.4
+powerup_scenes = Array[PackedScene]([ExtResource("17_rntwx")])
+powerup_chances = Array[float]([1.0])
+brick_4_texture = ExtResource("19_y0bui")
+brick_3_texture = ExtResource("20_cuxjm")
+brick_2_texture = ExtResource("21_kjekj")
+brick_1_texture = ExtResource("22_3v5rb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks_in_level/Brick21"]
+position = Vector2(-0.0909424, 0.459106)
+scale = Vector2(0.47, 0.49)
+shape = SubResource("RectangleShape2D_8xt01")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bricks_in_level/Brick21"]
+scale = Vector2(0.43, 0.457)
+texture = ExtResource("22_3v5rb")
+
+[node name="Brick22" type="StaticBody2D" parent="Bricks_in_level" groups=["Bricks"]]
+position = Vector2(194, 720)
+physics_material_override = SubResource("PhysicsMaterial_q1s4i")
+script = ExtResource("16_akp3t")
+start_brick = 1
+powerup_chance = 0.4
+powerup_scenes = Array[PackedScene]([ExtResource("17_rntwx")])
+powerup_chances = Array[float]([1.0])
+brick_4_texture = ExtResource("19_y0bui")
+brick_3_texture = ExtResource("20_cuxjm")
+brick_2_texture = ExtResource("21_kjekj")
+brick_1_texture = ExtResource("22_3v5rb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks_in_level/Brick22"]
+position = Vector2(-0.0909424, 0.459106)
+scale = Vector2(0.47, 0.49)
+shape = SubResource("RectangleShape2D_8xt01")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bricks_in_level/Brick22"]
+scale = Vector2(0.43, 0.457)
+texture = ExtResource("22_3v5rb")
+
+[node name="Brick23" type="StaticBody2D" parent="Bricks_in_level" groups=["Bricks"]]
+position = Vector2(194, 670)
+physics_material_override = SubResource("PhysicsMaterial_q1s4i")
+script = ExtResource("16_akp3t")
+start_brick = 1
+powerup_chance = 0.4
+powerup_scenes = Array[PackedScene]([ExtResource("17_rntwx")])
+powerup_chances = Array[float]([1.0])
+brick_4_texture = ExtResource("19_y0bui")
+brick_3_texture = ExtResource("20_cuxjm")
+brick_2_texture = ExtResource("21_kjekj")
+brick_1_texture = ExtResource("22_3v5rb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks_in_level/Brick23"]
+position = Vector2(-0.0909424, 0.459106)
+scale = Vector2(0.47, 0.49)
+shape = SubResource("RectangleShape2D_8xt01")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bricks_in_level/Brick23"]
+scale = Vector2(0.43, 0.457)
+texture = ExtResource("22_3v5rb")
+
+[node name="Brick24" type="StaticBody2D" parent="Bricks_in_level" groups=["Bricks"]]
+position = Vector2(194, 620)
+physics_material_override = SubResource("PhysicsMaterial_q1s4i")
+script = ExtResource("16_akp3t")
+start_brick = 1
+powerup_chance = 0.4
+powerup_scenes = Array[PackedScene]([ExtResource("17_rntwx")])
+powerup_chances = Array[float]([1.0])
+brick_4_texture = ExtResource("19_y0bui")
+brick_3_texture = ExtResource("20_cuxjm")
+brick_2_texture = ExtResource("21_kjekj")
+brick_1_texture = ExtResource("22_3v5rb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks_in_level/Brick24"]
+position = Vector2(-0.0909424, 0.459106)
+scale = Vector2(0.47, 0.49)
+shape = SubResource("RectangleShape2D_8xt01")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bricks_in_level/Brick24"]
+scale = Vector2(0.43, 0.457)
+texture = ExtResource("22_3v5rb")
+
+[node name="Brick25" type="StaticBody2D" parent="Bricks_in_level" groups=["Bricks"]]
+position = Vector2(194, 570)
+physics_material_override = SubResource("PhysicsMaterial_q1s4i")
+script = ExtResource("16_akp3t")
+start_brick = 1
+powerup_chance = 0.4
+powerup_scenes = Array[PackedScene]([ExtResource("17_rntwx")])
+powerup_chances = Array[float]([1.0])
+brick_4_texture = ExtResource("19_y0bui")
+brick_3_texture = ExtResource("20_cuxjm")
+brick_2_texture = ExtResource("21_kjekj")
+brick_1_texture = ExtResource("22_3v5rb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks_in_level/Brick25"]
+position = Vector2(-0.0909424, 0.459106)
+scale = Vector2(0.47, 0.49)
+shape = SubResource("RectangleShape2D_8xt01")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bricks_in_level/Brick25"]
+scale = Vector2(0.43, 0.457)
+texture = ExtResource("22_3v5rb")
+
+[node name="Brick26" type="StaticBody2D" parent="Bricks_in_level" groups=["Bricks"]]
+position = Vector2(194, 520)
+physics_material_override = SubResource("PhysicsMaterial_q1s4i")
+script = ExtResource("16_akp3t")
+start_brick = 1
+powerup_chance = 0.4
+powerup_scenes = Array[PackedScene]([ExtResource("17_rntwx")])
+powerup_chances = Array[float]([1.0])
+brick_4_texture = ExtResource("19_y0bui")
+brick_3_texture = ExtResource("20_cuxjm")
+brick_2_texture = ExtResource("21_kjekj")
+brick_1_texture = ExtResource("22_3v5rb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks_in_level/Brick26"]
+position = Vector2(-0.0909424, 0.459106)
+scale = Vector2(0.47, 0.49)
+shape = SubResource("RectangleShape2D_8xt01")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bricks_in_level/Brick26"]
+scale = Vector2(0.43, 0.457)
+texture = ExtResource("22_3v5rb")
+
+[node name="Brick27" type="StaticBody2D" parent="Bricks_in_level" groups=["Bricks"]]
+position = Vector2(194, 470)
+physics_material_override = SubResource("PhysicsMaterial_q1s4i")
+script = ExtResource("16_akp3t")
+start_brick = 1
+powerup_chance = 0.4
+powerup_scenes = Array[PackedScene]([ExtResource("17_rntwx")])
+powerup_chances = Array[float]([1.0])
+brick_4_texture = ExtResource("19_y0bui")
+brick_3_texture = ExtResource("20_cuxjm")
+brick_2_texture = ExtResource("21_kjekj")
+brick_1_texture = ExtResource("22_3v5rb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks_in_level/Brick27"]
+position = Vector2(-0.0909424, 0.459106)
+scale = Vector2(0.47, 0.49)
+shape = SubResource("RectangleShape2D_8xt01")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bricks_in_level/Brick27"]
+scale = Vector2(0.43, 0.457)
+texture = ExtResource("22_3v5rb")
+
+[node name="Brick28" type="StaticBody2D" parent="Bricks_in_level" groups=["Bricks"]]
+position = Vector2(194, 420)
+physics_material_override = SubResource("PhysicsMaterial_q1s4i")
+script = ExtResource("16_akp3t")
+start_brick = 1
+powerup_chance = 0.4
+powerup_scenes = Array[PackedScene]([ExtResource("17_rntwx")])
+powerup_chances = Array[float]([1.0])
+brick_4_texture = ExtResource("19_y0bui")
+brick_3_texture = ExtResource("20_cuxjm")
+brick_2_texture = ExtResource("21_kjekj")
+brick_1_texture = ExtResource("22_3v5rb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks_in_level/Brick28"]
+position = Vector2(-0.0909424, 0.459106)
+scale = Vector2(0.47, 0.49)
+shape = SubResource("RectangleShape2D_8xt01")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bricks_in_level/Brick28"]
+scale = Vector2(0.43, 0.457)
+texture = ExtResource("22_3v5rb")
+
+[node name="Brick29" type="StaticBody2D" parent="Bricks_in_level" groups=["Bricks"]]
+position = Vector2(371, 720)
+physics_material_override = SubResource("PhysicsMaterial_q1s4i")
+script = ExtResource("16_akp3t")
+start_brick = 1
+powerup_chance = 0.4
+powerup_scenes = Array[PackedScene]([ExtResource("17_rntwx")])
+powerup_chances = Array[float]([1.0])
+brick_4_texture = ExtResource("19_y0bui")
+brick_3_texture = ExtResource("20_cuxjm")
+brick_2_texture = ExtResource("21_kjekj")
+brick_1_texture = ExtResource("22_3v5rb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks_in_level/Brick29"]
+position = Vector2(-0.0909424, 0.459106)
+scale = Vector2(0.47, 0.49)
+shape = SubResource("RectangleShape2D_8xt01")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bricks_in_level/Brick29"]
+scale = Vector2(0.43, 0.457)
+texture = ExtResource("22_3v5rb")
+
+[node name="Brick30" type="StaticBody2D" parent="Bricks_in_level" groups=["Bricks"]]
+position = Vector2(371, 670)
+physics_material_override = SubResource("PhysicsMaterial_q1s4i")
+script = ExtResource("16_akp3t")
+start_brick = 1
+powerup_chance = 0.4
+powerup_scenes = Array[PackedScene]([ExtResource("17_rntwx")])
+powerup_chances = Array[float]([1.0])
+brick_4_texture = ExtResource("19_y0bui")
+brick_3_texture = ExtResource("20_cuxjm")
+brick_2_texture = ExtResource("21_kjekj")
+brick_1_texture = ExtResource("22_3v5rb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks_in_level/Brick30"]
+position = Vector2(-0.0909424, 0.459106)
+scale = Vector2(0.47, 0.49)
+shape = SubResource("RectangleShape2D_8xt01")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bricks_in_level/Brick30"]
+scale = Vector2(0.43, 0.457)
+texture = ExtResource("22_3v5rb")
+
+[node name="Brick31" type="StaticBody2D" parent="Bricks_in_level" groups=["Bricks"]]
+position = Vector2(371, 620)
+physics_material_override = SubResource("PhysicsMaterial_q1s4i")
+script = ExtResource("16_akp3t")
+start_brick = 1
+powerup_chance = 0.4
+powerup_scenes = Array[PackedScene]([ExtResource("17_rntwx")])
+powerup_chances = Array[float]([1.0])
+brick_4_texture = ExtResource("19_y0bui")
+brick_3_texture = ExtResource("20_cuxjm")
+brick_2_texture = ExtResource("21_kjekj")
+brick_1_texture = ExtResource("22_3v5rb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks_in_level/Brick31"]
+position = Vector2(-0.0909424, 0.459106)
+scale = Vector2(0.47, 0.49)
+shape = SubResource("RectangleShape2D_8xt01")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bricks_in_level/Brick31"]
+scale = Vector2(0.43, 0.457)
+texture = ExtResource("22_3v5rb")
+
+[node name="Brick32" type="StaticBody2D" parent="Bricks_in_level" groups=["Bricks"]]
+position = Vector2(371, 570)
+physics_material_override = SubResource("PhysicsMaterial_q1s4i")
+script = ExtResource("16_akp3t")
+start_brick = 1
+powerup_chance = 0.4
+powerup_scenes = Array[PackedScene]([ExtResource("17_rntwx")])
+powerup_chances = Array[float]([1.0])
+brick_4_texture = ExtResource("19_y0bui")
+brick_3_texture = ExtResource("20_cuxjm")
+brick_2_texture = ExtResource("21_kjekj")
+brick_1_texture = ExtResource("22_3v5rb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks_in_level/Brick32"]
+position = Vector2(-0.0909424, 0.459106)
+scale = Vector2(0.47, 0.49)
+shape = SubResource("RectangleShape2D_8xt01")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bricks_in_level/Brick32"]
+scale = Vector2(0.43, 0.457)
+texture = ExtResource("22_3v5rb")
+
+[node name="Brick33" type="StaticBody2D" parent="Bricks_in_level" groups=["Bricks"]]
+position = Vector2(371, 520)
+physics_material_override = SubResource("PhysicsMaterial_q1s4i")
+script = ExtResource("16_akp3t")
+start_brick = 1
+powerup_chance = 0.4
+powerup_scenes = Array[PackedScene]([ExtResource("17_rntwx")])
+powerup_chances = Array[float]([1.0])
+brick_4_texture = ExtResource("19_y0bui")
+brick_3_texture = ExtResource("20_cuxjm")
+brick_2_texture = ExtResource("21_kjekj")
+brick_1_texture = ExtResource("22_3v5rb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks_in_level/Brick33"]
+position = Vector2(-0.0909424, 0.459106)
+scale = Vector2(0.47, 0.49)
+shape = SubResource("RectangleShape2D_8xt01")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bricks_in_level/Brick33"]
+scale = Vector2(0.43, 0.457)
+texture = ExtResource("22_3v5rb")
+
+[node name="Brick34" type="StaticBody2D" parent="Bricks_in_level" groups=["Bricks"]]
+position = Vector2(371, 470)
+physics_material_override = SubResource("PhysicsMaterial_q1s4i")
+script = ExtResource("16_akp3t")
+start_brick = 1
+powerup_chance = 0.4
+powerup_scenes = Array[PackedScene]([ExtResource("17_rntwx")])
+powerup_chances = Array[float]([1.0])
+brick_4_texture = ExtResource("19_y0bui")
+brick_3_texture = ExtResource("20_cuxjm")
+brick_2_texture = ExtResource("21_kjekj")
+brick_1_texture = ExtResource("22_3v5rb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks_in_level/Brick34"]
+position = Vector2(-0.0909424, 0.459106)
+scale = Vector2(0.47, 0.49)
+shape = SubResource("RectangleShape2D_8xt01")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bricks_in_level/Brick34"]
+scale = Vector2(0.43, 0.457)
+texture = ExtResource("22_3v5rb")
+
+[node name="Brick35" type="StaticBody2D" parent="Bricks_in_level" groups=["Bricks"]]
+position = Vector2(371, 420)
+physics_material_override = SubResource("PhysicsMaterial_q1s4i")
+script = ExtResource("16_akp3t")
+start_brick = 1
+powerup_chance = 0.4
+powerup_scenes = Array[PackedScene]([ExtResource("17_rntwx")])
+powerup_chances = Array[float]([1.0])
+brick_4_texture = ExtResource("19_y0bui")
+brick_3_texture = ExtResource("20_cuxjm")
+brick_2_texture = ExtResource("21_kjekj")
+brick_1_texture = ExtResource("22_3v5rb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks_in_level/Brick35"]
+position = Vector2(-0.0909424, 0.459106)
+scale = Vector2(0.47, 0.49)
+shape = SubResource("RectangleShape2D_8xt01")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bricks_in_level/Brick35"]
+scale = Vector2(0.43, 0.457)
+texture = ExtResource("22_3v5rb")
+
+[node name="Brick36" type="StaticBody2D" parent="Bricks_in_level" groups=["Bricks"]]
+position = Vector2(541, 720)
+physics_material_override = SubResource("PhysicsMaterial_q1s4i")
+script = ExtResource("16_akp3t")
+start_brick = 1
+powerup_chance = 0.4
+powerup_scenes = Array[PackedScene]([ExtResource("17_rntwx")])
+powerup_chances = Array[float]([1.0])
+brick_4_texture = ExtResource("19_y0bui")
+brick_3_texture = ExtResource("20_cuxjm")
+brick_2_texture = ExtResource("21_kjekj")
+brick_1_texture = ExtResource("22_3v5rb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks_in_level/Brick36"]
+position = Vector2(-0.0909424, 0.459106)
+scale = Vector2(0.47, 0.49)
+shape = SubResource("RectangleShape2D_8xt01")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bricks_in_level/Brick36"]
+scale = Vector2(0.43, 0.457)
+texture = ExtResource("22_3v5rb")
+
+[node name="Brick37" type="StaticBody2D" parent="Bricks_in_level" groups=["Bricks"]]
+position = Vector2(541, 670)
+physics_material_override = SubResource("PhysicsMaterial_q1s4i")
+script = ExtResource("16_akp3t")
+start_brick = 1
+powerup_chance = 0.4
+powerup_scenes = Array[PackedScene]([ExtResource("17_rntwx")])
+powerup_chances = Array[float]([1.0])
+brick_4_texture = ExtResource("19_y0bui")
+brick_3_texture = ExtResource("20_cuxjm")
+brick_2_texture = ExtResource("21_kjekj")
+brick_1_texture = ExtResource("22_3v5rb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks_in_level/Brick37"]
+position = Vector2(-0.0909424, 0.459106)
+scale = Vector2(0.47, 0.49)
+shape = SubResource("RectangleShape2D_8xt01")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bricks_in_level/Brick37"]
+scale = Vector2(0.43, 0.457)
+texture = ExtResource("22_3v5rb")
+
+[node name="Brick38" type="StaticBody2D" parent="Bricks_in_level" groups=["Bricks"]]
+position = Vector2(541, 620)
+physics_material_override = SubResource("PhysicsMaterial_q1s4i")
+script = ExtResource("16_akp3t")
+start_brick = 1
+powerup_chance = 0.4
+powerup_scenes = Array[PackedScene]([ExtResource("17_rntwx")])
+powerup_chances = Array[float]([1.0])
+brick_4_texture = ExtResource("19_y0bui")
+brick_3_texture = ExtResource("20_cuxjm")
+brick_2_texture = ExtResource("21_kjekj")
+brick_1_texture = ExtResource("22_3v5rb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks_in_level/Brick38"]
+position = Vector2(-0.0909424, 0.459106)
+scale = Vector2(0.47, 0.49)
+shape = SubResource("RectangleShape2D_8xt01")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bricks_in_level/Brick38"]
+scale = Vector2(0.43, 0.457)
+texture = ExtResource("22_3v5rb")
+
+[node name="Brick39" type="StaticBody2D" parent="Bricks_in_level" groups=["Bricks"]]
+position = Vector2(541, 570)
+physics_material_override = SubResource("PhysicsMaterial_q1s4i")
+script = ExtResource("16_akp3t")
+start_brick = 1
+powerup_chance = 0.4
+powerup_scenes = Array[PackedScene]([ExtResource("17_rntwx")])
+powerup_chances = Array[float]([1.0])
+brick_4_texture = ExtResource("19_y0bui")
+brick_3_texture = ExtResource("20_cuxjm")
+brick_2_texture = ExtResource("21_kjekj")
+brick_1_texture = ExtResource("22_3v5rb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks_in_level/Brick39"]
+position = Vector2(-0.0909424, 0.459106)
+scale = Vector2(0.47, 0.49)
+shape = SubResource("RectangleShape2D_8xt01")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bricks_in_level/Brick39"]
+scale = Vector2(0.43, 0.457)
+texture = ExtResource("22_3v5rb")
+
+[node name="Brick40" type="StaticBody2D" parent="Bricks_in_level" groups=["Bricks"]]
+position = Vector2(541, 520)
+physics_material_override = SubResource("PhysicsMaterial_q1s4i")
+script = ExtResource("16_akp3t")
+start_brick = 1
+powerup_chance = 0.4
+powerup_scenes = Array[PackedScene]([ExtResource("17_rntwx")])
+powerup_chances = Array[float]([1.0])
+brick_4_texture = ExtResource("19_y0bui")
+brick_3_texture = ExtResource("20_cuxjm")
+brick_2_texture = ExtResource("21_kjekj")
+brick_1_texture = ExtResource("22_3v5rb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks_in_level/Brick40"]
+position = Vector2(-0.0909424, 0.459106)
+scale = Vector2(0.47, 0.49)
+shape = SubResource("RectangleShape2D_8xt01")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bricks_in_level/Brick40"]
+scale = Vector2(0.43, 0.457)
+texture = ExtResource("22_3v5rb")
+
+[node name="Brick41" type="StaticBody2D" parent="Bricks_in_level" groups=["Bricks"]]
+position = Vector2(541, 470)
+physics_material_override = SubResource("PhysicsMaterial_q1s4i")
+script = ExtResource("16_akp3t")
+start_brick = 1
+powerup_chance = 0.4
+powerup_scenes = Array[PackedScene]([ExtResource("17_rntwx")])
+powerup_chances = Array[float]([1.0])
+brick_4_texture = ExtResource("19_y0bui")
+brick_3_texture = ExtResource("20_cuxjm")
+brick_2_texture = ExtResource("21_kjekj")
+brick_1_texture = ExtResource("22_3v5rb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks_in_level/Brick41"]
+position = Vector2(-0.0909424, 0.459106)
+scale = Vector2(0.47, 0.49)
+shape = SubResource("RectangleShape2D_8xt01")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bricks_in_level/Brick41"]
+scale = Vector2(0.43, 0.457)
+texture = ExtResource("22_3v5rb")
+
+[node name="Brick42" type="StaticBody2D" parent="Bricks_in_level" groups=["Bricks"]]
+position = Vector2(541, 420)
+physics_material_override = SubResource("PhysicsMaterial_q1s4i")
+script = ExtResource("16_akp3t")
+start_brick = 1
+powerup_chance = 0.4
+powerup_scenes = Array[PackedScene]([ExtResource("17_rntwx")])
+powerup_chances = Array[float]([1.0])
+brick_4_texture = ExtResource("19_y0bui")
+brick_3_texture = ExtResource("20_cuxjm")
+brick_2_texture = ExtResource("21_kjekj")
+brick_1_texture = ExtResource("22_3v5rb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks_in_level/Brick42"]
+position = Vector2(-0.0909424, 0.459106)
+scale = Vector2(0.47, 0.49)
+shape = SubResource("RectangleShape2D_8xt01")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bricks_in_level/Brick42"]
+scale = Vector2(0.43, 0.457)
+texture = ExtResource("22_3v5rb")
+
 [node name="PowerupsHolder" type="Node2D" parent="."]
 
 [node name="GlassStorage" type="Node2D" parent="."]
+z_index = -1
 position = Vector2(-16, 59)
 script = ExtResource("23_q2lan")
-slot_count = 2
+slot_count = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="GlassStorage"]
 scale = Vector2(0.3, 0.3)

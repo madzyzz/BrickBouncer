@@ -91,7 +91,7 @@ func get_powerup_duration(powerup_type: String) -> float:
 		"metal_beam":
 			return 8.0
 		"magnet":
-			return 10.0
+			return 8.0
 		"speedup":
 			return 12
 		"test":
