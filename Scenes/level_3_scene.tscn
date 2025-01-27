@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://dtyi1plircs0w"]
+[gd_scene load_steps=37 format=3 uid="uid://dtyi1plircs0w"]
 
 [ext_resource type="Script" path="res://Scripts/level_setup.gd" id="1_3fx3n"]
 [ext_resource type="Texture2D" uid="uid://bdmtwlgfg5p4m" path="res://Images/Background Images/metal_background.png" id="2_722y8"]
@@ -9,7 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://ci2b4gn8y3bg6" path="res://prefabs/MagnetActiveForm.atlastex" id="7_emo1w"]
 [ext_resource type="Texture2D" uid="uid://b0pcute1q8awa" path="res://prefabs/MagnetActiveForm2.atlastex" id="8_uvmil"]
 [ext_resource type="Texture2D" uid="uid://403vbatxe4e6" path="res://sprites/Dotted_Line.png" id="9_636vl"]
+[ext_resource type="Texture2D" uid="uid://texxu1sj6y5q" path="res://prefabs/NegativeMagnetAnimations.atlastex" id="9_pny2a"]
 [ext_resource type="Texture2D" uid="uid://bekqvjnliex70" path="res://prefabs/HeartsSystem_3lifes.atlastex" id="10_d0hgs"]
+[ext_resource type="Texture2D" uid="uid://dqhdt4atd2j7h" path="res://prefabs/NegativeMagnetAnimations2.atlastex" id="10_n07ac"]
 [ext_resource type="PackedScene" uid="uid://bdd7y1uep7eae" path="res://prefabs/ball.tscn" id="11_80gs2"]
 [ext_resource type="Script" path="res://Scripts/try_again_button.gd" id="12_3jvhy"]
 [ext_resource type="Script" path="res://Scripts/level_menu_button.gd" id="13_wgidg"]
@@ -45,6 +47,53 @@ animations = [{
 "loop": false,
 "name": &"Ball_hits_bouncer",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_mgbow")
+}],
+"loop": false,
+"name": &"Static_magnet",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_emo1w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_uvmil")
+}],
+"loop": true,
+"name": &"magnet_bouncer",
+"speed": 2.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3i5oy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_27slv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_fs2vn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_27slv")
+}],
+"loop": false,
+"name": &"Ball_hits_bouncer",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_pny2a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_n07ac")
+}],
+"loop": true,
+"name": &"Negative_magnet",
+"speed": 2.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -124,6 +173,7 @@ rotation = 1.5708
 shape = SubResource("RectangleShape2D_gl076")
 
 [node name="Death_border" type="StaticBody2D" parent="Invisible_walls"]
+position = Vector2(-5, 27)
 
 [node name="Lower_wall" type="CollisionShape2D" parent="Invisible_walls/Death_border"]
 position = Vector2(399, 1352)
@@ -136,6 +186,11 @@ script = ExtResource("3_epcun")
 
 [node name="Bouncer_sprite_and_animations" type="AnimatedSprite2D" parent="Bouncer"]
 sprite_frames = SubResource("SpriteFrames_1q3n0")
+animation = &"Ball_hits_bouncer"
+speed_scale = 3.0
+
+[node name="Bouncer_sprite_and_animations" type="AnimatedSprite2D" parent="Bouncer/Bouncer_sprite_and_animations"]
+sprite_frames = SubResource("SpriteFrames_3i5oy")
 animation = &"Ball_hits_bouncer"
 speed_scale = 3.0
 

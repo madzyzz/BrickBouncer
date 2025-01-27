@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://b4ci0pxq7iloj"]
+[gd_scene load_steps=38 format=3 uid="uid://b4ci0pxq7iloj"]
 
 [ext_resource type="Script" path="res://Scripts/level_setup.gd" id="1_c1bgj"]
 [ext_resource type="Texture2D" uid="uid://bdmtwlgfg5p4m" path="res://Images/Background Images/metal_background.png" id="2_28045"]
@@ -11,8 +11,10 @@
 [ext_resource type="Texture2D" uid="uid://ci2b4gn8y3bg6" path="res://prefabs/MagnetActiveForm.atlastex" id="7_jm44w"]
 [ext_resource type="PackedScene" uid="uid://bdd7y1uep7eae" path="res://prefabs/ball.tscn" id="8_f2blh"]
 [ext_resource type="Texture2D" uid="uid://b0pcute1q8awa" path="res://prefabs/MagnetActiveForm2.atlastex" id="8_ueel0"]
+[ext_resource type="Texture2D" uid="uid://texxu1sj6y5q" path="res://prefabs/NegativeMagnetAnimations.atlastex" id="9_epofw"]
 [ext_resource type="Script" path="res://Scripts/try_again_button.gd" id="9_ny1a2"]
 [ext_resource type="Script" path="res://Scripts/level_menu_button.gd" id="10_rjsih"]
+[ext_resource type="Texture2D" uid="uid://dqhdt4atd2j7h" path="res://prefabs/NegativeMagnetAnimations2.atlastex" id="10_sbwws"]
 [ext_resource type="Script" path="res://Scripts/bricks_in_level.gd" id="11_6ojef"]
 [ext_resource type="Script" path="res://Scripts/next_level_button.gd" id="11_210xa"]
 [ext_resource type="Script" path="res://Scripts/brick.gd" id="12_fnx20"]
@@ -46,6 +48,53 @@ animations = [{
 "loop": false,
 "name": &"Ball_hits_bouncer",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_3h6gf")
+}],
+"loop": false,
+"name": &"Static_magnet",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_jm44w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ueel0")
+}],
+"loop": true,
+"name": &"magnet_bouncer",
+"speed": 2.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jglto"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_drsdf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_1rvfm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_drsdf")
+}],
+"loop": false,
+"name": &"Ball_hits_bouncer",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_epofw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_sbwws")
+}],
+"loop": true,
+"name": &"Negative_magnet",
+"speed": 2.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -123,6 +172,7 @@ rotation = 1.5708
 shape = SubResource("RectangleShape2D_gl076")
 
 [node name="Death_border" type="StaticBody2D" parent="Invisible_walls"]
+position = Vector2(-5, 27)
 
 [node name="Lower_wall" type="CollisionShape2D" parent="Invisible_walls/Death_border"]
 position = Vector2(399, 1352)
@@ -135,6 +185,11 @@ script = ExtResource("3_7jop1")
 
 [node name="Bouncer_sprite_and_animations" type="AnimatedSprite2D" parent="Bouncer"]
 sprite_frames = SubResource("SpriteFrames_1q3n0")
+animation = &"Ball_hits_bouncer"
+speed_scale = 3.0
+
+[node name="Bouncer_sprite_and_animations" type="AnimatedSprite2D" parent="Bouncer/Bouncer_sprite_and_animations"]
+sprite_frames = SubResource("SpriteFrames_jglto")
 animation = &"Ball_hits_bouncer"
 speed_scale = 3.0
 

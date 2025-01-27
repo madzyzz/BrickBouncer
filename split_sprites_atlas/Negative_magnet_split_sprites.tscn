@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvj6iwo33nf7a"]
+
+[ext_resource type="Script" path="res://addons/sprite_cutter/AtlasScene.gd" id="1_tpbjo"]
+[ext_resource type="Texture2D" uid="uid://cmpj7xsm6lv4q" path="res://sprites/Negative_magnet_animations.png" id="2_2s7eq"]
+
+[node name="AtlasScene" type="Node"]
+script = ExtResource("1_tpbjo")
+destination_path = "res://prefabs"
+
+[node name="NegativeMagnetAnimations" type="Sprite2D" parent="."]
+position = Vector2(381, 187)
+texture = ExtResource("2_2s7eq")
+region_enabled = true
+region_rect = Rect2(16, 40, 120, 96)
+
+[node name="NegativeMagnetAnimations2" type="Sprite2D" parent="."]
+position = Vector2(382, 309)
+texture = ExtResource("2_2s7eq")
+region_enabled = true
+region_rect = Rect2(16, 200, 120, 96)

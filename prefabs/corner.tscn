@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://b2vbix58trp6s"]
+
+[ext_resource type="Texture2D" uid="uid://20u6kvtuq5h1" path="res://Textures/metal_0081_roughness_1k.jpg" id="1_8cydu"]
+[ext_resource type="Texture2D" uid="uid://c2sbxdxihb7yw" path="res://Textures/metal_0081_preview.jpg" id="2_5ardq"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_n14p0"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mhpqs"]
+albedo_color = Color(0.55, 0.55, 0.55, 1)
+albedo_texture = ExtResource("1_8cydu")
+metallic = 1.0
+metallic_specular = 1.0
+
+[sub_resource type="PrismMesh" id="PrismMesh_jspoo"]
+material = SubResource("StandardMaterial3D_mhpqs")
+left_to_right = 1.0
+size = Vector3(0.77, 0.905, 0.165)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e3lim"]
+size = Vector2(48.0833, 97.9343)
+
+[node name="Corner" type="StaticBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_n14p0")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+position = Vector2(32, 33)
+rotation = -1.5708
+scale = Vector2(85.417, 71.8993)
+mesh = SubResource("PrismMesh_jspoo")
+texture = ExtResource("2_5ardq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(14, 17)
+rotation = 0.77689
+shape = SubResource("RectangleShape2D_e3lim")

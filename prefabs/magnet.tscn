@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://c2oukxhoyrcke"]
 
-[ext_resource type="Script" path="res://prefabs/magnet.gd" id="1_c187i"]
+[ext_resource type="Script" path="res://Scripts/magnet.gd" id="1_c187i"]
 [ext_resource type="Texture2D" uid="uid://c08dtmpxhr6v5" path="res://sprites/Magnet.atlastex" id="1_xhn50"]
 [ext_resource type="Texture2D" uid="uid://dag1wb7c85srn" path="res://sprites/Animated_magnet.atlastex" id="2_44cmv"]
 [ext_resource type="Texture2D" uid="uid://c4p63o8qa8ye4" path="res://sprites/AnimatedMagnet2.atlastex" id="3_uvvfx"]

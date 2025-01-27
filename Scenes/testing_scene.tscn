@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://cfwce264u7j1g"]
+[gd_scene load_steps=39 format=3 uid="uid://cfwce264u7j1g"]
 
 [ext_resource type="Script" path="res://Scripts/level_setup.gd" id="1_6o806"]
 [ext_resource type="Texture2D" uid="uid://bdmtwlgfg5p4m" path="res://Images/Background Images/metal_background.png" id="2_qsebo"]
@@ -9,7 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://ci2b4gn8y3bg6" path="res://prefabs/MagnetActiveForm.atlastex" id="7_b3akf"]
 [ext_resource type="Texture2D" uid="uid://b0pcute1q8awa" path="res://prefabs/MagnetActiveForm2.atlastex" id="8_px8j2"]
 [ext_resource type="Texture2D" uid="uid://403vbatxe4e6" path="res://sprites/Dotted_Line.png" id="9_3avva"]
+[ext_resource type="Texture2D" uid="uid://texxu1sj6y5q" path="res://prefabs/NegativeMagnetAnimations.atlastex" id="9_dd3w5"]
 [ext_resource type="Texture2D" uid="uid://bekqvjnliex70" path="res://prefabs/HeartsSystem_3lifes.atlastex" id="10_64yux"]
+[ext_resource type="Texture2D" uid="uid://dqhdt4atd2j7h" path="res://prefabs/NegativeMagnetAnimations2.atlastex" id="10_iupdh"]
 [ext_resource type="PackedScene" uid="uid://bdd7y1uep7eae" path="res://prefabs/ball.tscn" id="11_1jbsr"]
 [ext_resource type="Script" path="res://Scripts/try_again_button.gd" id="12_k7nvb"]
 [ext_resource type="Script" path="res://Scripts/level_menu_button.gd" id="13_ulh2h"]
@@ -47,6 +49,53 @@ animations = [{
 "loop": false,
 "name": &"Ball_hits_bouncer",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_6gqny")
+}],
+"loop": false,
+"name": &"Static_magnet",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_b3akf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_px8j2")
+}],
+"loop": true,
+"name": &"magnet_bouncer",
+"speed": 2.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vnc0r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_py4gs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_dqrhg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_py4gs")
+}],
+"loop": false,
+"name": &"Ball_hits_bouncer",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_dd3w5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_iupdh")
+}],
+"loop": true,
+"name": &"Negative_magnet",
+"speed": 2.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -136,6 +185,11 @@ script = ExtResource("3_cjppb")
 
 [node name="Bouncer_sprite_and_animations" type="AnimatedSprite2D" parent="Bouncer"]
 sprite_frames = SubResource("SpriteFrames_1q3n0")
+animation = &"Ball_hits_bouncer"
+speed_scale = 3.0
+
+[node name="Bouncer_sprite_and_animations" type="AnimatedSprite2D" parent="Bouncer/Bouncer_sprite_and_animations"]
+sprite_frames = SubResource("SpriteFrames_vnc0r")
 animation = &"Ball_hits_bouncer"
 speed_scale = 3.0
 

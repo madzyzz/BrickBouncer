@@ -93,9 +93,11 @@ func get_powerup_duration(powerup_type: String) -> float:
 		"magnet":
 			return 8.0
 		"speedup":
-			return 12
+			return 12.0
+		"negative_magnet":
+			return 8.0
 		"test":
-			return 30
+			return 30.0
 		_:
 			return 3.0  # Default duration
 
@@ -319,7 +321,7 @@ func _on_powerup_timeout(args: Array) -> void:
 	var ball = $"../Ball"
 	if powerup_type == "metal_beam":
 		powerup_script.on_powerup_deactivated(bouncer)
-	elif powerup_type == "magnet":
+	elif powerup_type == "magnet" or powerup_type == "negative_magnet":
 		powerup_script.on_powerup_deactivated(bouncer, ball)
 	else:
 		powerup_script.on_powerup_deactivated(ball)
@@ -328,7 +330,7 @@ func _on_powerup_timeout(args: Array) -> void:
 
 
 func is_bad_powerup(powerup_type: String) -> bool:
-	return powerup_type == "speedup" or powerup_type == "test" # Add additional bad powerup types here
+	return powerup_type == "speedup" or powerup_type == "test" or powerup_type == "negative_magnet" # Add additional bad powerup types here
 
 
 func any_bad_powerups_active() -> bool:
@@ -468,7 +470,7 @@ func clear_powerups() -> void:
 		var ball = $"../Ball"
 		if powerup_type == "metal_beam":
 			powerup_script.on_powerup_deactivated(bouncer)
-		elif powerup_type == "magnet":
+		elif powerup_type == "magnet" or powerup_type == "negative_magnet":
 			powerup_script.on_powerup_deactivated(bouncer, ball)
 		elif powerup_type == "test":
 			powerup_script.on_powerup_deactivated()

@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://db2npm060r54r"]
+
+[ext_resource type="Script" path="res://Scripts/negative_magnet_power_up.gd" id="1_5qd8y"]
+[ext_resource type="Texture2D" uid="uid://b7d10egwembo4" path="res://sprites/MagnetBadPowerUp.png" id="2_y7y8o"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4ggii"]
+
+[node name="Negative_Magnet_bad_power_up" type="Area2D"]
+script = ExtResource("1_5qd8y")
+powerup_texture = ExtResource("2_y7y8o")
+powerup_type = "negative_magnet"
+is_bad_powerup = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.13, 0.13)
+texture = ExtResource("2_y7y8o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+scale = Vector2(1.8, 1.8)
+shape = SubResource("CircleShape2D_4ggii")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
