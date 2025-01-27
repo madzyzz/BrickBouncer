@@ -46,7 +46,7 @@ func reset_ball() -> void:
 	bouncer.global_position = Vector2(360, 600)
 	bouncer.is_ball_shot = false
 
-	ball.global_position = bouncer.global_position + Vector2(0, 10)
+	ball.global_position = ball.original_position
 	ball.is_shot = false
 	ball.is_locked = true
 	ball.sleeping = true
