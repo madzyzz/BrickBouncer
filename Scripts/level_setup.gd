@@ -1,7 +1,7 @@
 extends Node
 
 # Number of starting lives
-var amount_of_lives: int = 3
+@export var amount_of_lives: int = 3
 
 # Timer-related variables
 @export var is_timer_level: bool = false  # Whether this is a timer-based level
@@ -49,6 +49,7 @@ func reset_ball() -> void:
 	ball.global_position = ball.original_position
 	ball.is_shot = false
 	ball.is_locked = true
+	ball.linear_velocity = Vector2.ZERO
 	ball.sleeping = true
 
 	bouncer.dotted_line.visible = true

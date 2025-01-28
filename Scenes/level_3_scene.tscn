@@ -291,7 +291,7 @@ theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxFlat_6k6ug")
 text = "Next level"
 script = ExtResource("14_86roy")
-next_level_scene = "res://Scenes/level_2_scene.tscn"
+next_level_scene = "res://Scenes/level_4_scene.tscn"
 
 [node name="Level_menu_button" type="Button" parent="Game_won_screen"]
 layout_mode = 0

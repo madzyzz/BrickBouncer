@@ -16,6 +16,8 @@ var ignore_duration: float = 0.1
 
 var negative_magnet_active = false
 
+# Mechanic related variables
+var laser_kill = false
 
 func _ready() -> void:
 	# Start with no movement and physics disabled
@@ -100,10 +102,22 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 				direction = direction.normalized()
 				linear_velocity = direction * speed
 
-			elif collider.name == "Death_border":
+			elif collider.name == "Death_border" or collider.name == "LaserBeam2D":
+				print(collider.name)
 				var level_setup = $".."
 				if level_setup:
+					sleeping = true
+					linear_velocity = Vector2.ZERO
 					level_setup.lose_life()
+			
+			
+	if laser_kill == true:
+		var level_setup = $".."
+		if level_setup:
+			sleeping = true
+			linear_velocity = Vector2.ZERO
+			level_setup.lose_life()
+			laser_kill = false
 
 func apply_forces_from_magnets() -> void:
 	# Loop through all magnets in the "Magnets" group

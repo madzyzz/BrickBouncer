@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cobkwwyclxb3u"]
+
+[ext_resource type="Texture2D" uid="uid://bcxxno7iugrs6" path="res://sprites/Laser_holder.png" id="1_e267r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f7hkc"]
+size = Vector2(21, 46)
+
+[node name="Laser_holder" type="StaticBody2D"]
+position = Vector2(204, 192)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(27, -2)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_e267r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(4, -2)
+shape = SubResource("RectangleShape2D_f7hkc")
