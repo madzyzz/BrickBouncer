@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://ptvbt5r7jfmr"]
+
+[ext_resource type="Texture2D" uid="uid://djkl54l0a8t8v" path="res://sprites/Singular_metal_beam.png" id="1_iklne"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ivslc"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fy7wv"]
+size = Vector2(63, 19)
+
+[node name="Singular_metal_beam" type="StaticBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_ivslc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.287, 0.287)
+texture = ExtResource("1_iklne")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.485, 2.055)
+shape = SubResource("RectangleShape2D_fy7wv")

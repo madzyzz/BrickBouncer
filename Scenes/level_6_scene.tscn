@@ -1,0 +1,602 @@
+[gd_scene load_steps=39 format=3 uid="uid://bt4wxhb0xmg3w"]
+
+[ext_resource type="Script" path="res://Scripts/level_setup.gd" id="1_tu5ju"]
+[ext_resource type="Texture2D" uid="uid://bdmtwlgfg5p4m" path="res://Images/Background Images/metal_background.png" id="2_5fc5b"]
+[ext_resource type="Script" path="res://Scripts/bouncer.gd" id="3_deinn"]
+[ext_resource type="Texture2D" uid="uid://dhpwlgy2vji4r" path="res://prefabs/Bouncers2.atlastex" id="4_lja3p"]
+[ext_resource type="Texture2D" uid="uid://bhsedwblj1hpc" path="res://prefabs/Bouncers3.atlastex" id="5_qegd2"]
+[ext_resource type="Texture2D" uid="uid://texxu1sj6y5q" path="res://prefabs/NegativeMagnetAnimations.atlastex" id="6_ftk3j"]
+[ext_resource type="Texture2D" uid="uid://dqhdt4atd2j7h" path="res://prefabs/NegativeMagnetAnimations2.atlastex" id="7_uwby5"]
+[ext_resource type="Texture2D" uid="uid://doj2bi8hhyv7" path="res://prefabs/MagnetPowerForm.atlastex" id="8_fuoug"]
+[ext_resource type="Texture2D" uid="uid://ci2b4gn8y3bg6" path="res://prefabs/MagnetActiveForm.atlastex" id="9_t3sy4"]
+[ext_resource type="Texture2D" uid="uid://b0pcute1q8awa" path="res://prefabs/MagnetActiveForm2.atlastex" id="10_un6tu"]
+[ext_resource type="Texture2D" uid="uid://403vbatxe4e6" path="res://sprites/Dotted_Line.png" id="11_wyd7m"]
+[ext_resource type="Texture2D" uid="uid://b137og7ba7mo" path="res://prefabs/HeartsSystem_1lifes.atlastex" id="12_w4hdg"]
+[ext_resource type="PackedScene" uid="uid://bdd7y1uep7eae" path="res://prefabs/ball.tscn" id="13_5wciw"]
+[ext_resource type="Script" path="res://Scripts/try_again_button.gd" id="14_qffai"]
+[ext_resource type="Script" path="res://Scripts/level_menu_button.gd" id="15_oncai"]
+[ext_resource type="Script" path="res://Scripts/next_level_button.gd" id="16_afu8d"]
+[ext_resource type="Script" path="res://Scripts/bricks_in_level.gd" id="17_qwitw"]
+[ext_resource type="Script" path="res://Scripts/brick.gd" id="18_l0itm"]
+[ext_resource type="PackedScene" uid="uid://di1mswk628ety" path="res://prefabs/magnet_power_up.tscn" id="19_iliwr"]
+[ext_resource type="Texture2D" uid="uid://dhnx4flhomj4m" path="res://prefabs/Brick(4).atlastex" id="22_4oltj"]
+[ext_resource type="Texture2D" uid="uid://dy3mwx5qxa3om" path="res://prefabs/Brick(3).atlastex" id="23_qda12"]
+[ext_resource type="Texture2D" uid="uid://jrodibporqka" path="res://prefabs/Brick(2).atlastex" id="24_jxm1f"]
+[ext_resource type="Texture2D" uid="uid://dli6pibkytdmv" path="res://prefabs/Brick(1).atlastex" id="25_8ickr"]
+[ext_resource type="PackedScene" uid="uid://cobkwwyclxb3u" path="res://prefabs/laser_holder.tscn" id="25_d5a6l"]
+[ext_resource type="Script" path="res://Scripts/glass_storage.gd" id="26_40fpq"]
+[ext_resource type="PackedScene" uid="uid://cb1jy3pa1b4tk" path="res://prefabs/LaserBeam2D.tscn" id="26_q4766"]
+[ext_resource type="Texture2D" uid="uid://bpbgompsign7f" path="res://sprites/PowerUpGlassStorage.png" id="27_6icdf"]
+[ext_resource type="PackedScene" uid="uid://ptvbt5r7jfmr" path="res://prefabs/singular_metal_beam.tscn" id="27_w40bx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hr6h0"]
+size = Vector2(145, 893)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gl076"]
+size = Vector2(1433, 123)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1q3n0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_lja3p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_qegd2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_lja3p")
+}],
+"loop": false,
+"name": &"Ball_hits_bouncer",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_ftk3j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_uwby5")
+}],
+"loop": true,
+"name": &"Negative_magnet",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_fuoug")
+}],
+"loop": false,
+"name": &"Static_magnet",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_t3sy4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_un6tu")
+}],
+"loop": true,
+"name": &"magnet_bouncer",
+"speed": 2.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_2seve"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.44, 0.44, 0.44, 0.792157)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_h3jj2"]
+gradient = SubResource("Gradient_2seve")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6k6ug"]
+bg_color = Color(0.171, 0.57, 0.171, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r1yhf"]
+bg_color = Color(0.66, 0.61248, 0.1848, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vyjbl"]
+bg_color = Color(0.352941, 0.6, 0.6, 1)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_q1s4i"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8xt01"]
+size = Vector2(117.787, 50.8535)
+
+[node name="Level_5_scene" type="Node2D"]
+script = ExtResource("1_tu5ju")
+amount_of_lives = 1
+
+[node name="Background" type="TextureRect" parent="."]
+z_index = -2
+offset_left = 803.0
+offset_top = -1.0
+offset_right = 2595.0
+offset_bottom = 1099.0
+rotation = 1.5708
+scale = Vector2(0.715363, 0.744657)
+texture = ExtResource("2_5fc5b")
+
+[node name="Invisible_walls" type="Node2D" parent="."]
+
+[node name="Walls" type="StaticBody2D" parent="Invisible_walls"]
+
+[node name="Upper_wall" type="CollisionShape2D" parent="Invisible_walls/Walls"]
+position = Vector2(401, -73)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_hr6h0")
+
+[node name="Left_wall" type="CollisionShape2D" parent="Invisible_walls/Walls"]
+position = Vector2(-61, 640)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_gl076")
+
+[node name="Right_wall" type="CollisionShape2D" parent="Invisible_walls/Walls"]
+position = Vector2(781, 616)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_gl076")
+
+[node name="Death_border" type="StaticBody2D" parent="Invisible_walls"]
+position = Vector2(-5, 27)
+
+[node name="Lower_wall" type="CollisionShape2D" parent="Invisible_walls/Death_border"]
+position = Vector2(399, 1352)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_hr6h0")
+
+[node name="Bouncer" type="CharacterBody2D" parent="."]
+position = Vector2(369, 1137)
+script = ExtResource("3_deinn")
+
+[node name="Bouncer_sprite_and_animations" type="AnimatedSprite2D" parent="Bouncer"]
+sprite_frames = SubResource("SpriteFrames_1q3n0")
+animation = &"Ball_hits_bouncer"
+speed_scale = 3.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Bouncer"]
+visible = false
+polygon = PackedVector2Array(-57, -5, -58, 15, -57, 20, 56, 20, 57, 15, 55, -5, 50, -13, 38, -20, 12, -23, -12, -23, -41, -20, -53, -13)
+
+[node name="DottedLine" type="Sprite2D" parent="Bouncer"]
+texture = ExtResource("11_wyd7m")
+offset = Vector2(0, -50)
+
+[node name="HeartsSystem3Lifes" type="Sprite2D" parent="."]
+position = Vector2(643, 39)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("12_w4hdg")
+
+[node name="Ball" parent="." instance=ExtResource("13_5wciw")]
+position = Vector2(367, 1133)
+
+[node name="Game_lost_screen" type="TextureRect" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 125.0
+offset_top = 400.0
+offset_right = 591.09
+offset_bottom = 900.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_h3jj2")
+
+[node name="Label" type="Label" parent="Game_lost_screen"]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 23.0
+offset_right = 426.0
+offset_bottom = 147.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 90
+text = "You lost!"
+
+[node name="Try_again_button" type="Button" parent="Game_lost_screen"]
+layout_mode = 0
+offset_left = 121.0
+offset_top = 233.0
+offset_right = 351.0
+offset_bottom = 310.0
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_6k6ug")
+text = "Try again"
+script = ExtResource("14_qffai")
+
+[node name="Level_menu_button" type="Button" parent="Game_lost_screen"]
+layout_mode = 0
+offset_left = 149.0
+offset_top = 328.0
+offset_right = 322.175
+offset_bottom = 393.35
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_r1yhf")
+text = "Level menu"
+script = ExtResource("15_oncai")
+
+[node name="Game_won_screen" type="TextureRect" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 140.0
+offset_top = 400.0
+offset_right = 606.09
+offset_bottom = 900.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_h3jj2")
+
+[node name="Label" type="Label" parent="Game_won_screen"]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 23.0
+offset_right = 426.0
+offset_bottom = 147.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 90
+text = "You won!"
+
+[node name="Next_level_button" type="Button" parent="Game_won_screen"]
+layout_mode = 0
+offset_left = 121.0
+offset_top = 233.0
+offset_right = 351.0
+offset_bottom = 310.0
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_6k6ug")
+text = "Next level"
+script = ExtResource("16_afu8d")
+next_level_scene = "res://Scenes/le0vel_7_scene.tscn"
+
+[node name="Level_menu_button" type="Button" parent="Game_won_screen"]
+layout_mode = 0
+offset_left = 149.0
+offset_top = 328.0
+offset_right = 322.175
+offset_bottom = 393.35
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_r1yhf")
+text = "Level menu"
+script = ExtResource("15_oncai")
+
+[node name="Play_again_button" type="Button" parent="Game_won_screen"]
+layout_mode = 0
+offset_left = 150.0
+offset_top = 406.0
+offset_right = 323.545
+offset_bottom = 473.12
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_vyjbl")
+text = "Play again"
+script = ExtResource("14_qffai")
+
+[node name="Bricks_in_level" type="Node2D" parent="."]
+script = ExtResource("17_qwitw")
+current_level = "Level 6"
+
+[node name="Brick4" type="StaticBody2D" parent="Bricks_in_level" groups=["Bricks"]]
+position = Vector2(415, 269)
+physics_material_override = SubResource("PhysicsMaterial_q1s4i")
+script = ExtResource("18_l0itm")
+start_brick = 1
+powerup_scenes = Array[PackedScene]([ExtResource("19_iliwr")])
+powerup_chances = Array[float]([1.0])
+brick_4_texture = ExtResource("22_4oltj")
+brick_3_texture = ExtResource("23_qda12")
+brick_2_texture = ExtResource("24_jxm1f")
+brick_1_texture = ExtResource("25_8ickr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks_in_level/Brick4"]
+position = Vector2(-0.0909424, 0.459106)
+scale = Vector2(0.47, 0.49)
+shape = SubResource("RectangleShape2D_8xt01")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bricks_in_level/Brick4"]
+scale = Vector2(0.43, 0.457)
+texture = ExtResource("25_8ickr")
+
+[node name="Brick5" type="StaticBody2D" parent="Bricks_in_level" groups=["Bricks"]]
+position = Vector2(360, 269)
+physics_material_override = SubResource("PhysicsMaterial_q1s4i")
+script = ExtResource("18_l0itm")
+start_brick = 1
+powerup_scenes = Array[PackedScene]([ExtResource("19_iliwr")])
+powerup_chances = Array[float]([1.0])
+brick_4_texture = ExtResource("22_4oltj")
+brick_3_texture = ExtResource("23_qda12")
+brick_2_texture = ExtResource("24_jxm1f")
+brick_1_texture = ExtResource("25_8ickr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks_in_level/Brick5"]
+position = Vector2(-0.0909424, 0.459106)
+scale = Vector2(0.47, 0.49)
+shape = SubResource("RectangleShape2D_8xt01")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bricks_in_level/Brick5"]
+scale = Vector2(0.43, 0.457)
+texture = ExtResource("25_8ickr")
+
+[node name="Brick6" type="StaticBody2D" parent="Bricks_in_level" groups=["Bricks"]]
+position = Vector2(305, 269)
+physics_material_override = SubResource("PhysicsMaterial_q1s4i")
+script = ExtResource("18_l0itm")
+start_brick = 1
+powerup_scenes = Array[PackedScene]([ExtResource("19_iliwr")])
+powerup_chances = Array[float]([1.0])
+brick_4_texture = ExtResource("22_4oltj")
+brick_3_texture = ExtResource("23_qda12")
+brick_2_texture = ExtResource("24_jxm1f")
+brick_1_texture = ExtResource("25_8ickr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks_in_level/Brick6"]
+position = Vector2(-0.0909424, 0.459106)
+scale = Vector2(0.47, 0.49)
+shape = SubResource("RectangleShape2D_8xt01")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bricks_in_level/Brick6"]
+scale = Vector2(0.43, 0.457)
+texture = ExtResource("25_8ickr")
+
+[node name="Brick13" type="StaticBody2D" parent="Bricks_in_level" groups=["Bricks"]]
+position = Vector2(195, 269)
+physics_material_override = SubResource("PhysicsMaterial_q1s4i")
+script = ExtResource("18_l0itm")
+start_brick = 1
+powerup_scenes = Array[PackedScene]([ExtResource("19_iliwr")])
+powerup_chances = Array[float]([1.0])
+brick_4_texture = ExtResource("22_4oltj")
+brick_3_texture = ExtResource("23_qda12")
+brick_2_texture = ExtResource("24_jxm1f")
+brick_1_texture = ExtResource("25_8ickr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks_in_level/Brick13"]
+position = Vector2(-0.0909424, 0.459106)
+scale = Vector2(0.47, 0.49)
+shape = SubResource("RectangleShape2D_8xt01")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bricks_in_level/Brick13"]
+scale = Vector2(0.43, 0.457)
+texture = ExtResource("25_8ickr")
+
+[node name="Brick14" type="StaticBody2D" parent="Bricks_in_level" groups=["Bricks"]]
+position = Vector2(140, 269)
+physics_material_override = SubResource("PhysicsMaterial_q1s4i")
+script = ExtResource("18_l0itm")
+start_brick = 1
+powerup_scenes = Array[PackedScene]([ExtResource("19_iliwr")])
+powerup_chances = Array[float]([1.0])
+brick_4_texture = ExtResource("22_4oltj")
+brick_3_texture = ExtResource("23_qda12")
+brick_2_texture = ExtResource("24_jxm1f")
+brick_1_texture = ExtResource("25_8ickr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks_in_level/Brick14"]
+position = Vector2(-0.0909424, 0.459106)
+scale = Vector2(0.47, 0.49)
+shape = SubResource("RectangleShape2D_8xt01")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bricks_in_level/Brick14"]
+scale = Vector2(0.43, 0.457)
+texture = ExtResource("25_8ickr")
+
+[node name="Brick15" type="StaticBody2D" parent="Bricks_in_level" groups=["Bricks"]]
+position = Vector2(85, 269)
+physics_material_override = SubResource("PhysicsMaterial_q1s4i")
+script = ExtResource("18_l0itm")
+start_brick = 1
+powerup_scenes = Array[PackedScene]([ExtResource("19_iliwr")])
+powerup_chances = Array[float]([1.0])
+brick_4_texture = ExtResource("22_4oltj")
+brick_3_texture = ExtResource("23_qda12")
+brick_2_texture = ExtResource("24_jxm1f")
+brick_1_texture = ExtResource("25_8ickr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks_in_level/Brick15"]
+position = Vector2(-0.0909424, 0.459106)
+scale = Vector2(0.47, 0.49)
+shape = SubResource("RectangleShape2D_8xt01")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bricks_in_level/Brick15"]
+scale = Vector2(0.43, 0.457)
+texture = ExtResource("25_8ickr")
+
+[node name="Brick16" type="StaticBody2D" parent="Bricks_in_level" groups=["Bricks"]]
+position = Vector2(30, 269)
+physics_material_override = SubResource("PhysicsMaterial_q1s4i")
+script = ExtResource("18_l0itm")
+start_brick = 1
+powerup_scenes = Array[PackedScene]([ExtResource("19_iliwr")])
+powerup_chances = Array[float]([1.0])
+brick_4_texture = ExtResource("22_4oltj")
+brick_3_texture = ExtResource("23_qda12")
+brick_2_texture = ExtResource("24_jxm1f")
+brick_1_texture = ExtResource("25_8ickr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks_in_level/Brick16"]
+position = Vector2(-0.0909424, 0.459106)
+scale = Vector2(0.47, 0.49)
+shape = SubResource("RectangleShape2D_8xt01")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bricks_in_level/Brick16"]
+scale = Vector2(0.43, 0.457)
+texture = ExtResource("25_8ickr")
+
+[node name="Brick7" type="StaticBody2D" parent="Bricks_in_level" groups=["Bricks"]]
+position = Vector2(250, 269)
+physics_material_override = SubResource("PhysicsMaterial_q1s4i")
+script = ExtResource("18_l0itm")
+start_brick = 1
+powerup_scenes = Array[PackedScene]([ExtResource("19_iliwr")])
+powerup_chances = Array[float]([1.0])
+brick_4_texture = ExtResource("22_4oltj")
+brick_3_texture = ExtResource("23_qda12")
+brick_2_texture = ExtResource("24_jxm1f")
+brick_1_texture = ExtResource("25_8ickr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks_in_level/Brick7"]
+position = Vector2(-0.0909424, 0.459106)
+scale = Vector2(0.47, 0.49)
+shape = SubResource("RectangleShape2D_8xt01")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bricks_in_level/Brick7"]
+scale = Vector2(0.43, 0.457)
+texture = ExtResource("25_8ickr")
+
+[node name="Brick8" type="StaticBody2D" parent="Bricks_in_level" groups=["Bricks"]]
+position = Vector2(635, 269)
+physics_material_override = SubResource("PhysicsMaterial_q1s4i")
+script = ExtResource("18_l0itm")
+start_brick = 1
+powerup_scenes = Array[PackedScene]([ExtResource("19_iliwr")])
+powerup_chances = Array[float]([1.0])
+brick_4_texture = ExtResource("22_4oltj")
+brick_3_texture = ExtResource("23_qda12")
+brick_2_texture = ExtResource("24_jxm1f")
+brick_1_texture = ExtResource("25_8ickr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks_in_level/Brick8"]
+position = Vector2(-0.0909424, 0.459106)
+scale = Vector2(0.47, 0.49)
+shape = SubResource("RectangleShape2D_8xt01")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bricks_in_level/Brick8"]
+scale = Vector2(0.43, 0.457)
+texture = ExtResource("25_8ickr")
+
+[node name="Brick12" type="StaticBody2D" parent="Bricks_in_level" groups=["Bricks"]]
+position = Vector2(690, 269)
+physics_material_override = SubResource("PhysicsMaterial_q1s4i")
+script = ExtResource("18_l0itm")
+start_brick = 1
+powerup_scenes = Array[PackedScene]([ExtResource("19_iliwr")])
+powerup_chances = Array[float]([1.0])
+brick_4_texture = ExtResource("22_4oltj")
+brick_3_texture = ExtResource("23_qda12")
+brick_2_texture = ExtResource("24_jxm1f")
+brick_1_texture = ExtResource("25_8ickr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks_in_level/Brick12"]
+position = Vector2(-0.0909424, 0.459106)
+scale = Vector2(0.47, 0.49)
+shape = SubResource("RectangleShape2D_8xt01")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bricks_in_level/Brick12"]
+scale = Vector2(0.43, 0.457)
+texture = ExtResource("25_8ickr")
+
+[node name="Brick9" type="StaticBody2D" parent="Bricks_in_level" groups=["Bricks"]]
+position = Vector2(580, 269)
+physics_material_override = SubResource("PhysicsMaterial_q1s4i")
+script = ExtResource("18_l0itm")
+start_brick = 1
+powerup_scenes = Array[PackedScene]([ExtResource("19_iliwr")])
+powerup_chances = Array[float]([1.0])
+brick_4_texture = ExtResource("22_4oltj")
+brick_3_texture = ExtResource("23_qda12")
+brick_2_texture = ExtResource("24_jxm1f")
+brick_1_texture = ExtResource("25_8ickr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks_in_level/Brick9"]
+position = Vector2(-0.0909424, 0.459106)
+scale = Vector2(0.47, 0.49)
+shape = SubResource("RectangleShape2D_8xt01")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bricks_in_level/Brick9"]
+scale = Vector2(0.43, 0.457)
+texture = ExtResource("25_8ickr")
+
+[node name="Brick10" type="StaticBody2D" parent="Bricks_in_level" groups=["Bricks"]]
+position = Vector2(525, 269)
+physics_material_override = SubResource("PhysicsMaterial_q1s4i")
+script = ExtResource("18_l0itm")
+start_brick = 1
+powerup_scenes = Array[PackedScene]([ExtResource("19_iliwr")])
+powerup_chances = Array[float]([1.0])
+brick_4_texture = ExtResource("22_4oltj")
+brick_3_texture = ExtResource("23_qda12")
+brick_2_texture = ExtResource("24_jxm1f")
+brick_1_texture = ExtResource("25_8ickr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks_in_level/Brick10"]
+position = Vector2(-0.0909424, 0.459106)
+scale = Vector2(0.47, 0.49)
+shape = SubResource("RectangleShape2D_8xt01")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bricks_in_level/Brick10"]
+scale = Vector2(0.43, 0.457)
+texture = ExtResource("25_8ickr")
+
+[node name="Brick11" type="StaticBody2D" parent="Bricks_in_level" groups=["Bricks"]]
+position = Vector2(470, 269)
+physics_material_override = SubResource("PhysicsMaterial_q1s4i")
+script = ExtResource("18_l0itm")
+start_brick = 1
+powerup_scenes = Array[PackedScene]([ExtResource("19_iliwr")])
+powerup_chances = Array[float]([1.0])
+brick_4_texture = ExtResource("22_4oltj")
+brick_3_texture = ExtResource("23_qda12")
+brick_2_texture = ExtResource("24_jxm1f")
+brick_1_texture = ExtResource("25_8ickr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks_in_level/Brick11"]
+position = Vector2(-0.0909424, 0.459106)
+scale = Vector2(0.47, 0.49)
+shape = SubResource("RectangleShape2D_8xt01")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bricks_in_level/Brick11"]
+scale = Vector2(0.43, 0.457)
+texture = ExtResource("25_8ickr")
+
+[node name="PowerupsHolder" type="Node2D" parent="."]
+
+[node name="GlassStorage" type="Node2D" parent="."]
+z_index = -1
+position = Vector2(82, 59)
+script = ExtResource("26_40fpq")
+slot_count = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="GlassStorage"]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("27_6icdf")
+
+[node name="Laser_holder" parent="." instance=ExtResource("25_d5a6l")]
+position = Vector2(6, 1000)
+
+[node name="Laser_holder2" parent="." instance=ExtResource("25_d5a6l")]
+position = Vector2(718, 1000)
+
+[node name="LaserBeam2D" parent="." groups=["Lasers"] instance=ExtResource("26_q4766")]
+position = Vector2(19, 1000)
+use_delayed_activation = true
+
+[node name="Singular_metal_beam" parent="." instance=ExtResource("27_w40bx")]
+position = Vector2(33, 957)
+
+[node name="Singular_metal_beam2" parent="." instance=ExtResource("27_w40bx")]
+position = Vector2(96.035, 957)
+
+[node name="Singular_metal_beam3" parent="." instance=ExtResource("27_w40bx")]
+position = Vector2(159.03, 957)
+
+[node name="Singular_metal_beam4" parent="." instance=ExtResource("27_w40bx")]
+position = Vector2(563.455, 957)
+
+[node name="Singular_metal_beam5" parent="." instance=ExtResource("27_w40bx")]
+position = Vector2(626.455, 957)
+
+[node name="Singular_metal_beam6" parent="." instance=ExtResource("27_w40bx")]
+position = Vector2(689.465, 957)
+
+[connection signal="pressed" from="Game_lost_screen/Try_again_button" to="Game_lost_screen/Try_again_button" method="_on_pressed"]
+[connection signal="pressed" from="Game_lost_screen/Level_menu_button" to="Game_lost_screen/Level_menu_button" method="_on_pressed"]
+[connection signal="pressed" from="Game_won_screen/Next_level_button" to="Game_won_screen/Next_level_button" method="_on_pressed"]
+[connection signal="pressed" from="Game_won_screen/Level_menu_button" to="Game_won_screen/Level_menu_button" method="_on_pressed"]
+[connection signal="pressed" from="Game_won_screen/Play_again_button" to="Game_won_screen/Play_again_button" method="_on_pressed"]
+[connection signal="child_exiting_tree" from="Bricks_in_level" to="Bricks_in_level" method="_on_child_exiting_tree"]

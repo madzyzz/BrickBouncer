@@ -39,6 +39,7 @@ enabled=PackedStringArray("res://addons/sprite_cutter/plugin.cfg")
 [global_group]
 
 Bricks=""
+Lasers=""
 
 [input_devices]
 

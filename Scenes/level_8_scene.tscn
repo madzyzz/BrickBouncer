@@ -1,31 +1,31 @@
-[gd_scene load_steps=37 format=3 uid="uid://djgaxp6ueekh0"]
+[gd_scene load_steps=37 format=3 uid="uid://ds2op6mhcfn0l"]
 
-[ext_resource type="Script" path="res://Scripts/level_setup.gd" id="1_y15gm"]
-[ext_resource type="Texture2D" uid="uid://bdmtwlgfg5p4m" path="res://Images/Background Images/metal_background.png" id="2_4cxbt"]
-[ext_resource type="Script" path="res://Scripts/bouncer.gd" id="3_0ve26"]
-[ext_resource type="Texture2D" uid="uid://dhpwlgy2vji4r" path="res://prefabs/Bouncers2.atlastex" id="4_flofd"]
-[ext_resource type="Texture2D" uid="uid://bhsedwblj1hpc" path="res://prefabs/Bouncers3.atlastex" id="5_rx8lw"]
-[ext_resource type="Texture2D" uid="uid://doj2bi8hhyv7" path="res://prefabs/MagnetPowerForm.atlastex" id="6_b8cru"]
-[ext_resource type="Texture2D" uid="uid://texxu1sj6y5q" path="res://prefabs/NegativeMagnetAnimations.atlastex" id="6_t33tr"]
-[ext_resource type="Texture2D" uid="uid://dqhdt4atd2j7h" path="res://prefabs/NegativeMagnetAnimations2.atlastex" id="7_blyk8"]
-[ext_resource type="Texture2D" uid="uid://ci2b4gn8y3bg6" path="res://prefabs/MagnetActiveForm.atlastex" id="7_st3k0"]
-[ext_resource type="Texture2D" uid="uid://b0pcute1q8awa" path="res://prefabs/MagnetActiveForm2.atlastex" id="8_nwnn8"]
-[ext_resource type="Texture2D" uid="uid://403vbatxe4e6" path="res://sprites/Dotted_Line.png" id="9_swrul"]
-[ext_resource type="Texture2D" uid="uid://bekqvjnliex70" path="res://prefabs/HeartsSystem_3lifes.atlastex" id="10_nni1y"]
-[ext_resource type="PackedScene" uid="uid://bdd7y1uep7eae" path="res://prefabs/ball.tscn" id="11_fk3y2"]
-[ext_resource type="Script" path="res://Scripts/try_again_button.gd" id="12_4u7o6"]
-[ext_resource type="Script" path="res://Scripts/level_menu_button.gd" id="13_gtxof"]
-[ext_resource type="Script" path="res://Scripts/next_level_button.gd" id="14_aruax"]
-[ext_resource type="Script" path="res://Scripts/bricks_in_level.gd" id="15_2aopq"]
-[ext_resource type="Script" path="res://Scripts/brick.gd" id="16_notay"]
-[ext_resource type="Texture2D" uid="uid://dhnx4flhomj4m" path="res://prefabs/Brick(4).atlastex" id="19_gr1tv"]
-[ext_resource type="Texture2D" uid="uid://dy3mwx5qxa3om" path="res://prefabs/Brick(3).atlastex" id="20_locf6"]
-[ext_resource type="Texture2D" uid="uid://jrodibporqka" path="res://prefabs/Brick(2).atlastex" id="21_a0alv"]
-[ext_resource type="Texture2D" uid="uid://dli6pibkytdmv" path="res://prefabs/Brick(1).atlastex" id="22_2vjwl"]
-[ext_resource type="Script" path="res://Scripts/glass_storage.gd" id="23_a2duy"]
-[ext_resource type="Texture2D" uid="uid://bpbgompsign7f" path="res://sprites/PowerUpGlassStorage.png" id="24_fclmx"]
-[ext_resource type="PackedScene" uid="uid://cb1jy3pa1b4tk" path="res://prefabs/LaserBeam2D.tscn" id="28_hec67"]
-[ext_resource type="PackedScene" uid="uid://cobkwwyclxb3u" path="res://prefabs/laser_holder.tscn" id="29_k35qj"]
+[ext_resource type="Script" path="res://Scripts/level_setup.gd" id="1_qpqhe"]
+[ext_resource type="Texture2D" uid="uid://bdmtwlgfg5p4m" path="res://Images/Background Images/metal_background.png" id="2_vtqxv"]
+[ext_resource type="Script" path="res://Scripts/bouncer.gd" id="3_8lmh0"]
+[ext_resource type="Texture2D" uid="uid://dhpwlgy2vji4r" path="res://prefabs/Bouncers2.atlastex" id="4_n1byp"]
+[ext_resource type="Texture2D" uid="uid://bhsedwblj1hpc" path="res://prefabs/Bouncers3.atlastex" id="5_niycy"]
+[ext_resource type="Texture2D" uid="uid://texxu1sj6y5q" path="res://prefabs/NegativeMagnetAnimations.atlastex" id="6_6o6hd"]
+[ext_resource type="Texture2D" uid="uid://dqhdt4atd2j7h" path="res://prefabs/NegativeMagnetAnimations2.atlastex" id="7_2f0op"]
+[ext_resource type="Texture2D" uid="uid://doj2bi8hhyv7" path="res://prefabs/MagnetPowerForm.atlastex" id="8_tcmve"]
+[ext_resource type="Texture2D" uid="uid://ci2b4gn8y3bg6" path="res://prefabs/MagnetActiveForm.atlastex" id="9_vxjmu"]
+[ext_resource type="Texture2D" uid="uid://b0pcute1q8awa" path="res://prefabs/MagnetActiveForm2.atlastex" id="10_ufucm"]
+[ext_resource type="Texture2D" uid="uid://403vbatxe4e6" path="res://sprites/Dotted_Line.png" id="11_j3daq"]
+[ext_resource type="Texture2D" uid="uid://bekqvjnliex70" path="res://prefabs/HeartsSystem_3lifes.atlastex" id="12_amvpd"]
+[ext_resource type="PackedScene" uid="uid://bdd7y1uep7eae" path="res://prefabs/ball.tscn" id="13_22f5g"]
+[ext_resource type="Script" path="res://Scripts/try_again_button.gd" id="14_k4ihh"]
+[ext_resource type="Script" path="res://Scripts/level_menu_button.gd" id="15_2vv3k"]
+[ext_resource type="Script" path="res://Scripts/next_level_button.gd" id="16_16mqt"]
+[ext_resource type="Script" path="res://Scripts/bricks_in_level.gd" id="17_04hs2"]
+[ext_resource type="Script" path="res://Scripts/brick.gd" id="18_i84oh"]
+[ext_resource type="Texture2D" uid="uid://dhnx4flhomj4m" path="res://prefabs/Brick(4).atlastex" id="19_37l1o"]
+[ext_resource type="Texture2D" uid="uid://dy3mwx5qxa3om" path="res://prefabs/Brick(3).atlastex" id="20_41wjv"]
+[ext_resource type="Texture2D" uid="uid://jrodibporqka" path="res://prefabs/Brick(2).atlastex" id="21_kk3md"]
+[ext_resource type="Texture2D" uid="uid://dli6pibkytdmv" path="res://prefabs/Brick(1).atlastex" id="22_jxbby"]
+[ext_resource type="Script" path="res://Scripts/glass_storage.gd" id="23_ipg8p"]
+[ext_resource type="Texture2D" uid="uid://bpbgompsign7f" path="res://sprites/PowerUpGlassStorage.png" id="24_gh25j"]
+[ext_resource type="PackedScene" uid="uid://cobkwwyclxb3u" path="res://prefabs/laser_holder.tscn" id="25_ncos6"]
+[ext_resource type="PackedScene" uid="uid://cb1jy3pa1b4tk" path="res://prefabs/LaserBeam2D.tscn" id="26_vquxs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hr6h0"]
 size = Vector2(145, 893)
@@ -37,13 +37,13 @@ size = Vector2(1433, 123)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_flofd")
+"texture": ExtResource("4_n1byp")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_rx8lw")
+"texture": ExtResource("5_niycy")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_flofd")
+"texture": ExtResource("4_n1byp")
 }],
 "loop": false,
 "name": &"Ball_hits_bouncer",
@@ -51,10 +51,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("6_t33tr")
+"texture": ExtResource("6_6o6hd")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_blyk8")
+"texture": ExtResource("7_2f0op")
 }],
 "loop": true,
 "name": &"Negative_magnet",
@@ -62,7 +62,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("6_b8cru")
+"texture": ExtResource("8_tcmve")
 }],
 "loop": false,
 "name": &"Static_magnet",
@@ -70,10 +70,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("7_st3k0")
+"texture": ExtResource("9_vxjmu")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_nwnn8")
+"texture": ExtResource("10_ufucm")
 }],
 "loop": true,
 "name": &"magnet_bouncer",
@@ -104,8 +104,7 @@ bounce = 1.0
 size = Vector2(117.787, 50.8535)
 
 [node name="Level_5_scene" type="Node2D"]
-script = ExtResource("1_y15gm")
-amount_of_lives = 1
+script = ExtResource("1_qpqhe")
 
 [node name="Background" type="TextureRect" parent="."]
 z_index = -2
@@ -115,7 +114,7 @@ offset_right = 2595.0
 offset_bottom = 1099.0
 rotation = 1.5708
 scale = Vector2(0.715363, 0.744657)
-texture = ExtResource("2_4cxbt")
+texture = ExtResource("2_vtqxv")
 
 [node name="Invisible_walls" type="Node2D" parent="."]
 
@@ -146,7 +145,7 @@ shape = SubResource("RectangleShape2D_hr6h0")
 
 [node name="Bouncer" type="CharacterBody2D" parent="."]
 position = Vector2(369, 1137)
-script = ExtResource("3_0ve26")
+script = ExtResource("3_8lmh0")
 
 [node name="Bouncer_sprite_and_animations" type="AnimatedSprite2D" parent="Bouncer"]
 sprite_frames = SubResource("SpriteFrames_1q3n0")
@@ -158,15 +157,15 @@ visible = false
 polygon = PackedVector2Array(-57, -5, -58, 15, -57, 20, 56, 20, 57, 15, 55, -5, 50, -13, 38, -20, 12, -23, -12, -23, -41, -20, -53, -13)
 
 [node name="DottedLine" type="Sprite2D" parent="Bouncer"]
-texture = ExtResource("9_swrul")
+texture = ExtResource("11_j3daq")
 offset = Vector2(0, -50)
 
 [node name="HeartsSystem3Lifes" type="Sprite2D" parent="."]
 position = Vector2(643, 39)
 scale = Vector2(0.4, 0.4)
-texture = ExtResource("10_nni1y")
+texture = ExtResource("12_amvpd")
 
-[node name="Ball" parent="." instance=ExtResource("11_fk3y2")]
+[node name="Ball" parent="." instance=ExtResource("13_22f5g")]
 position = Vector2(367, 1133)
 
 [node name="Game_lost_screen" type="TextureRect" parent="."]
@@ -203,7 +202,7 @@ offset_bottom = 310.0
 theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxFlat_6k6ug")
 text = "Try again"
-script = ExtResource("12_4u7o6")
+script = ExtResource("14_k4ihh")
 
 [node name="Level_menu_button" type="Button" parent="Game_lost_screen"]
 layout_mode = 0
@@ -214,7 +213,7 @@ offset_bottom = 393.35
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_r1yhf")
 text = "Level menu"
-script = ExtResource("13_gtxof")
+script = ExtResource("15_2vv3k")
 
 [node name="Game_won_screen" type="TextureRect" parent="."]
 visible = false
@@ -250,8 +249,8 @@ offset_bottom = 310.0
 theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxFlat_6k6ug")
 text = "Next level"
-script = ExtResource("14_aruax")
-next_level_scene = "res://Scenes/level_6_scene.tscn"
+script = ExtResource("16_16mqt")
+next_level_scene = "res://Scenes/level_8_scene.tscn"
 
 [node name="Level_menu_button" type="Button" parent="Game_won_screen"]
 layout_mode = 0
@@ -262,7 +261,7 @@ offset_bottom = 393.35
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_r1yhf")
 text = "Level menu"
-script = ExtResource("13_gtxof")
+script = ExtResource("15_2vv3k")
 
 [node name="Play_again_button" type="Button" parent="Game_won_screen"]
 layout_mode = 0
@@ -273,22 +272,22 @@ offset_bottom = 473.12
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_vyjbl")
 text = "Play again"
-script = ExtResource("12_4u7o6")
+script = ExtResource("14_k4ihh")
 
 [node name="Bricks_in_level" type="Node2D" parent="."]
-script = ExtResource("15_2aopq")
-current_level = "Level 5"
+script = ExtResource("17_04hs2")
+current_level = "Level 6"
 
 [node name="Brick4" type="StaticBody2D" parent="Bricks_in_level" groups=["Bricks"]]
 position = Vector2(530, 270)
 physics_material_override = SubResource("PhysicsMaterial_q1s4i")
-script = ExtResource("16_notay")
+script = ExtResource("18_i84oh")
 start_brick = 1
 powerup_chance = 0.4
-brick_4_texture = ExtResource("19_gr1tv")
-brick_3_texture = ExtResource("20_locf6")
-brick_2_texture = ExtResource("21_a0alv")
-brick_1_texture = ExtResource("22_2vjwl")
+brick_4_texture = ExtResource("19_37l1o")
+brick_3_texture = ExtResource("20_41wjv")
+brick_2_texture = ExtResource("21_kk3md")
+brick_1_texture = ExtResource("22_jxbby")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks_in_level/Brick4"]
 position = Vector2(-0.0909424, 0.459106)
@@ -297,18 +296,18 @@ shape = SubResource("RectangleShape2D_8xt01")
 
 [node name="Sprite2D" type="Sprite2D" parent="Bricks_in_level/Brick4"]
 scale = Vector2(0.43, 0.457)
-texture = ExtResource("22_2vjwl")
+texture = ExtResource("22_jxbby")
 
 [node name="Brick5" type="StaticBody2D" parent="Bricks_in_level" groups=["Bricks"]]
 position = Vector2(233, 270)
 physics_material_override = SubResource("PhysicsMaterial_q1s4i")
-script = ExtResource("16_notay")
+script = ExtResource("18_i84oh")
 start_brick = 1
 powerup_chance = 0.4
-brick_4_texture = ExtResource("19_gr1tv")
-brick_3_texture = ExtResource("20_locf6")
-brick_2_texture = ExtResource("21_a0alv")
-brick_1_texture = ExtResource("22_2vjwl")
+brick_4_texture = ExtResource("19_37l1o")
+brick_3_texture = ExtResource("20_41wjv")
+brick_2_texture = ExtResource("21_kk3md")
+brick_1_texture = ExtResource("22_jxbby")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks_in_level/Brick5"]
 position = Vector2(-0.0909424, 0.459106)
@@ -317,27 +316,27 @@ shape = SubResource("RectangleShape2D_8xt01")
 
 [node name="Sprite2D" type="Sprite2D" parent="Bricks_in_level/Brick5"]
 scale = Vector2(0.43, 0.457)
-texture = ExtResource("22_2vjwl")
+texture = ExtResource("22_jxbby")
 
 [node name="PowerupsHolder" type="Node2D" parent="."]
 
 [node name="GlassStorage" type="Node2D" parent="."]
 z_index = -1
 position = Vector2(82, 59)
-script = ExtResource("23_a2duy")
+script = ExtResource("23_ipg8p")
 slot_count = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="GlassStorage"]
 scale = Vector2(0.3, 0.3)
-texture = ExtResource("24_fclmx")
+texture = ExtResource("24_gh25j")
 
-[node name="Laser_holder" parent="." instance=ExtResource("29_k35qj")]
+[node name="Laser_holder" parent="." instance=ExtResource("25_ncos6")]
 position = Vector2(6, 149)
 
-[node name="Laser_holder2" parent="." instance=ExtResource("29_k35qj")]
+[node name="Laser_holder2" parent="." instance=ExtResource("25_ncos6")]
 position = Vector2(718, 151.235)
 
-[node name="LaserBeam2D" parent="." groups=["Lasers"] instance=ExtResource("28_hec67")]
+[node name="LaserBeam2D" parent="." instance=ExtResource("26_vquxs")]
 position = Vector2(19, 147)
 
 [connection signal="pressed" from="Game_lost_screen/Try_again_button" to="Game_lost_screen/Try_again_button" method="_on_pressed"]

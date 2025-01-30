@@ -112,3 +112,7 @@ func _on_ball_shot() -> void:
 	if is_timer_level:
 		timer_active = true
 		timer_paused = false  # Resume the timer
+	
+	for laser in get_tree().get_nodes_in_group("Lasers"):
+		if laser.has_method("activate_with_delay"):
+			laser.activate_with_delay()

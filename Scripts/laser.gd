@@ -7,10 +7,14 @@ extends RayCast2D
 # Base duration of the tween animation in seconds.
 @export var growth_time := 0.1
 
+@export var use_delayed_activation: bool = false
+@export var activation_delay: float = 1.0
+
 # If `true`, the laser is firing.
 # It plays appearing and disappearing animations when it's not animating.
 # See `appear()` and `disappear()` for more information.
 var is_casting := false: set = set_is_casting
+var activation_timer: Timer
 
 @onready var fill : Line2D = $FillLine2D
 var tween : Tween
@@ -23,38 +27,49 @@ var tween : Tween
 
 func _ready() -> void:
 	# Ensure the laser is always active
-	is_casting = true
+	is_casting = not use_delayed_activation
 	fill.points[1] = Vector2.ZERO  # Reset beam to start
-	set_physics_process(true)  # Start physics updates if not already running
+	set_physics_process(is_casting)  # Start physics updates if not already running
+	
+	if use_delayed_activation:
+		activation_timer = Timer.new()
+		activation_timer.one_shot = true
+		activation_timer.wait_time = activation_delay
+		activation_timer.connect("timeout", Callable(self, "_on_activation_delay_timeout"))
+		add_child(activation_timer)
+	
+	
 	appear()  # Ensure the laser beam appears immediately
-	beam_particles.emitting = true
-	casting_particles.emitting = true
 	
 	set_laser_color(Color(2.5, 0, 0, 1), Color(1.5, 0, 0, 1), Color(2, 0, 0, 0.3))
 
 
 func _physics_process(delta: float) -> void:
-	target_position = (target_position + Vector2.RIGHT * cast_speed * delta).limit_length(max_length)
-	cast_beam()
+	if is_casting:
+		target_position = (target_position + Vector2.RIGHT * cast_speed * delta).limit_length(max_length)
+		cast_beam()
 
 
 func set_is_casting(cast: bool) -> void:
 	is_casting = cast
-	
-	if is_casting:
-		target_position = Vector2.ZERO
-		fill.points[1] = target_position
-		appear()
-	else:
-		# Reset the laser endpoint
-		fill.points[1] = Vector2.ZERO
-		
-		collision_particles.emitting = false
-		disappear()
-
 	set_physics_process(is_casting)
 	beam_particles.emitting = is_casting
 	casting_particles.emitting = is_casting
+	if is_casting:
+		appear()
+	else:
+		disappear()
+		
+		
+func activate_with_delay() -> void:
+	if use_delayed_activation:
+		activation_timer.start()
+	else:
+		is_casting = true
+	
+
+func _on_activation_delay_timeout() -> void:
+	is_casting = true
 
 
 # Controls the emission of particles and extends the Line2D to `cast_to` or the ray's 
